@@ -4,7 +4,7 @@
 
 var japanAtHomeApp = angular.module('japanAtHomeApp', ['http-auth-interceptor', 'tmh.dynamicLocale',
     'ngResource', 'ngRoute', 'ngCookies', 'japanAtHomeAppUtils', 'pascalprecht.translate', 'truncate',
-    'ngAutocomplete', 'ngSanitize']);
+    'ngAutocomplete', 'ngAnimate', 'ngSanitize']);
 
 japanAtHomeApp
     .config(function ($routeProvider, $httpProvider, $translateProvider, tmhDynamicLocaleProvider, USER_ROLES) {
