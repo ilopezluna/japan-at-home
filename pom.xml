@@ -123,6 +123,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>com.mandrillapp.wrapper.lutung</groupId>
+            <artifactId>lutung</artifactId>
+            <version>${lutung-version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.mangofactory</groupId>
             <artifactId>swagger-springmvc</artifactId>
             <version>${swagger-springmvc.version}</version>
@@ -300,11 +305,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.mandrillapp.wrapper.lutung</groupId>
-            <artifactId>lutung</artifactId>
-            <version>${lutung-version}</version>
         </dependency>
     </dependencies>
     <build>

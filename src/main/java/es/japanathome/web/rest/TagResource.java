@@ -9,8 +9,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 
 import javax.inject.Inject;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,9 +47,20 @@ public class TagResource {
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Tag> getAll() {
+    public List<Tag> getAll(final WebRequest webRequest) {
         log.debug("REST request to get all Tags");
-        return tagRepository.findAll();
+
+        String restaurantId = webRequest.getParameter("restaurantId");
+        if (restaurantId == null)
+        {
+            return tagRepository.findAll();
+        }
+        else
+        {
+            List<Tag> byRestaurantId = tagRepository.findByRestaurantId(Long.valueOf(restaurantId));
+            Collections.sort(byRestaurantId);
+            return byRestaurantId;
+        }
     }
 
     /**
