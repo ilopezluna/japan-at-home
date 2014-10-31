@@ -1,0 +1,18 @@
+{
+  "generator-jhipster": {
+    "baseName": "japan_at_home",
+    "packageName": "es.japanathome",
+    "packageFolder": "es/japanathome",
+    "authenticationType": "cookie",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "useCompass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "8"
+  }
+}
