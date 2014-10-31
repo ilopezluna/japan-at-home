@@ -1,0 +1,167 @@
+<div>
+
+    <h2>Restaurants</h2>
+
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveRestaurantModal" ng-click="clear()">
+        <span class="glyphicon glyphicon-flash"></span> Create a new Restaurant
+    </button>
+    <div class="modal fade" id="saveRestaurantModal" tabindex="-1" role="dialog" aria-labelledby="myRestaurantLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="form" role="form" novalidate
+                      class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
+                      ng-submit="create()">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myRestaurantLabel">Create or edit a Restaurant</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id"
+                                   ng-model="restaurant.id" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control"
+                                   ng-model="restaurant.name">
+                        </div>
+                        <div class="form-group">
+                            <label>ShortName</label>
+                            <input type="text" class="form-control"
+                                   ng-model="restaurant.shortName">
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input type="text" class="form-control"
+                                   ng-model="restaurant.description">
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" class="form-control"
+                                   ng-model="restaurant.address">
+                        </div>
+                        <div class="form-group">
+                            <label>Price</label>
+                            <input type="text" class="form-control"
+                                   ng-model="restaurant.price">
+                        </div>
+                        <div class="form-group">
+                            <label>MinPrice</label>
+                            <input type="text" class="form-control"
+                                   ng-model="restaurant.minPrice">
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <input type="number" class="form-control"
+                                   ng-model="restaurant.status">
+                        </div>
+                        <div class="form-group">
+                            <label>Telephone</label>
+                            <input type="text" class="form-control"
+                                   ng-model="restaurant.telephone">
+                        </div>
+                        <div class="form-group">
+                            <label>CloseAt</label>
+                            <input type="text" class="form-control"
+                                   ng-model="restaurant.closeAt">
+                        </div>
+                        <div class="form-group">
+                            <label>OpenAt</label>
+                            <input type="text" class="form-control"
+                                   ng-model="restaurant.openAt">
+                        </div>
+                        <div class="form-group">
+                            <label>DayClosed</label>
+                            <input type="text" class="form-control"
+                                   ng-model="restaurant.dayClosed">
+                        </div>
+                        <div class="form-group">
+                            <label>AverageDeliveryTime</label>
+                            <input type="text" class="form-control"
+                                   ng-model="restaurant.averageDeliveryTime">
+                        </div>
+                        <div class="form-group">
+                            <label>Logo</label>
+                            <input type="text" class="form-control"
+                                   ng-model="restaurant.logo">
+                        </div>
+
+                         <div class="form-group">
+                             <label>zip</label>
+                             <select class="form-control" multiple ng-model="restaurant.zips" ng-options="zip as zip.code for zip in zips track by zip.id">
+                             </select>
+                         </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                        </button>
+                        <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span> Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>ShortName</th>
+                    <th>Description</th>
+                    <th>Address</th>
+                    <th>Price</th>
+                    <th>MinPrice</th>
+                    <th>Status</th>
+                    <th>Telephone</th>
+                    <th>CloseAt</th>
+                    <th>OpenAt</th>
+                    <th>DayClosed</th>
+                    <th>AverageDeliveryTime</th>
+                    <th>Logo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="restaurant in restaurants">
+                    <td>{{restaurant.id}}</td>
+                    <td>{{restaurant.name}}</td>
+                    <td>{{restaurant.shortName}}</td>
+                    <td>{{restaurant.description}}</td>
+                    <td>{{restaurant.address}}</td>
+                    <td>{{restaurant.price}}</td>
+                    <td>{{restaurant.minPrice}}</td>
+                    <td>{{restaurant.status}}</td>
+                    <td>{{restaurant.telephone}}</td>
+                    <td>{{restaurant.closeAt}}</td>
+                    <td>{{restaurant.openAt}}</td>
+                    <td>{{restaurant.dayClosed}}</td>
+                    <td>{{restaurant.averageDeliveryTime}}</td>
+                    <td>{{restaurant.logo}}</td>
+                    <td>
+                        <button type="submit"
+                                ng-click="update(restaurant.id)"
+                                class="btn btn-default">
+                            <span class="glyphicon glyphicon-pencil"></span> Edit
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(restaurant.id)"
+                                class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span> Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
