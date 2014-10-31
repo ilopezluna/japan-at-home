@@ -1,0 +1,141 @@
+<!-- Main Content -->
+
+<section id="main_content">
+    <div class="container">
+        <div class="row scroll-content">
+
+            <!-- Info restaurant -->
+
+            <div class="col-md-3 col-sm-4">
+
+                <div class="thumbnail cart my-sticky-element">
+
+                    <h3 translate="menu.cart.title"><span class="title_sushi"></span>TU MENU</h3>
+
+                    <div ng-repeat="item in order.items">
+                        <div class="col-md-12 col-sm-12 col-xs-12 product">{{item.product.name}}</div>
+                        <div class="col-md-1 col-sm-2 col-xs-2 product amount">x{{item.quantity}}</div>
+                        <div class="col-md-9 col-sm-8 col-xs-8 product amount price">{{item.product.price}}€</div>
+                        <div class="col-md-1 col-sm-2 col-xs-2 remove"><span ng-click="removeItem(item)" class="transition02 glyphicon glyphicon-minus-sign"></span></div>
+                    </div>
+
+                    <div class="clearfix"></div><hr>
+
+                    <div translate="menu.cart.total" class="col-md-6 col-sm-6 col-xs-6 cart_total">TOTAL</div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 cart_total_pvp">{{ total() }}€</div>
+
+
+                    <a href="#/restaurant/{{restaurant.id}}/{{restaurant.shortName}}/delivery"><button translate="menu.cart.button" type="button" class="btn transition02">FINALIZAR PEDIDO</button></a>
+                </div>
+
+            </div>
+
+            <!-- Info restaurant -->
+
+            <div class="col-md-9 col-sm-8">
+                <div class="thumbnail restaurant_menu">
+
+                    <h2 translate="menu.title" translate-values="{name: '{{restaurant.name}}'}">RESTAURANTE <span>SUSHI BO</span></h2>
+                    <div class="noodles_dark"></div>
+
+                    <div class="row space-top-menu">
+
+                        <p class="menu-howto"></p>
+
+                        <div class="panel-group">
+
+                            <div ng-repeat="category in categories" class="panel panel-default" ng-click="selected = !selected">
+                                <h3 data-toggle="collapse" data-parent="#accordion" href="#{{category.id}}">
+                                    <span class="caret" ng-class="{'caret-down': selected }"></span> &nbsp; {{category.name}}
+                                </h3>
+                                <div id="{{category.id}}" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div ng-repeat="product in products | filter:{ tag: category.id }">
+                                            <div class="col-md-9 col-xs-9 product_name">{{product.name}}</div>
+                                            <div class="col-md-3 col-xs-3 product_pvp">{{product.price}}€<span ng-click="addItem(product)" class="transition02 glyphicon glyphicon-plus-sign" ></span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div translate="menu.iva" class="col-md-12 info_iva">* TODOS LOS PRECIOS SON CON I.V.A</div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+<!-- Main Newsletters -->
+
+<section id="main_newsletters">
+
+    <div class="container">
+
+        <h2 translate="home.suggestion.title">¿Hechas de menos tu restaurante favorito?</h2>
+        <p translate="home.suggestion.subtitle">Contacta con nosotros y mándanos tu sugerencia,<br>el equipo de Japan at Home hara lo posible para que puedas disfrutar de él.</p>
+
+        <div ng-controller="SuggestController" ng-switch="authenticated">
+
+            <div ng-switch-when="false" class="input-group text-center">
+                <input ng-model="suggestion.email" type="text" class="form-control text-center" placeholder="Escribe tu email aquí">
+            </div>
+
+            <div class="input-group text-center">
+                <input ng-model="suggestion.description" type="text" class="form-control text-center" placeholder="Nombre del restaurante">
+            </div>
+
+            <button translate="home.suggestion.button" data-toggle="modal" data-target="#thanksModal" ng-click="suggest(suggestion)" type="button" class="btn">Enviar sugerencia</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- Main Help -->
+
+<section id="main_help">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12 title">
+                <h3 translate="home.help.title">¿Necesitas ayuda?</h3>
+            </div>
+
+            <div class="col-md-4 help_item">
+                <div class="thumbnail">
+
+                    <h4 translate="home.help.step1.title">JAPAN AT HOME</h4>
+                    <p translate="home.help.step1.description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient</p>
+                    <div class="help_noodles"></div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 help_item">
+                <div class="thumbnail">
+
+                    <h4 translate="home.help.step2.title">JAPAN AT HOME</h4>
+                    <p translate="home.help.step2.description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient</p>
+                    <div class="help_enter"></div>
+
+                </div>
+            </div>
+
+            <div class="col-md-4 help_item">
+                <div class="thumbnail">
+
+                    <h4 translate="home.help.step3.title">JAPAN AT HOME</h4>
+                    <p translate="home.help.step3.description">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient</p>
+                    <div class="help_moto"></div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

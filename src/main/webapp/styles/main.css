@@ -1,9 +1,3 @@
-body {
-    background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
-}
-
 .development {
     position: absolute;
     width: 149px;
@@ -113,3 +107,825 @@ ul#strength {
     width:20px;
 }
 /* end Password strength bar style */
+
+/* ==========================================================================
+   Author's custom styles
+   ==========================================================================
+
+	Palaeta de colors
+
+	#FF9A35	Orange 100%
+	#fdae66 Orange 80%
+	#F45454	Red 100%
+	#E4EADC gray 100%
+	#404040	black 100%
+
+	Palaeta de colors
+
+	#FF9A35	Orange
+	#FFF4E9 Backrgound
+	#D86C00 Brown
+	#67625E Gray
+
+	35ff9a
+*/
+
+@font-face {
+    font-family: 'got';
+    src: url('../fonts/go3v2-webfont.eot');
+    src: url('../fonts/go3v2-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/go3v2-webfont.woff') format('woff'),
+    url('../fonts/go3v2-webfont.ttf') format('truetype'),
+    url('../fonts/go3v2-webfont.svg#gang_of_threeregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    color: #67625E;
+    letter-spacing: 1px;
+}
+
+h1 {
+    font-size: 40px;
+    font-family: got;
+}
+
+h2 {
+    font-size: 33px;
+    font-family: got;
+}
+
+h3 {
+    font-size: 28px;
+    font-family: 'got';
+}
+
+h4 {
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+a:hover {
+    text-decoration: none
+}
+s {
+    text-decoration: none;
+}
+
+
+.btn {
+    font-family: 'got';
+    font-size: 18px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background: #FF9A35;
+    color: #fff;
+}
+.btn:hover {
+    background-color: #d86c00;
+    color: #fff;
+}
+.btn,
+.thumbnail {
+    border-radius: 2px;
+}
+
+.next_step {
+    float: right;
+    background-color: #FF9A35;
+}
+.next_step:hover {
+    background: #d86c00;
+    color: #fff
+}
+
+.prev_step {
+    float: left;
+    background-color: #F45454;
+}
+.prev_step:hover {
+    background: #FF9A35;
+}
+
+.transition02 {
+    transition: all .2s ease-in-out
+}
+
+.panel {
+    background-color: #fff4e9;
+}
+
+#main_content a {
+    color: #67625E;
+}
+
+
+/* Main Navigation */
+
+#main_navigation a {
+    font-size: 12px;
+}
+
+
+/* Main Content top */
+
+#main_content_top h1 strong {
+    color: #FF9A35;
+}
+
+#main_content_top .search {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Main Content */
+
+#main_content {
+    width: 100%;
+    padding: 20px 0;
+}
+
+#main_content .full_content {
+    padding: 30px 35px;
+    position: relative
+}
+
+/* HOME */
+.thumbnail {
+    display: block;
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff4e9;
+    border: 0px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+#main_content .restaurant_thmb {
+    padding: 20px 15px;
+    text-align: center;
+}
+
+#main_content .restaurant_thmb h4 {
+    font-weight: normal;
+    text-transform: uppercase;
+    color: #404040;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+#main_content .restaurant_thmb p {
+    font-size: 11px;
+}
+
+#main_content .restaurant_thmb p.precio_medio {
+    font-size: 18px;
+}
+
+#main_content .restaurant_thmb p.precio_medio span {
+    font-size: 24px;
+    color: #FF9A35;
+}
+
+#main_content .restaurant_thmb .btn {
+    width: 100%;
+}
+
+
+/* MENU */
+
+#main_content .restaurant_menu {
+    padding: 20px 15px;
+    position: relative;
+}
+
+#main_content .restaurant_menu .menu-howto{ padding-bottom: 20px; font-size: 12px}
+
+#main_content .restaurant_menu h2 {
+    margin: 0 10px 0 10px;
+}
+
+#main_content .restaurant_menu h2 span {
+    color: #FF9A35;
+}
+
+#main_content .restaurant_menu h3 {
+    font-size: 24px;
+    text-transform: uppercase;
+    margin: 0 50px 15px;
+    padding: 0;
+    cursor: pointer
+}
+
+#main_content .restaurant_menu .noodles_dark {
+    width: 120px;
+    height: 120px;
+    position: absolute;
+    right: 40px; top: 20px;
+    background: transparent url('../images/japan-at-home-noodles-dark.png') center center no-repeat;
+    background-size: 100% 100%; opacity: .1
+}
+
+#main_content .restaurant_menu .caret {
+    color: #FF9A35;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+#main_content .restaurant_menu .caret-down {
+    -webkit-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -o-transform: rotate(0);
+    -ms-transform: rotate(0);
+    transform: rotate(0);
+}
+
+#main_content .product_name {
+    padding: 0px 65px;
+    margin: 0;
+    line-height: 30px;
+}
+
+#main_content .product_pvp {
+    text-align: right;
+    margin: 0;
+    padding: 0 40px 0 0;
+    line-height: 30px;
+}
+
+#main_content .product_pvp .glyphicon {
+    padding: 0;
+    margin: 0 0 0 10px;
+    color: #FF9A35;
+    font-size: 18px;
+    line-height: 10px;
+    cursor: pointer
+}
+
+#main_content .product_pvp .glyphicon:hover {
+    color: #D86C00;
+}
+
+#main_content .info_iva {
+    padding: 60px 65px 0;
+}
+
+/* CART */
+
+#main_content .cart {
+    padding: 20px 15px;
+    text-align: center;
+}
+
+#main_content .cart .btn {
+    width: 100%;
+
+}
+
+#main_content .cart h3 {
+    font-size: 24px;
+    text-align: left;
+    margin: 0 0 20px;
+}
+
+#main_content .cart .title_sushi {
+    width: 20px;
+    height: 28px;
+    background: transparent url('../images/japan-at-home-sushi-little.png') center center no-repeat;
+    background-size: 100% 100%;
+    display: block;
+    float: left;
+    margin-right: 10px;
+}
+
+#main_content .cart .product {
+    margin-bottom: 5px;
+    padding: 0px;
+    text-align: left;
+    line-height: 18px;
+}
+
+#main_content .cart .amount {
+    font-weight: bold;
+}
+
+#main_content .cart .price {
+    text-align: right;
+}
+
+#main_content .cart .remove {
+    margin-bottom: 30px;
+}
+
+#main_content .cart .glyphicon {
+    padding: 0;
+    margin-left: 0px;
+    color: #F45454;
+    font-size: 16px;
+    line-height: 18px;
+    cursor: pointer;
+    text-align: left;
+    cursor: pointer;
+}
+
+#main_content .cart .cart_total {
+    font-family: 'got';
+    line-height: 22px;
+    font-size: 30px;
+}
+#main_content .cart .cart_total_pvp {
+    text-align: right;
+    padding-right: 0;
+    font-size: 26px;
+    line-height: 22px;
+    margin-bottom: 25px;
+}
+
+
+/* RESUME */
+
+#main_content .full_content .breadcrumb_payment {
+    margin-bottom: 40px
+}
+#main_content .full_content .breadcrumb_payment .btn {
+    background: #FF9A35;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #fff;
+    font-size: 18px;
+    font-family: 'got';
+}
+
+.top_table {
+    background: #67625E;
+    color: #fff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: 300;
+}
+.resum_payment_cart .item_right {
+    text-align: right;
+}
+
+.resum_payment_cart .table_color01, .resum_payment_cart .table_color02 {
+    min-height: 50px;
+    line-height: 50px
+}
+.resum_payment_cart .table_color01 {
+    background: #ffffff;
+}
+
+.resum_payment_cart .table_color02 {
+    background: #ecfff5;
+}
+
+
+.resum_payment_cart .amount {
+    padding: 0px 6px;
+    margin: 0;
+    height: 30px;
+    line-height: 30px;
+    width: 50px;
+    text-align: center;
+}
+.resum_payment_cart .glyphicon {
+    margin-left: 5px;
+    font-size: 16px
+}
+
+.resum_payment_cart .total_title {
+    font-size: 30px;
+    text-align: right;
+    padding: 30px 0;
+    font-family: 'got';
+}
+.resum_payment_cart .total_pvp{ font-size: 30px; text-align: center; font-weight: bold;	padding: 30px 0;}
+
+
+/* Login + Signin */
+
+.payment_login,
+.payment_signin{ margin-top: 25px; padding: 35px;}
+
+.payment_login h1,
+.payment_signin h1{ text-align: center;}
+
+.payment_login p,
+.payment_signin p{ font-size: 12px}
+
+.payment_login input,
+.payment_signin input{ margin: 0px 0 10px; padding: 20px}
+
+.payment_login .btn,
+.payment_signin .btn{ width: 100%; font-family: 'got'; font-size: 20px; color: #fff;  border: none; margin: 0px 0; padding: 10px 0}
+
+.payment_login .btn:hover,
+.payment_signin .btn:hover{ background: #CADD29}
+
+.dark{ background: #404040}
+
+/* Transport */
+
+#main_content .full_content .moto_dark{ width: 120px; height: 120px; position: absolute; right: 40px; top: 120px; background: transparent url('../images/japan-at-home-moto-dark.png') center center no-repeat; background-size: 100% 100%; opacity: .1}
+
+.transport .dark_moto, .transport .dark_enter{ padding: 0; margin: 0; opacity: .1; height: 200px;  background-size: 100%;}
+.transport .dark_moto{ background: transparent url('../images/japan-at-home-transport-moto-dark.png') top right no-repeat;}
+.transport .dark_enter{ background: transparent url('../images/japan-at-home-transport-enter-dark.png') top right no-repeat; }
+
+.transport .transport_resum{ padding-left: 25px;}
+
+.finish_payment {
+    width: 100%;
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    float: right;
+}
+
+
+/* Registro usuario */
+
+.signin-form{ margin-top: 35px}
+
+.signin-form h2{ font-family: 'got'; font-size: 18px; margin: 0 0 25px 0; padding: 0;}
+.signin-form label{ font-weight: normal}
+.signin-form .btn{ font-family: 'got'; color: #fff; background-color: #FF9A35; padding: 8px 15px 8px 15px; text-align: center; border: 0}
+.signin-form .btn.delete{ font-family: 'got'; color: #fff; background-color: #F45454; padding: 8px 15px 8px 15px; text-align: center; border: 0; letter-spacing: 1px}
+.signin-form .btn:hover{ background: #CADD29}
+
+
+/* Sidebar User */
+
+.sidebar_user ul{ list-style: none; text-align: left; margin: 0; padding: 0;}
+.sidebar_user ul li{ border-bottom: 1px solid #ddd; padding: 10px 0}
+.sidebar_user ul li:last-child{ border: 0}
+.sidebar_user ul li a{ color: #404040;}
+.sidebar_user ul li a:hover,
+.sidebar_user ul li a.active{ color: #FF9A35;}
+
+
+/* Main Newsletters */
+
+#main_newsletters{ width: 100%; padding: 50px 0; background: #FF9A35; text-align: center; position: relative}
+
+#main_newsletters h2 {
+
+    font-weight: normal;
+    text-transform: uppercase; color: #fff;
+}
+#main_newsletters p{ font-size: 16px; color: #fff; font-weight: 200;  margin-bottom: 20px}
+
+#main_newsletters .input-group{ width: 500px; margin: 0 auto 20px;}
+#main_newsletters .form-control{ border: none; padding: 25px 10px; font-size: 16px; color: #FF9A35}
+#main_newsletters .input-group-addon{ width: 50px; border: none; background: #fff url('../images/icon-newsletter.png') center center no-repeat;}
+
+#main_newsletters .btn{ font-family: 'got'; font-size: 18px;  padding: 8px 25px; margin-bottom: 25px; background: #fff; color: #FF9A35;}
+
+
+/* Main Suggest */
+
+#main_suggest{ width: 100%; background: #f9faf7; padding-top: 20px; padding-bottom: 50px; text-align: center; position: relative}
+
+#main_suggest h2{ font-family: 'got'; font-size: 30px; font-weight: normal; text-transform: uppercase; color: #404040;  margin: 0 10px 20px 10px; padding: 0;}
+#main_suggest p{ font-size: 16px; font-weight: 200;  margin-bottom: 20px }
+
+#main_suggest .input-group{ width: 500px; margin: 0 auto 20px;}
+#main_suggest .form-control{ border: none; padding: 25px 10px; font-size: 16px; color: #FF9A35}
+#main_suggest .input-group-addon{ width: 50px; border: none; background: #fff url('../images/icon-newsletter.png') center center no-repeat;}
+
+#main_suggest .btn{ font-family: 'got'; font-size: 18px;  padding: 8px 25px; margin-bottom: 25px; background: #FF9A35; color: #fff;}
+
+
+/* Main Help */
+
+#main_help{ width: 100%; padding: 50px 0; position: relative}
+
+#main_help h2{ color: #67625E; margin: 0 0 0 0; padding: 0;}
+#main_help .title_sushi{ width: 28px; height: 36px; background: transparent url('../images/japan-at-home-sushi-little.png') center center no-repeat; display: block; float: left; margin-right: 15px; padding-bottom: 5px}
+
+#main_help .help_item{ margin-top: 30px;}
+#main_help .help_item h4{ padding: 10px 20px 5px; font-family: 'got'; font-size: 20px;  color: #67625E;}
+#main_help .help_item p{ color: #67625E;font-size: 12px; line-height: 18px; padding: 0 80px 15px 20px}
+#main_help .help_item .help_noodles{ width: 100%; height: 80px; margin-bottom: 10px; margin-top: -30px; background: transparent url('../images/icon-noodles.png') right center no-repeat;}
+#main_help .help_item .help_enter{ width: 100%; height: 80px; margin-bottom: 10px; margin-top: -30px; background: transparent url('../images/icon-enter.png') right center no-repeat;}
+#main_help .help_item .help_moto{ width: 100%; height: 80px; margin-bottom: 10px; margin-top: -30px; background: transparent url('../images/icon-moto.png') right center no-repeat;}
+
+
+/* Main Footer */
+
+#main_footer{ width: 100%; height: 320px; background: #404040 url('../images/japan-at-home-bottom.png') right bottom no-repeat; color: #fff; font-size: 10px; font-family: 'Open Sans', sans-serif; position: relative}
+
+#main_footer .social{ margin: 30px 0 0 0; padding: 0;}
+#main_footer .social li{ display: inline-block; margin-right: 10px}
+#main_footer .social img{ width: 42px}
+
+#main_footer .legales{ margin-top: 30px; font-family: 'Helvetica Neue', Arial, sans-serif; letter-spacing: 1px}
+#main_footer .legales a{ color: #fff;}
+
+
+/* Large devices (large desktops, 1200px and up) */
+
+@media (max-width: 1200px) {
+
+    /* Left navigation */
+    .navigation_left a{ margin-right: 15px;}
+
+    /* Main Slider */
+    #main_slider{ height: 440px;}
+
+
+    /* Main Content */
+    #main_help .help_item h4{ font-size: 18px;}
+    #main_content .restaurant_thmb{ padding: 15px 15px; text-align: center;}
+    #main_content .restaurant_thmb p.precio_medio{ font-size: 16px;}
+    #main_content .restaurant_thmb p.precio_medio span{ font-size: 22px;}
+    #main_content .restaurant_thmb .btn,
+    #main_content .restaurant_thmb .btn.closed{ font-size: 16px;}
+
+    /* Main Help */
+    #main_help .help_item p{ font-size: 12px; line-height: 18px; padding: 0 70px 15px 20px}
+
+
+    /* Restaurant menu */
+    #main_content .restaurant_menu .noodles_dark{ display: none}
+
+    /* Info cart */
+    #main_content .cart .btn{font-size: 16px;}
+    #main_content .cart .cart_total,
+    #main_content .cart .cart_total_pvp{ font-size: 18px; line-height: 20px}
+
+    /* Resumen pedido */
+    #main_content .full_content .breadcrumb_payment .btn{ font-size: 16px;}
+    .resum_payment_cart .top_table{ font-size: 12px}
+
+    #main_content .cart.my-sticky-element.stuck {width: 213px;}
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+
+@media (max-width: 992px) {
+
+    /* Logo */
+    .logo img{ height: 80px; margin: 0 auto 20px;}
+
+    /* Navigation left + bottom */
+    .navigation_left{ display: none}
+    .navigation_left_bottom{ display: block; text-align: center}
+    .navigation_left_bottom{ line-height: 30px;}
+    .navigation_left_bottom a{ margin: 0 20px 20px 0; color: #404040; font-weight: normal;}
+
+    /* Login */
+    .login{ line-height: 0; margin: 15px auto 5px; text-align: center}
+    .login .btn{ width: 200px; height: 40px}
+
+    /* Info cart */
+    .resum_payment_cart .top_table span{ font-size: 12px}
+
+    /* Transport */
+
+    .transport .dark_moto, .transport .dark_enter{ display: none}
+
+    #main_content .cart.my-sticky-element.stuck {width: 220px;}
+}
+
+
+/* Small devices (tablets, 768px and up) */
+
+@media (max-width: 767px) {
+
+    #main_content_top,
+    #main_content,
+    #main_newsletters,
+    #main_suggest,
+    #main_help{ padding: 25px 0;}
+
+    #main_content_top .title_sushi,
+    #main_help .title_sushi{ display: none;}
+
+
+    /* Login */
+    .login{ text-align: center; padding-top: 5px}
+    .login .btn{ display: block; margin: 15px auto 0;}
+    .login .registro{ background: #F45454;}
+
+
+
+
+
+    /* Left navigation bottom */
+    .navigation_left_bottom a{ margin-right: 10px; font-size: 12px}
+
+    /* Main Slider */
+    #main_slider{ height: 200px;}
+
+    #main_content_top h3,
+    #main_help h3{ font-size: 22px; text-align: center;}
+
+    #main_content_top .orderby{ width: 100%; text-align: center; margin: 25px auto 0;}
+    #main_content_top .orderby .dropdown-toggle{ width: 100%;}
+
+    #main_content .restaurant_thmb,
+    #main_content .cart{ max-width: 260px; margin: 0 auto 25px; text-align: center;}
+
+
+    /* Resumen pedido */
+
+    #main_content .full_content .enter_dark,
+    #main_content .full_content .moto_dark{ display: none}
+
+    .breadcrumb_payment .btn-group{ width: auto; display: block; margin: 0; padding: 0;}
+    .breadcrumb_payment .btn-group .btn{ border-radius: 0}
+
+    .resum_payment_cart .top_table{ padding-top: 10px; padding-bottom: 10px; text-align: center;}
+
+    .resum_payment_cart .table_color01,
+    .resum_payment_cart .table_color02{ padding: 10px; text-align: center; line-height: 20px}
+    .resum_payment_cart .article{ padding-top: 15px; padding-bottom: 10px;}
+
+    .resum_payment_cart .amount{ padding: 0px 6px; margin: 0; line-height: 20px; width: 50px; text-align: center;}
+    .resum_payment_cart .glyphicon{ margin-left: 5px; font-size: 16px}
+    .resum_payment_cart .glyphicon-plus-sign{ color: #CADD29;}
+    .resum_payment_cart .glyphicon-minus-sign{ color: #F45454;}
+
+    .resum_payment_cart .total_title{ font-size: 20px; text-align: right; padding: 30px 0;}
+    .resum_payment_cart .total_pvp{ font-size: 20px; text-align: center; font-weight: bold;	padding: 30px 0;}
+
+
+    /* Transport */
+
+    .transport {
+        background: #f9faf7;
+        margin-top: 25px;
+        padding-top: 25px;
+        padding-bottom: 0;
+        height: auto;
+    }
+
+    /* Main Newsletters */
+    #main_newsletters h2{ font-size: 32px;}
+    #main_newsletters p{ font-size: 16px; color: #fff; font-weight: 200;  margin-bottom: 20px}
+    #main_newsletters .input-group{ width: 100%;}
+
+    /* Main Suggest */
+    #main_suggest h2{ font-size: 36px;}
+    #main_suggest p{ font-size: 16px; color: #fff; font-weight: 200;  margin-bottom: 20px}
+    #main_suggest .input-group{ width: 100%;}
+
+
+    /* Modal */
+
+    .modal-dialog{ margin-top: 100px; max-width: 300px;}
+
+    .modal-content{ background: #fff; border-radius: 2px}
+    .modal-header .sushi_modal{ width: 90px; height: 115px; left: 105px; top: -60px;}
+
+    #main_content .cart.my-sticky-element.stuck { position: relative !important; width: 100%; bottom: 25px !important; margin-bottom: 25px !important}
+
+}
+
+.panel{ box-shadow: none !important;}
+.panel-group{ margin: 0 !important}
+.panel-default{ border: 0 !important;}
+.panel-group .panel+.panel { margin: 0;}
+.panel-body{ padding: 0; padding-bottom: 30px;}
+
+a .glyphicon-pencil {
+    color: white;
+}
+
+a:hover .glyphicon-pencil {
+    color: #CADD29
+}
+
+.login-form .btn{ color: #ffffff; background: #FF9A35; text-transform: uppercase; font-size: 12px;}
+.login-form .btn:hover{ background: #CADD29}
+
+
+/* Animations */
+
+.reveal-animation.ng-enter {
+    -webkit-animation: Fade-Enter-Anime 0.4s;
+    -moz-animation: Fade-Enter-Anime 0.4s;
+    animation: Fade-Enter-Anime 0.4s;
+}
+.reveal-animation.ng-leave {
+    -webkit-animation: Fade-Leave-Anime 0.4s;
+    -moz-animation: Fade-Leave-Anime 0.4s;
+    animation: Fade-Leave-Anime 0.4s;
+}
+
+@keyframes Fade-Enter-Anime {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes Fade-Leave-Anime {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+
+@-webkit-keyframes Fade-Enter-Anime {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@-webkit-keyframes Fade-Leave-Anime {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@-moz-keyframes Fade-Enter-Anime {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@-moz-keyframes Fade-Leave-Anime {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+
+/** navbar **/
+.navbar {
+    position: relative;
+    min-height: 50px;
+    border: 0px;
+}
+
+.navbar-default {
+    background-color: #ffffff;
+}
+.navbar-default .navbar-brand {
+    color: #FF9A35;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: #FF9A35;
+}
+.navbar-default .navbar-text {
+    color: #FF9A35;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #FF9A35;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #FF9A35;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: #FF9A35;
+    background-color: #ffffff;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: #FF9A35;
+    background-color: #ffffff;
+}
+.navbar-default .navbar-toggle {
+    border-color: #ffffff;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: #ffffff;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #FF9A35;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+    border: none;
+}
+.navbar-default .navbar-link {
+    color: #FF9A35;
+}
+.navbar-default .navbar-link:hover {
+    color: #FF9A35;
+}
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #FF9A35;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #FF9A35;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #FF9A35;
+        background-color: #ffffff;
+    }
+    .img-responsive, .thumbnail>img, .thumbnail a>img, .carousel-inner>.item>img, .carousel-inner>.item>a>img {
+        max-width: 65%;
+    }
+
+    #main_content .restaurant_menu h3 {
+        margin: 0 5px 15px;
+    }
+}

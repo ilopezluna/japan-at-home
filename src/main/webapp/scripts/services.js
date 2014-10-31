@@ -204,3 +204,22 @@ japanAtHomeApp.factory('AuthenticationSharedService', function ($rootScope, $htt
             }
         };
     });
+
+japanAtHomeApp.factory('OrderService', function () {
+        var order = {
+            items: new Object()
+        };
+        return {
+            current: function() { return  order },
+
+            restaurant:function(restaurant)
+            {
+                if (order.restaurant == null || order.restaurant.id != restaurant.id ) //If restaurant is not set or is a different one, it clears order.items
+                {
+                    order.items = new Object();
+                }
+                order.restaurant = restaurant;
+            }
+        };
+});
+

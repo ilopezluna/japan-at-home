@@ -8,19 +8,21 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>japan_at_home</title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/bootstrap.css">
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
     </head>
+
     <body ng-app="japanAtHomeApp" ng-controller="MainController">
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div class="development"></div>
-        <nav class="navbar navbar-default" role="navigation">
+
+        <nav id="main_navigation" class="navbar navbar-default" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
@@ -29,174 +31,231 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                  <a class="navbar-brand" href="#"><span translate="global.title">japan_at_home</span></a>
+                    <a class="navbar-brand" href="#"><img src="images/logo.png" class="img-responsive" alt="JAPAN AT HOME"/></a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-collapse" ng-switch="authenticated">
                     <ul class="nav navbar-nav nav-pills navbar-right">
-                        <li>
-                            <a href="#">
-                                <span class="glyphicon glyphicon-home"></span>
-                                <span translate="global.menu.home">Home</span>
+                        <li ng-switch-when="false">
+                            <a href="#/login">
+                                <span class="glyphicon glyphicon-log-in"></span>
+                                &#xA0;<span translate="global.menu.account.login">Authenticate</span></a>
                             </a>
                         </li>
-                        <li ng-switch-when="true" class="dropdown pointer">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
-                                <span>
-                                    <span class="glyphicon glyphicon-th-list"></span>
-                                    <span class="hidden-tablet" translate="global.menu.entities.main">
-                                        Entities
+                        <li ng-switch-when="true" ng-show="isAuthorized(userRoles.admin)" class="dropdown pointer">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
+                            <span>
+                                <span class="glyphicon glyphicon-th-list"></span>
+                                <span class="hidden-tablet" translate="global.menu.entities.main">
+                                    Entities
+                                </span>
+                                <b class="caret"></b>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu" ng-controller="MenuController">
+                            <li ng-switch-when="true"><a href="#/tag"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;tag</a></li>
+                            <li ng-switch-when="true"><a href="#/zip"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;zip</a></li>
+                            <li ng-switch-when="true"><a href="#/restaurant"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;restaurant</a></li>
+                            <li ng-switch-when="true"><a href="#/product"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;product</a></li>
+                            <li ng-switch-when="true"><a href="#/item"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;item</a></li>
+                            <li ng-switch-when="true"><a href="#/order"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;order</a></li>
+                            <li ng-switch-when="true"><a href="#/suggestion"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;suggestion</a></li>
+                        </ul>
+                    </li>
+                    <li ng-switch-when="false">
+                        <a href="#/register"><span class="glyphicon glyphicon-plus-sign"></span>
+                            &#xA0;<span translate="global.menu.account.register">Register</span></a>
+                    </li>
+                    <li ng-switch-when="true" class="dropdown pointer">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
+                                    <span>
+                                        <span class="glyphicon glyphicon-user"></span>
+                                        <span class="hidden-tablet" translate="global.menu.account.main">
+                                            Account
+                                        </span>
+                                        <b class="caret"></b>
                                     </span>
-                                    <b class="caret"></b>
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu" ng-controller="MenuController">
-                                <li ng-switch-when="true"><a href="#/zip"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;zip</a></li>
-                                <li ng-switch-when="true"><a href="#/restaurant"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;restaurant</a></li>
-                                <li ng-switch-when="true"><a href="#/suggestion"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;suggestion</a></li>
-                                <li ng-switch-when="true"><a href="#/tag"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;tag</a></li>
-                                <li ng-switch-when="true"><a href="#/product"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;product</a></li>
-                                <li ng-switch-when="true"><a href="#/item"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;item</a></li>
-                                <li ng-switch-when="true"><a href="#/order"><span class="glyphicon glyphicon-asterisk"></span>&nbsp;order</a></li>
-                                <!-- JHipster will add entities to the menu here -->
-                            </ul>
-                        </li>
-                        <li class="dropdown pointer">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
-                                <span>
-                                    <span class="glyphicon glyphicon-user"></span>
-                                    <span class="hidden-tablet" translate="global.menu.account.main">
-                                        Account
+                        </a>
+
+                        <ul class="dropdown-menu" ng-controller="MenuController">
+                            <li><a href="#/settings"><span class="glyphicon glyphicon-wrench"></span>
+                                &#xA0;<span translate="global.menu.account.settings">Settings</span></a></li>
+                            <li><a href="#/password"><span class="glyphicon glyphicon-lock"></span>
+                                &#xA0;<span translate="global.menu.account.password">Password</span></a></li>
+                            <!--<li ng-switch-when="true"><a href="#/sessions"><span class="glyphicon glyphicon-cloud"></span>-->
+                            <!--&#xA0;<span translate="global.menu.account.sessions">Sessions</span></a></li>-->
+                            <li><a href="#/logout"><span class="glyphicon glyphicon-log-out"></span>
+                                &#xA0;<span translate="global.menu.account.logout">Log out</span></a></li>
+
+                        </ul>
+                    </li>
+                    <li ng-switch-when="true" ng-show="isAuthorized(userRoles.admin)" class="dropdown pointer" ng-controller="AdminController">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
+                                    <span>
+                                        <span class="glyphicon glyphicon-tower"></span>
+                                        <span class="hidden-tablet" translate="global.menu.admin">Admin</span>
+                                        <b class="caret"></b>
                                     </span>
-                                    <b class="caret"></b>
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu" ng-controller="MenuController">
-                                <li ng-switch-when="true"><a href="#/settings"><span class="glyphicon glyphicon-wrench"></span>
-                                    &nbsp;<span translate="global.menu.account.settings">Settings</span></a></li>
-                                <li ng-switch-when="true"><a href="#/password"><span class="glyphicon glyphicon-lock"></span>
-                                    &nbsp;<span translate="global.menu.account.password">Password</span></a></li>
-                                <li ng-switch-when="true"><a href="#/sessions"><span class="glyphicon glyphicon-cloud"></span>
-                                    &nbsp;<span translate="global.menu.account.sessions">Sessions</span></a></li>
-                                <li ng-switch-when="true"><a href="#/logout"><span class="glyphicon glyphicon-log-out"></span>
-                                    &nbsp;<span translate="global.menu.account.logout">Log out</span></a></li>
-                                <li ng-switch-when="false"><a href="#/login"><span class="glyphicon glyphicon-log-in"></span>
-                                    &nbsp;<span translate="global.menu.account.login">Authenticate</span></a></li>
-
-                                <li ng-switch-when="false"><a href="#/register"><span class="glyphicon glyphicon-plus-sign"></span>
-                                    &nbsp;<span translate="global.menu.account.register">Register</span></a></li>
-                            </ul>
-                        </li>
-                        <li ng-switch-when="true" ng-show="isAuthorized(userRoles.admin)" class="dropdown pointer" ng-controller="AdminController">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
-                                <span>
-                                    <span class="glyphicon glyphicon-tower"></span>
-                                    <span class="hidden-tablet" translate="global.menu.admin">Admin</span>
-                                    <b class="caret"></b>
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#/metrics"><span class="glyphicon glyphicon-dashboard"></span>
-                                    &nbsp;<span translate="global.menu.account.metrics">Metrics</span></a></li>
-                                <li><a href="#/health"><span class="glyphicon glyphicon-heart"></span>
-                                    &#xA0;<span translate="global.menu.account.health">Health</span></a></li>
-                                <li><a href="#/audits"><span class="glyphicon glyphicon-bell"></span>
-                                    &nbsp;<span translate="global.menu.account.audits">Audits</span></a></li>
-                                <li><a href="#/logs"><span class="glyphicon glyphicon-tasks"></span>
-                                    &nbsp;<span translate="global.menu.account.logs">Logs</span></a></li>
-                                <li><a href="#/docs"><span class="glyphicon glyphicon-book"></span>
-                                    &nbsp;<span translate="global.menu.account.apidocs">API Docs</span></a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown pointer" ng-controller="LanguageController">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
-                                <span>
-                                    <span class="glyphicon glyphicon-flag"></span>
-                                    <span class="hidden-tablet" translate="global.menu.language">Language</span>
-                                    <b class="caret"></b>
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li active-menu="{{key}}" ng-repeat="(key, language) in languages">
-                                    <a href="javascript:;" ng-click="changeLanguage(key)">{{language}}</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <div class="container">
-            <div class="well" ng-view=""></div>
-
-            <div class="footer">
-                <p translate="footer">This is your footer</p>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#/metrics"><span class="glyphicon glyphicon-dashboard"></span>
+                                &#xA0;<span translate="global.menu.account.metrics">Metrics</span></a></li>
+                            <li><a href="#/health"><span class="glyphicon glyphicon-heart"></span>
+                                &#xA0;<span translate="global.menu.account.health">Health</span></a></li>
+                            <li><a href="#/audits"><span class="glyphicon glyphicon-bell"></span>
+                                &#xA0;<span translate="global.menu.account.audits">Audits</span></a></li>
+                            <li><a href="#/logs"><span class="glyphicon glyphicon-tasks"></span>
+                                &#xA0;<span translate="global.menu.account.logs">Logs</span></a></li>
+                            <li><a href="#/docs"><span class="glyphicon glyphicon-book"></span>
+                                &#xA0;<span translate="global.menu.account.apidocs">API Docs</span></a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown pointer" ng-controller="LanguageController">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
+                                    <span>
+                                        <span class="glyphicon glyphicon-flag"></span>
+                                        <span class="hidden-tablet" translate="global.menu.language">Language</span>
+                                        <b class="caret"></b>
+                                    </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li active-menu="{{key}}" ng-repeat="(key, language) in languages">
+                                <a ng-show="isAvailable(key)" href="javascript:;" ng-click="changeLanguage(key)">{{language}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
+    </nav>
 
-        <!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>-->
+    <!-- Main content -->
+    <div ng-view="" class="reveal-animation" autoscroll="true" ng-controller="CartController">
+
+    </div>
+
+    <!-- Main Footer -->
+
+    <footer id="main_footer">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-sm-6">
+
+                    <ul class="social">
+                        <li><a href=""><img src="images/facebook.png" alt="Japan at home | Facebook" title="Japan at home | Facebook" /></a></li>
+                        <li><a href=""><img src="images/twitter.png"  alt="Japan at home | Twitter" title="Japan at home | Twitter" /></a></li>
+                        <li><a href=""><img src="images/googleplus.png" alt="Japan at home | Google+" title="Japan at home | Google+" /></a></li>
+                    </ul>
+
+                </div>
+                <div class="col-sm-6 text-right legales">
+
+                    JAPAN AT HOME - <a href="mailto:info@japanathome.es">info@japanathome.es</a><br/>
+                    <a href="">Política de privacidad</a> | <a href="#/legal">Aviso Legal</a> | <a href="">Política de cookies</a>
+
+                </div>
 
 
-        <!-- build:js scripts/scripts.js -->
-        <script src="bower_components/modernizr/modernizr.js"></script>
-        <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/angular-route/angular-route.js"></script>
-        <script src="bower_components/angular-resource/angular-resource.js"></script>
-        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-        <script src="bower_components/angular-translate/angular-translate.js"></script>
-        <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
-        <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+            </div>
+
+
+        </div>
+
+    </footer>
+
+<!-- Google Analytics: uncomment and change UA-XXXXX-X to be your site's ID.
+<script>
+    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+    e.src='//www.google-analytics.com/analytics.js';
+    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    ga('create','UA-XXXXX-X');ga('send','pageview');
+</script>-->
+
+
+<!-- build:js scripts/scripts.js -->
+<script src="bower_components/modernizr/modernizr.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-translate/angular-translate.js"></script>
+<script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+<script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
         <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
-        <script src="scripts/http-auth-interceptor.js"></script>
-        <script src="scripts/truncate.js"></script>
-        <script src="scripts/utils.js"></script>
-        <script src="scripts/app.js"></script>
-        <script src="scripts/constants.js"></script>
-        <script src="scripts/controllers.js"></script>
-        <script src="scripts/services.js"></script>
-        <script src="scripts/directives.js"></script>
-        <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/affix.js"></script>
-        <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/alert.js"></script>
-        <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
-        <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
-        <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/modal.js"></script>
-        <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/transition.js"></script>
-        <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/button.js"></script>
-        <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/popover.js"></script>
-        <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/carousel.js"></script>
-        <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>
-        <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/collapse.js"></script>
-        <script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/tab.js"></script>
-        <script src="scripts/zip/router_zip.js"></script>
-        <script src="scripts/zip/controller_zip.js"></script>
-        <script src="scripts/zip/service_zip.js"></script>
-        <script src="scripts/restaurant/router_restaurant.js"></script>
-        <script src="scripts/restaurant/controller_restaurant.js"></script>
-        <script src="scripts/restaurant/service_restaurant.js"></script>
-        <script src="scripts/suggestion/router_suggestion.js"></script>
-        <script src="scripts/suggestion/controller_suggestion.js"></script>
-        <script src="scripts/suggestion/service_suggestion.js"></script>
-        <script src="scripts/tag/router_tag.js"></script>
-        <script src="scripts/tag/controller_tag.js"></script>
-        <script src="scripts/tag/service_tag.js"></script>
-        <script src="scripts/product/router_product.js"></script>
-        <script src="scripts/product/controller_product.js"></script>
-        <script src="scripts/product/service_product.js"></script>
-        <script src="scripts/item/router_item.js"></script>
-        <script src="scripts/item/controller_item.js"></script>
-        <script src="scripts/item/service_item.js"></script>
-        <script src="scripts/order/router_order.js"></script>
-        <script src="scripts/order/controller_order.js"></script>
-        <script src="scripts/order/service_order.js"></script>
-        <!-- endbuild -->
+<script src="scripts/http-auth-interceptor.js"></script>
+<script src="scripts/truncate.js"></script>
+<script src="scripts/utils.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/constants.js"></script>
+<script src="scripts/controllers.js"></script>
+<script src="scripts/services.js"></script>
+<script src="scripts/directives.js"></script>
+<script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/affix.js"></script>
+<script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/alert.js"></script>
+<script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/dropdown.js"></script>
+<script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/tooltip.js"></script>
+<script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/modal.js"></script>
+<script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/transition.js"></script>
+<script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/button.js"></script>
+<script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/popover.js"></script>
+<script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/carousel.js"></script>
+<script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/scrollspy.js"></script>
+<script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/collapse.js"></script>
+<script src="bower_components/bootstrap-sass/vendor/assets/javascripts/bootstrap/tab.js"></script>
+<script src="bower_components/ngAutocomplete/src/ngAutocomplete.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="scripts/zip/router_zip.js"></script>
+<script src="scripts/zip/controller_zip.js"></script>
+<script src="scripts/zip/service_zip.js"></script>
+<script src="scripts/restaurant/router_restaurant.js"></script>
+<script src="scripts/restaurant/controller_restaurant.js"></script>
+<script src="scripts/restaurant/service_restaurant.js"></script>
+<script src="scripts/suggestion/router_suggestion.js"></script>
+<script src="scripts/suggestion/controller_suggestion.js"></script>
+<script src="scripts/suggestion/service_suggestion.js"></script>
+<script src="scripts/tag/router_tag.js"></script>
+<script src="scripts/tag/controller_tag.js"></script>
+<script src="scripts/tag/service_tag.js"></script>
+<script src="scripts/product/router_product.js"></script>
+<script src="scripts/product/controller_product.js"></script>
+<script src="scripts/product/service_product.js"></script>
+<script src="scripts/item/router_item.js"></script>
+<script src="scripts/item/controller_item.js"></script>
+<script src="scripts/item/service_item.js"></script>
+<script src="scripts/order/router_order.js"></script>
+<script src="scripts/order/controller_order.js"></script>
+<script src="scripts/order/service_order.js"></script>
+<!-- endbuild -->
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 </body>
+
+<div class="modal fade" id="thanksModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div class="sushi_modal"></div>
+            </div>
+            <div class="modal-body">
+
+                <h1>¡Gracias!</h1>
+
+                <p>
+                    Acabamos de recibir tu sugerencia, ¡te avisaremos en cuanto tengamos notícias!
+                </p>
+                <p>
+                    <button class="btn transition02" type="button" data-dismiss="modal"> Cerrar</button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
 </html>

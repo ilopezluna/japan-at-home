@@ -9,6 +9,11 @@ japanAtHomeApp.controller('AdminController', function ($scope) {
     });
 
 japanAtHomeApp.controller('LanguageController', function ($scope, $translate, LanguageService) {
+
+        $scope.isAvailable = function (key) {
+            return key == 'es' || key == 'ca';
+        };
+
         $scope.changeLanguage = function (languageKey) {
             $translate.use(languageKey);
 
@@ -24,6 +29,129 @@ japanAtHomeApp.controller('LanguageController', function ($scope, $translate, La
 
 japanAtHomeApp.controller('MenuController', function ($scope) {
     });
+
+japanAtHomeApp.controller('HomeController', function ($scope, Restaurant, OrderService, $location)
+{
+    $scope.restaurants = Restaurant.query();
+    $scope.menu = function (restaurant)
+    {
+        OrderService.restaurant(restaurant);
+        $location.path("/restaurant/" + restaurant.id + "/" + restaurant.shortName + "/menu");
+    };
+});
+
+
+japanAtHomeApp.controller('RestaurantMenuController', function ($scope, Restaurant, Product, Tag, $routeParams)
+{
+    $scope.restaurant = Restaurant.get({id: $routeParams.restaurantId});
+    $scope.categories = Tag.query({restaurantId: $routeParams.restaurantId});
+    $scope.products = Product.query({restaurantId: $routeParams.restaurantId});
+
+    $scope.selected = 0;
+    $scope.select= function(index) {
+        $scope.selected = index;
+    };
+});
+
+japanAtHomeApp.controller('SuggestController', function ($scope, Suggestion)
+{
+    $scope.suggest = function (suggestion)
+    {
+        if (suggestion != null && suggestion.description != null)
+        {
+            Suggestion.save(suggestion);
+        }
+    }
+});
+
+japanAtHomeApp.controller('CartController', function ($scope, $location, Order, OrderService) {
+
+    $scope.order = OrderService.current();
+
+    $scope.addItem = function( product )
+    {
+        if ( product.id in $scope.order.items)
+        {
+            $scope.order.items[product.id].quantity++;
+        }
+        else
+        {
+            var item = new Object();
+            item.product = product;
+            item.quantity = 1;
+
+            $scope.order.items[product.id] = item;
+        }
+    };
+
+    $scope.removeItem = function(item)
+    {
+        if ( $scope.order.items[item.product.id].quantity == 1 )
+        {
+            delete $scope.order.items[item.product.id];
+        }
+        else
+        {
+            $scope.order.items[item.product.id].quantity--;
+        }
+    };
+
+    $scope.total = function()
+    {
+        var total = 0;
+
+        angular.forEach($scope.order.items, function(item)
+        {
+            var toSum = item.quantity * item.product.price;
+            total += toSum;
+        });
+
+        return total.toFixed(2);
+    };
+
+    $scope.menu = function(restaurant)
+    {
+        $location.path("/restaurant/" + restaurant.id + "/" + restaurant.shortName + "/menu");
+    };
+
+    $scope.delivery = function(restaurant)
+    {
+        $location.path("/restaurant/" + restaurant.id + "/" + restaurant.shortName + "/resume");
+    };
+
+    $scope.getItemPrice = function(item)
+    {
+        return (item.product.price * item.quantity).toFixed(2);
+    };
+});
+
+japanAtHomeApp.controller('MerchantController', function ($scope, Order, $sce, $http) {
+
+    $http.get('/app/rest/orders/payment/url')
+        .success(function (data) {
+            $scope.url = data;
+        });
+
+    $scope.trustSrc = function(src) {
+        return $sce.trustAsResourceUrl(src);
+    }
+    $scope.create = function (paymentType)
+    {
+        $scope.order.code = Math.floor(Math.random() * 1000000000000);
+        $scope.order.paymentType = paymentType;
+
+        Order.save($scope.order,
+            function (merchant)
+            {
+                $scope.merchant = merchant;
+            });
+    };
+
+    $scope.submmit = function ()
+    {
+        merchantForm.submit(); //TODO This is not the angular way, so look for a better choice
+    };
+});
 
 japanAtHomeApp.controller('LoginController', function ($scope, $location, AuthenticationSharedService) {
         $scope.rememberMe = true;

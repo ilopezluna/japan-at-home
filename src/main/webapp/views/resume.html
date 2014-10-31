@@ -1,0 +1,87 @@
+<!-- Main Content -->
+
+<section id="main_content">
+    <div class="container">
+        <div class="row">
+
+            <!-- Info restaurant -->
+
+            <div class="col-md-12">
+                <div class="thumbnail full_content">
+
+                    <div class="btn-group btn-group-justified breadcrumb_payment">
+                        <div class="btn-group">
+                            <a translate="resume.home" href="#/" type="button" class="btn btn-default">Inicio</a>
+                        </div>
+                        <div class="btn-group">
+                            <a translate="resume.menu" href="#/menu" type="button" class="btn btn-default">Menu</a>
+                        </div>
+                        <div class="btn-group">
+                            <a translate="resume.delivery" href="#/delivery" type="button" class="btn btn-default">DIRECCIÓN</a>
+                        </div>
+                        <div class="btn-group">
+                            <a translate="resume.resume" href="#/resume" type="button" class="btn btn-default">Resumen</a>
+                        </div>
+                    </div>
+
+                    <h2 translate="resume.title">Resumen</h2>
+
+                    <p translate="resume.description">Paga online o en efectivo, ¡como prefieras!</p>
+
+
+
+                    <div class="row">
+
+                        <div class="col-md-9">
+
+                            <!-- Resumen pedido -->
+
+                            <div class="resum_payment_cart">
+
+                                <div translate="resume.table.title" class="col-md-10 col-sm-10 top_table">RESUMEN DE TU PEDIDO</div>
+                                <div class="col-md-2 col-sm-2 top_table item_right" style="padding-top: 14px;"><a href="#/menu"><span class="glyphicon glyphicon-pencil"></span></a></div>
+
+                                <div ng-repeat="item in order.items">
+                                    <div ng-class-odd="'table_color01'" ng-class-even="'table_color02'" class="col-md-10 col-sm-10 article"><b>x{{item.quantity}}</b> {{item.product.name}}</div>
+                                    <div ng-class-odd="'table_color01'" ng-class-even="'table_color02'" class="col-md-2 col-sm-2 item_right"><b>{{ getItemPrice(item) }}€</b></div>
+                                </div>
+
+                                <div translate="resume.table.total" class="col-md-10 col-sm-9 col-xs-6 table_color01 total_title">TOTAL</div>
+                                <div class="col-md-2 col-sm-3 col-xs-6 table_color01 total_pvp">{{ total() }}€</div>
+                                <div class="col-md-12 table_color01">
+                                    <p translate="resume.delivery" translate-values="{address: '{{order.address}}'}">Dirección de entrega</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div ng-controller="MerchantController" class="col-md-3">
+
+                            <form name="merchantForm" action="{{trustSrc(url)}}"  method="POST">
+                                <input hidden="true" name="Ds_Merchant_MerchantCode"        ng-model="merchant.code"            />
+                                <input hidden="true" name="Ds_Merchant_Terminal"            ng-model="merchant.terminal"        />
+                                <input hidden="true" name="Ds_Merchant_Order"               ng-model="merchant.order"           />
+                                <input hidden="true" name="Ds_Merchant_Amount"              ng-model="merchant.amount"          />
+                                <input hidden="true" name="Ds_Merchant_Currency"            ng-model="merchant.currency"        />
+                                <input hidden="true" name="Ds_Merchant_TransactionType"     ng-model="merchant.transactionType" />
+                                <input hidden="true" name="Ds_Merchant_MerchantURL"         ng-model="merchant.url"             />
+                                <input hidden="true" name="Ds_Merchant_MerchantSignature"   ng-model="merchant.signature"       />
+
+                                <button translate="resume.online" ng-click="create(1)" type="button" class="btn transition02 finish_payment">Pago online</button>
+                                <div ng-if="merchant.signature != null">
+                                    {{submmit()}}
+                                </div>
+
+                                <button translate="resume.cash" ng-click="create(0)" type="button" class="btn transition02 finish_payment">Pago en efectivo</button>
+                                <p translate="resume.note">* Requiere registro</p>
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

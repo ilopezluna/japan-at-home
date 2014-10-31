@@ -3,7 +3,8 @@
 /* App Module */
 
 var japanAtHomeApp = angular.module('japanAtHomeApp', ['http-auth-interceptor', 'tmh.dynamicLocale',
-    'ngResource', 'ngRoute', 'ngCookies', 'japanAtHomeAppUtils', 'pascalprecht.translate', 'truncate']);
+    'ngResource', 'ngRoute', 'ngCookies', 'japanAtHomeAppUtils', 'pascalprecht.translate', 'truncate',
+    'ngAutocomplete', 'ngSanitize']);
 
 japanAtHomeApp
     .config(function ($routeProvider, $httpProvider, $translateProvider, tmhDynamicLocaleProvider, USER_ROLES) {
@@ -107,9 +108,37 @@ japanAtHomeApp
                         authorizedRoles: [USER_ROLES.admin]
                     }
                 })
-                .otherwise({
-                    templateUrl: 'views/main.html',
+                .when('/restaurant/:restaurantId/:restaurantName/menu', {
+                    templateUrl: 'views/menu.html',
+                    controller: 'RestaurantMenuController',
+                    access: {
+                        authorizedRoles: [USER_ROLES.all]
+                    }
+                })
+                .when('/restaurant-information', {
+                    templateUrl: 'views/restaurant.html',
                     controller: 'MainController',
+                    access: {
+                        authorizedRoles: [USER_ROLES.all]
+                    }
+                })
+                .when('/restaurant/:restaurantId/:restaurantName/delivery', {
+                    templateUrl: 'views/delivery.html',
+                    controller: 'MainController',
+                    access: {
+                        authorizedRoles: [USER_ROLES.all]
+                    }
+                })
+                .when('/restaurant/:restaurantId/:restaurantName/resume', {
+                    templateUrl: 'views/resume.html',
+                    controller: 'MainController',
+                    access: {
+                        authorizedRoles: [USER_ROLES.all]
+                    }
+                })
+                .otherwise({
+                    templateUrl: 'views/home.html',
+                    controller: 'HomeController',
                     access: {
                         authorizedRoles: [USER_ROLES.all]
                     }
@@ -121,7 +150,7 @@ japanAtHomeApp
                 suffix: '.json'
             });
 
-            $translateProvider.preferredLanguage('en');
+            $translateProvider.preferredLanguage('es');
 
             $translateProvider.useCookieStorage();
 

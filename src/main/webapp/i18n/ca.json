@@ -317,5 +317,107 @@
         "title": "Pàgina d'error!",
         "403": "No té autorització per accedir a la pàgina."
     },
-    "footer": "Aquest és el teu footer"
+    "footer": "Aquest és el teu footer",
+    "home": {
+        "title": "Demana menjar <strong>japonés</strong> a domicili",
+        "subtitle": "El teu codi posal",
+        "price": "Preu mitg: ",
+        "menu": "Veure carta",
+        "suggestion": {
+            "title": "¿Trobes a faltar el teu restaurant preferit?",
+            "subtitle": "Contacta amb nosaltres i envia'ns la teva proposta, <br>l'equip de Japan at Home farà el possible perquè puguis demanar-hi",
+            "button":"Enviar proposta"
+        },
+        "help": {
+            "title": "¿Necessites ajuda?",
+            "step1" : {
+                "title": "¿On estàs?",
+                "description": "Digue'ns el teu codi postal"
+            },
+            "step2" : {
+                "title": "Escolleix un restaurant",
+                "description": "Tenim la millor varietat de restaurant japonesos"
+            },
+            "step3" : {
+                "title": "Targeta o en efectiu",
+                "description": "Ràpid, còmode i segur"
+            }
+        }
+    }
+    ,
+    "menu": {
+        "title": "Restaurant <span> {{name}} </span>",
+        "iva":"* TOTS ELS PREUS INCLOUEN l'I.V.A",
+        "cart": {
+            "title": "<span class='title_sushi'></span> El teu menú",
+            "total": "TOTAL",
+            "button": "Demana ara"
+        },
+        "suggestion": {
+            "title": "¿Trobes a faltar el teu restaurant preferit?",
+            "subtitle": "Contacta amb nosaltres i envia'ns la teva proposta, <br>l'equip de Japan at Home farà el possible perquè puguis demanar-hi",
+            "button":"Enviar proposta"
+        },
+        "help": {
+            "title": "¿Necessites ajuda?",
+            "step1" : {
+                "title": "¿On estàs?",
+                "description": "Digue'ns el teu codi postal"
+            },
+            "step2" : {
+                "title": "Escolleix un restaurant",
+                "description": "Tenim la millor varietat de restaurant japonesos"
+            },
+            "step3" : {
+                "title": "Targeta o en efectiu",
+                "description": "Ràpid, còmode i segur"
+            }
+        }
+    }
+    ,
+    "delivery": {
+        "title": "ADREÇA",
+        "example": "Exemple: Gran Via, 12 1er, Barcelona",
+        "next": "Següent",
+        "prev": "Anterior",
+        "home": "Inici",
+        "menu": "Menú",
+        "delivery": "Adreça",
+        "resume": "Resum",
+        "suggestion": {
+            "title": "¿Trobes a faltar el teu restaurant preferit?",
+            "subtitle": "Contacta amb nosaltres i envia'ns la teva proposta, <br>l'equip de Japan at Home farà el possible perquè puguis demanar-hi",
+            "button":"Enviar proposta"
+        },
+        "help": {
+            "title": "¿Necessites ajuda?",
+            "step1" : {
+                "title": "¿On estàs?",
+                "description": "Digue'ns el teu codi postal"
+            },
+            "step2" : {
+                "title": "Escolleix un restaurant",
+                "description": "Tenim la millor varietat de restaurant japonesos"
+            },
+            "step3" : {
+                "title": "Targeta o en efectiu",
+                "description": "Ràpid, còmode i segur"
+            }
+        }
+    },
+    "resume": {
+        "title": "RESUM",
+        "description": "Paga online o en efectiu, ¡como tu prefereixis!",
+        "delivery": "Adreça d'entrega: {{address}}",
+        "home": "Inici",
+        "menu": "Menú",
+        "resume": "Resum",
+        "table": {
+            "title": "RESUM DE LA TEVA COMANDA",
+            "total": "TOTAL"
+        },
+        "online": "Paga online",
+        "cash": "En efectiu",
+        "note": "* Requereix registre"
+    }
 }

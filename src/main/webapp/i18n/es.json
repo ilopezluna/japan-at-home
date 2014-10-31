@@ -317,5 +317,105 @@
         "title": "¡Página de error!",
         "403": "No tiene permisos para acceder a la página."
     },
-    "footer": "pie de página"
+    "footer": "pie de página",
+    "home": {
+        "title": "Pide comida <strong>japonesa</strong> a domicilio",
+        "subtitle": "Tu código postal",
+        "price": "Precio medio: ",
+        "menu": "Ver carta",
+        "suggestion": {
+            "title": "¿Hechas de menos tu restaurante favorito?",
+            "subtitle": "Contacta con nosotros y mándanos tu sugerencia,<br>el equipo de Japan at Home hara lo posible para que puedas disfrutar de él.",
+            "button":"Enviar sugerencia"
+        },
+        "help": {
+            "title": "¿Necesitas ayuda?",
+            "step1" : {
+                "title": "¿Dónde estás?",
+                "description": "Dinos tu código postal"
+            },
+            "step2" : {
+                "title": "Elige un restaurante",
+                "description": "Tenemos la mayor variedad de restaurantes japoneses"
+            },
+            "step3" : {
+                "title": "Targeta o en efectivo",
+                "description": "Rápido, cómodo y seguro"
+            }
+        }
+    },
+    "menu": {
+        "title": "Restaurante <span> {{name}} </span>",
+        "iva":"* TODOS LOS PRECIOS INCLUYEN EL I.V.A",
+        "cart": {
+            "title": "<span class='title_sushi'></span> Tu menú",
+            "total": "TOTAL",
+            "button": "Pide ahora"
+        },
+        "suggestion": {
+            "title": "¿Hechas de menos tu restaurante favorito?",
+            "subtitle": "Contacta con nosotros y mándanos tu sugerencia,<br>el equipo de Japan at Home hara lo posible para que puedas disfrutar de él.",
+            "button":"Enviar sugerencia"
+        },
+        "help": {
+            "title": "¿Necesitas ayuda?",
+            "step1" : {
+                "title": "¿Dónde estás?",
+                "description": "Dinos tu código postal"
+            },
+            "step2" : {
+                "title": "Elige un restaurante",
+                "description": "Tenemos la mayor variedad de restaurantes japoneses"
+            },
+            "step3" : {
+                "title": "Targeta o en efectivo",
+                "description": "Rápido, cómodo y seguro"
+            }
+        }
+    },
+    "delivery": {
+        "title": "DIRECCIÓN",
+        "example": "Ejemplo: Gran Via, 12 1ero, Barcelona",
+        "next": "Siguiente",
+        "prev": "Anterior",
+        "home": "Inicio",
+        "menu": "Menú",
+        "delivery": "Dirección",
+        "resume": "Resumen",
+        "suggestion": {
+            "title": "¿Hechas de menos tu restaurante favorito?",
+            "subtitle": "Contacta con nosotros y mándanos tu sugerencia,<br>el equipo de Japan at Home hara lo posible para que puedas disfrutar de él.",
+            "button":"Enviar sugerencia"
+        },
+        "help": {
+            "title": "¿Necesitas ayuda?",
+            "step1" : {
+                "title": "¿Dónde estás?",
+                "description": "Dinos tu código postal"
+            },
+            "step2" : {
+                "title": "Elige un restaurante",
+                "description": "Tenemos la mayor variedad de restaurantes japoneses"
+            },
+            "step3" : {
+                "title": "Targeta o en efectivo",
+                "description": "Rápido, cómodo y seguro"
+            }
+        }
+    },
+    "resume": {
+        "title": "RESUMEN",
+        "description": "Paga online o en efectivo, ¡como prefieras!",
+        "delivery": "Dirección de entrega: ",
+        "home": "Inicio",
+        "menu": "Menú",
+        "resume": "Resumen",
+        "table": {
+            "title": "RESUMEN DE TU PEDIDO",
+            "total": "TOTAL"
+        },
+        "online": "Pago online",
+        "cash": "En efectivo",
+        "note": "* Requiere registro"
+    }
 }
