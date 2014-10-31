@@ -1,0 +1,113 @@
+<div>
+
+    <h2>Orders</h2>
+
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#saveOrderModal" ng-click="clear()">
+        <span class="glyphicon glyphicon-flash"></span> Create a new Order
+    </button>
+    <div class="modal fade" id="saveOrderModal" tabindex="-1" role="dialog" aria-labelledby="myOrderLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="form" role="form" novalidate
+                      class="ng-scope ng-invalid ng-invalid-required ng-dirty ng-valid-minlength"
+                      ng-submit="create()">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myOrderLabel">Create or edit a Order</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id"
+                                   ng-model="order.id" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label>CreatedOn</label>
+                            <input type="date" class="form-control"
+                                   ng-model="order.createdOn">
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" class="form-control"
+                                   ng-model="order.address">
+                        </div>
+                        <div class="form-group">
+                            <label>Code</label>
+                            <input type="text" class="form-control"
+                                   ng-model="order.code">
+                        </div>
+                        <div class="form-group">
+                            <label>PaymentType</label>
+                            <input type="number" class="form-control"
+                                   ng-model="order.paymentType">
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label>
+                            <input type="number" class="form-control"
+                                   ng-model="order.status">
+                        </div>
+
+                        <div class="form-group">
+                            <label>restaurant</label>
+                            <select class="form-control" ng-model="order.restaurant.id" ng-options="restaurant.id as restaurant.name for restaurant in restaurants">
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                        </button>
+                        <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span> Save
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>CreatedOn</th>
+                    <th>Address</th>
+                    <th>Code</th>
+                    <th>PaymentType</th>
+                    <th>Status</th>
+                    <th>restaurant</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="order in orders">
+                    <td>{{order.id}}</td>
+                    <td>{{order.createdOn}}</td>
+                    <td>{{order.address}}</td>
+                    <td>{{order.code}}</td>
+                    <td>{{order.paymentType}}</td>
+                    <td>{{order.status}}</td>
+                    <td>{{order.restaurant.name}}</td>
+                    <td>
+                        <button type="submit"
+                                ng-click="update(order.id)"
+                                class="btn btn-default">
+                            <span class="glyphicon glyphicon-pencil"></span> Edit
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(order.id)"
+                                class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span> Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

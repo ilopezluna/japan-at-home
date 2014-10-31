@@ -68,5 +68,9 @@
     <cache name="es.japanathome.domain.Restaurant.zips"
            timeToLiveSeconds="3600">
     </cache>
+
+    <cache name="es.japanathome.domain.Order"
+           timeToLiveSeconds="3600">
+    </cache>
 </ehcache>
 
