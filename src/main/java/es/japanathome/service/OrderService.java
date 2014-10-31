@@ -149,4 +149,8 @@ public class OrderService {
         return responseCode > -1 && responseCode < 100; //TODO magic numbers..
     }
 
+    public void saveAndFlush(Order order)
+    {
+        orderRepository.saveAndFlush(order);
+    }
 }

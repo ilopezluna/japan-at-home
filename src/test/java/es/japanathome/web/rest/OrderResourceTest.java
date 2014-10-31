@@ -1,9 +1,12 @@
 package es.japanathome.web.rest;
 
 import es.japanathome.Application;
-import es.japanathome.domain.Order;
-import es.japanathome.repository.OrderRepository;
-import org.joda.time.LocalDate;
+import es.japanathome.domain.*;
+import es.japanathome.repository.ItemRepository;
+import es.japanathome.repository.ProductRepository;
+import es.japanathome.repository.RestaurantRepository;
+import es.japanathome.repository.TagRepository;
+import es.japanathome.service.OrderService;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,8 +22,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import static es.japanathome.Constants.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -35,16 +41,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 public class OrderResourceTest {
 
-    private static final LocalDate DEFAULT_CREATED_ON = new LocalDate(0L);
-    private static final LocalDate UPDATED_CREATED_ON = new LocalDate();
-    
     private static final String DEFAULT_ADDRESS = "SAMPLE_TEXT";
     private static final String UPDATED_ADDRESS = "UPDATED_TEXT";
     
     private static final String DEFAULT_CODE = "SAMPLE_TEXT";
     private static final String UPDATED_CODE = "UPDATED_TEXT";
     
-    private static final Order.PaymentType DEFAULT_PAYMENT_TYPE = Order.PaymentType.CASH;
+    private static final Order.PaymentType DEFAULT_PAYMENT_TYPE = Order.PaymentType.ONLINE;
     private static final Order.PaymentType UPDATED_PAYMENT_TYPE = Order.PaymentType.ONLINE;
     
     private static final Order.Status DEFAULT_STATUS = Order.Status.CREATED;
@@ -52,35 +55,73 @@ public class OrderResourceTest {
     
 
    @Inject
-   private OrderRepository orderRepository;
+   private OrderService orderService;
+
+    @Inject
+    private RestaurantRepository restaurantRepository;
+
+
+    @Inject
+    private TagRepository tagRepository;
+
+    @Inject
+    private ProductRepository productRepository;
+
+    @Inject
+    private ItemRepository itemRepository;
 
    private MockMvc restOrderMockMvc;
 
    private Order order;
+    private Product product;
 
     @PostConstruct
     public void setup() {
         MockitoAnnotations.initMocks(this);
         OrderResource orderResource = new OrderResource();
-        ReflectionTestUtils.setField(orderResource, "orderRepository", orderRepository);
+        ReflectionTestUtils.setField(orderResource, "orderService", orderService);
         this.restOrderMockMvc = MockMvcBuilders.standaloneSetup(orderResource).build();
     }
 
     @Before
     public void initTest() {
+
+        Restaurant restaurant = buildRestaurant();
+        restaurantRepository.save(restaurant);
+
+        Tag tag = buildTag();
+        tag = tagRepository.save(tag);
+
+        product = buildProduct(restaurant, tag);
+        product = productRepository.save(product);
+
+        Item item = buildItem(product);
+        item = itemRepository.save(item);
+
+        Map<Long, Item> items = new HashMap<>();
+        items.put(product.getId(), item);
+
         order = new Order();
-        order.setCreatedOn(DEFAULT_CREATED_ON);
+        order.setRestaurant(restaurant);
         order.setAddress(DEFAULT_ADDRESS);
         order.setCode(DEFAULT_CODE);
         order.setPaymentType(DEFAULT_PAYMENT_TYPE);
         order.setStatus(DEFAULT_STATUS);
+        order.setItems(items);
     }
 
     @Test
     @Transactional
     public void createOrder() throws Exception {
+        Item item = new Item();
+        item.setProduct( product );
+        item.setQuantity( ITEM_DEFAULT_QUANTITY );
+
+        Map<Long, Item> items = new HashMap<>();
+        items.put(product.getId(), item);
+        order.setItems(items);
         // Validate the database is empty
-        assertThat(orderRepository.findAll()).hasSize(0);
+        assertThat(orderService.findAll()).hasSize(0);
 
         // Create the Order
         restOrderMockMvc.perform(post("/app/rest/orders")
@@ -89,10 +130,9 @@ public class OrderResourceTest {
                 .andExpect(status().isOk());
 
         // Validate the Order in the database
-        List<Order> orders = orderRepository.findAll();
+        List<Order> orders = orderService.findAll();
         assertThat(orders).hasSize(1);
         Order testOrder = orders.iterator().next();
-        assertThat(testOrder.getCreatedOn()).isEqualTo(DEFAULT_CREATED_ON);
         assertThat(testOrder.getAddress()).isEqualTo(DEFAULT_ADDRESS);
         assertThat(testOrder.getCode()).isEqualTo(DEFAULT_CODE);
         assertThat(testOrder.getPaymentType().name()).isEqualTo(DEFAULT_PAYMENT_TYPE.name());
@@ -103,7 +143,7 @@ public class OrderResourceTest {
     @Transactional
     public void getAllOrders() throws Exception {
         // Initialize the database
-        orderRepository.saveAndFlush(order);
+        orderService.saveAndFlush(order);
 
         // Get all the orders
         restOrderMockMvc.perform(get("/app/rest/orders"))
@@ -111,7 +151,6 @@ public class OrderResourceTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[0].id").value(order.getId().intValue()))
-                .andExpect(jsonPath("$.[0].createdOn").value(DEFAULT_CREATED_ON.toString()))
                 .andExpect(jsonPath("$.[0].address").value(DEFAULT_ADDRESS))
                 .andExpect(jsonPath("$.[0].code").value(DEFAULT_CODE))
                 .andExpect(jsonPath("$.[0].paymentType").value(DEFAULT_PAYMENT_TYPE.name()))
@@ -122,14 +161,13 @@ public class OrderResourceTest {
     @Transactional
     public void getOrder() throws Exception {
         // Initialize the database
-        orderRepository.saveAndFlush(order);
+        orderService.saveAndFlush(order);
 
         // Get the order
         restOrderMockMvc.perform(get("/app/rest/orders/{id}", order.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(order.getId().intValue()))
-            .andExpect(jsonPath("$.createdOn").value(DEFAULT_CREATED_ON.toString()))
             .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS))
             .andExpect(jsonPath("$.code").value(DEFAULT_CODE))
             .andExpect(jsonPath("$.paymentType").value(DEFAULT_PAYMENT_TYPE.name()))
@@ -148,10 +186,9 @@ public class OrderResourceTest {
     @Transactional
     public void updateOrder() throws Exception {
         // Initialize the database
-        orderRepository.saveAndFlush(order);
+        orderService.saveAndFlush(order);
 
         // Update the order
-        order.setCreatedOn(UPDATED_CREATED_ON);
         order.setAddress(UPDATED_ADDRESS);
         order.setCode(UPDATED_CODE);
         order.setPaymentType(UPDATED_PAYMENT_TYPE);
@@ -162,21 +199,19 @@ public class OrderResourceTest {
                 .andExpect(status().isOk());
 
         // Validate the Order in the database
-        List<Order> orders = orderRepository.findAll();
+        List<Order> orders = orderService.findAll();
         assertThat(orders).hasSize(1);
         Order testOrder = orders.iterator().next();
-        assertThat(testOrder.getCreatedOn()).isEqualTo(UPDATED_CREATED_ON);
         assertThat(testOrder.getAddress()).isEqualTo(UPDATED_ADDRESS);
         assertThat(testOrder.getCode()).isEqualTo(UPDATED_CODE);
         assertThat(testOrder.getPaymentType().name()).isEqualTo(UPDATED_PAYMENT_TYPE.name());
-        assertThat(testOrder.getStatus().name()).isEqualTo(UPDATED_STATUS.name());
     }
 
     @Test
     @Transactional
     public void deleteOrder() throws Exception {
         // Initialize the database
-        orderRepository.saveAndFlush(order);
+        orderService.saveAndFlush(order);
 
         // Get the order
         restOrderMockMvc.perform(delete("/app/rest/orders/{id}", order.getId())
@@ -184,7 +219,7 @@ public class OrderResourceTest {
                 .andExpect(status().isOk());
 
         // Validate the database is empty
-        List<Order> orders = orderRepository.findAll();
+        List<Order> orders = orderService.findAll();
         assertThat(orders).hasSize(0);
     }
 }

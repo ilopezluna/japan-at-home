@@ -2,17 +2,25 @@ package es.japanathome.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import es.japanathome.domain.Order;
-import es.japanathome.repository.OrderRepository;
+import es.japanathome.dto.Merchant;
+import es.japanathome.security.SecurityUtils;
+import es.japanathome.service.OrderService;
+import es.japanathome.service.util.SermepaUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AuthorizationServiceException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.Optional;
+
+import static es.japanathome.domain.Order.PaymentType.CASH;
 
 /**
  * REST controller for managing Order.
@@ -24,7 +32,24 @@ public class OrderResource {
     private final Logger log = LoggerFactory.getLogger(OrderResource.class);
 
     @Inject
-    private OrderRepository orderRepository;
+    private OrderService orderService;
+
+    @Inject
+    private Environment env;
+
+    private String paymentUrl;
+    private String url;
+    private String code;
+    private String key;
+
+    @PostConstruct
+    public void init()
+    {
+        this.paymentUrl = env.getProperty("payment.url");
+        this.url        = env.getProperty("merchant.url");
+        this.code       = env.getProperty("merchant.code");
+        this.key        = env.getProperty("merchant.key");
+    }
 
     /**
      * POST  /rest/orders -> Create a new order.
@@ -33,9 +58,19 @@ public class OrderResource {
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public void create(@RequestBody Order order) {
+    public Merchant create(@RequestBody Order order) {
         log.debug("REST request to save Order : {}", order);
-        orderRepository.save(order);
+        orderService.validate(order);
+
+        if ( order.getPaymentType().equals( CASH ) &&  !SecurityUtils.isAuthenticated() )
+        {
+            log.debug("REST user must be logged");
+            throw new AuthorizationServiceException("needs be logged");
+        }
+        orderService.create(order);
+        Merchant merchant = SermepaUtils.getMerchantForRequest(url, code, key, order.getCode(), orderService.getPrice(order));
+        log.debug("TPV : {}" + merchant);
+        return merchant;
     }
 
     /**
@@ -47,7 +82,7 @@ public class OrderResource {
     @Timed
     public List<Order> getAll() {
         log.debug("REST request to get all Orders");
-        return orderRepository.findAll();
+        return orderService.findAll();
     }
 
     /**
@@ -59,7 +94,7 @@ public class OrderResource {
     @Timed
     public ResponseEntity<Order> get(@PathVariable Long id) {
         log.debug("REST request to get Order : {}", id);
-        return Optional.ofNullable(orderRepository.findOne(id))
+        return Optional.ofNullable(orderService.findOne(id))
             .map(order -> new ResponseEntity<>(
                 order,
                 HttpStatus.OK))
@@ -75,6 +110,6 @@ public class OrderResource {
     @Timed
     public void delete(@PathVariable Long id) {
         log.debug("REST request to delete Order : {}", id);
-        orderRepository.delete(id);
+        orderService.delete(id);
     }
 }
