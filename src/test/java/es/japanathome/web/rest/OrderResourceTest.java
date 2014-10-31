@@ -1,5 +1,9 @@
 package es.japanathome.web.rest;
 
+import es.japanathome.Application;
+import es.japanathome.domain.Order;
+import es.japanathome.repository.OrderRepository;
+import org.joda.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,12 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
-import org.joda.time.LocalDate;
 import java.util.List;
-
-import es.japanathome.Application;
-import es.japanathome.domain.Order;
-import es.japanathome.repository.OrderRepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -45,11 +44,11 @@ public class OrderResourceTest {
     private static final String DEFAULT_CODE = "SAMPLE_TEXT";
     private static final String UPDATED_CODE = "UPDATED_TEXT";
     
-    private static final Integer DEFAULT_PAYMENT_TYPE = 0;
-    private static final Integer UPDATED_PAYMENT_TYPE = 1;
+    private static final Order.PaymentType DEFAULT_PAYMENT_TYPE = Order.PaymentType.CASH;
+    private static final Order.PaymentType UPDATED_PAYMENT_TYPE = Order.PaymentType.ONLINE;
     
-    private static final Integer DEFAULT_STATUS = 0;
-    private static final Integer UPDATED_STATUS = 1;
+    private static final Order.Status DEFAULT_STATUS = Order.Status.CREATED;
+    private static final Order.Status UPDATED_STATUS = Order.Status.DELIVERED;
     
 
    @Inject
@@ -96,8 +95,8 @@ public class OrderResourceTest {
         assertThat(testOrder.getCreatedOn()).isEqualTo(DEFAULT_CREATED_ON);
         assertThat(testOrder.getAddress()).isEqualTo(DEFAULT_ADDRESS);
         assertThat(testOrder.getCode()).isEqualTo(DEFAULT_CODE);
-        assertThat(testOrder.getPaymentType()).isEqualTo(DEFAULT_PAYMENT_TYPE);
-        assertThat(testOrder.getStatus()).isEqualTo(DEFAULT_STATUS);;
+        assertThat(testOrder.getPaymentType().name()).isEqualTo(DEFAULT_PAYMENT_TYPE.name());
+        assertThat(testOrder.getStatus().name()).isEqualTo(DEFAULT_STATUS.name());
     }
 
     @Test
@@ -113,10 +112,10 @@ public class OrderResourceTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[0].id").value(order.getId().intValue()))
                 .andExpect(jsonPath("$.[0].createdOn").value(DEFAULT_CREATED_ON.toString()))
-                .andExpect(jsonPath("$.[0].address").value(DEFAULT_ADDRESS.toString()))
-                .andExpect(jsonPath("$.[0].code").value(DEFAULT_CODE.toString()))
-                .andExpect(jsonPath("$.[0].paymentType").value(DEFAULT_PAYMENT_TYPE))
-                .andExpect(jsonPath("$.[0].status").value(DEFAULT_STATUS));
+                .andExpect(jsonPath("$.[0].address").value(DEFAULT_ADDRESS))
+                .andExpect(jsonPath("$.[0].code").value(DEFAULT_CODE))
+                .andExpect(jsonPath("$.[0].paymentType").value(DEFAULT_PAYMENT_TYPE.name()))
+                .andExpect(jsonPath("$.[0].status").value(DEFAULT_STATUS.name()));
     }
 
     @Test
@@ -131,10 +130,10 @@ public class OrderResourceTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(order.getId().intValue()))
             .andExpect(jsonPath("$.createdOn").value(DEFAULT_CREATED_ON.toString()))
-            .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()))
-            .andExpect(jsonPath("$.code").value(DEFAULT_CODE.toString()))
-            .andExpect(jsonPath("$.paymentType").value(DEFAULT_PAYMENT_TYPE))
-            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS));
+            .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS))
+            .andExpect(jsonPath("$.code").value(DEFAULT_CODE))
+            .andExpect(jsonPath("$.paymentType").value(DEFAULT_PAYMENT_TYPE.name()))
+            .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.name()));
     }
 
     @Test
@@ -169,8 +168,8 @@ public class OrderResourceTest {
         assertThat(testOrder.getCreatedOn()).isEqualTo(UPDATED_CREATED_ON);
         assertThat(testOrder.getAddress()).isEqualTo(UPDATED_ADDRESS);
         assertThat(testOrder.getCode()).isEqualTo(UPDATED_CODE);
-        assertThat(testOrder.getPaymentType()).isEqualTo(UPDATED_PAYMENT_TYPE);
-        assertThat(testOrder.getStatus()).isEqualTo(UPDATED_STATUS);;
+        assertThat(testOrder.getPaymentType().name()).isEqualTo(UPDATED_PAYMENT_TYPE.name());
+        assertThat(testOrder.getStatus().name()).isEqualTo(UPDATED_STATUS.name());
     }
 
     @Test

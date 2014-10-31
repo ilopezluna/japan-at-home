@@ -72,4 +72,11 @@ public class MailService {
         String subject = messageSource.getMessage("email.activation.title", null, locale);
         sendEmail(email, subject, content, false, true);
     }
+
+    @Async
+    public void sendOrderEmail(final String to, String subject, String content)
+    {
+        log.debug("Sending order e-mail to '{}'", content);
+        sendEmail( to, subject, content, false, false );
+    }
 }

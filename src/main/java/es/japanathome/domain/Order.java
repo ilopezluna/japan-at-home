@@ -21,6 +21,10 @@ import java.util.Map;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Order implements Serializable {
 
+    public enum Status { CREATED, PAID, DELIVERING, DELIVERED }
+
+    public enum PaymentType { CASH, ONLINE }
+
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
@@ -38,10 +42,10 @@ public class Order implements Serializable {
     private String code;
 
     @Column(name = "payment_type")
-    private Integer paymentType;
+    private PaymentType paymentType;
 
     @Column(name = "status")
-    private Integer status;
+    private Status status;
 
     @ManyToOne
     private Restaurant restaurant;
@@ -81,19 +85,19 @@ public class Order implements Serializable {
         this.code = code;
     }
 
-    public Integer getPaymentType() {
+    public PaymentType getPaymentType() {
         return paymentType;
     }
 
-    public void setPaymentType(Integer paymentType) {
+    public void setPaymentType(PaymentType paymentType) {
         this.paymentType = paymentType;
     }
 
-    public Integer getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -124,9 +128,8 @@ public class Order implements Serializable {
 
         Order order = (Order) o;
 
-        if (id != null ? !id.equals(order.id) : order.id != null) return false;
+        return !(id != null ? !id.equals(order.id) : order.id != null);
 
-        return true;
     }
 
     @Override
