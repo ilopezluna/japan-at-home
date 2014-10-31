@@ -1,25 +1,31 @@
 package es.japanathome.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
- * A Zip.
+ * A Item.
  */
 @Entity
-@Table(name = "T_ZIP")
+@Table(name = "T_ITEM")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Zip implements Serializable {
+public class Item implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
 
-    @Column(name = "code")
-    private String code;
+    @Column(name = "quantity")
+    private Integer quantity;
+
+    @ManyToOne
+    private Product product;
 
     public Long getId() {
         return id;
@@ -29,12 +35,20 @@ public class Zip implements Serializable {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     @Override
@@ -46,9 +60,9 @@ public class Zip implements Serializable {
             return false;
         }
 
-        Zip zip = (Zip) o;
+        Item item = (Item) o;
 
-        if (id != null ? !id.equals(zip.id) : zip.id != null) return false;
+        if (id != null ? !id.equals(item.id) : item.id != null) return false;
 
         return true;
     }
@@ -60,9 +74,9 @@ public class Zip implements Serializable {
 
     @Override
     public String toString() {
-        return "Zip{" +
+        return "Item{" +
                 "id=" + id +
-                ", code='" + code + "'" +
+                ", quantity='" + quantity + "'" +
                 '}';
     }
 }

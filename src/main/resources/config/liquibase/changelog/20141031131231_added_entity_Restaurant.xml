@@ -29,25 +29,15 @@
             <column name="average_delivery_time" type="varchar(255)"/>
             <column name="logo" type="varchar(255)"/>
         </createTable>
-        
+
         <createTable tableName="T_RESTAURANT_T_ZIP">
-            <column name="zips_id" type="bigint">
-                <constraints primaryKey="true" nullable="false"/>
+            <column name="t_restaurant_id" type="BIGINT">
+                <constraints nullable="false"/>
             </column>
-            <column name="restaurants_id" type="bigint">
-                <constraints primaryKey="true" nullable="false"/>
+            <column name="zips_id" type="BIGINT">
+                <constraints nullable="false"/>
             </column>
         </createTable>
-        <addForeignKeyConstraint baseColumnNames="zips_id"
-                                 baseTableName="T_RESTAURANT_T_ZIP"
-                                 constraintName="fk_restaurant_zip_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="T_ZIP"/>
-        <addForeignKeyConstraint baseColumnNames="restaurants_id"
-                                 baseTableName="T_RESTAURANT_T_ZIP"
-                                 constraintName="fk_zip_restaurant_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="T_RESTAURANT"/>
         
     </changeSet>
 </databaseChangeLog>

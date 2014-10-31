@@ -35,5 +35,34 @@
     <cache name="es.japanathome.domain.PersistentAuditEvent"
            timeToLiveSeconds="3600">
     </cache>
+
+    <cache name="es.japanathome.domain.Restaurant"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="es.japanathome.domain.Suggestion"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="es.japanathome.domain.Item"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="es.japanathome.domain.Tag"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="es.japanathome.domain.Product"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="es.japanathome.domain.Zip"
+           timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="es.japanathome.domain.Restaurant.zips"
+           timeToLiveSeconds="3600">
+    </cache>
+
 </ehcache>
 
