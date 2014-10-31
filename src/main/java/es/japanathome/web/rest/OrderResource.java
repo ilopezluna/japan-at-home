@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static es.japanathome.domain.Order.PaymentType.CASH;
+import static org.springframework.http.HttpStatus.OK;
 
 /**
  * REST controller for managing Order.
@@ -111,5 +112,33 @@ public class OrderResource {
     public void delete(@PathVariable Long id) {
         log.debug("REST request to delete Order : {}", id);
         orderService.delete(id);
+    }
+
+    @RequestMapping(value = "/rest/orders/payment/url",
+            method = RequestMethod.GET,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @Timed
+    public String getMerchantUrl() {
+        return paymentUrl;
+    }
+
+    @RequestMapping( value = "/rest/order", method = RequestMethod.POST )
+    @ResponseStatus( value = OK )
+    public void result(
+            @RequestParam("Ds_Response")            String response,
+            @RequestParam("Ds_SecurePayment")       String securePayment,
+            @RequestParam("Ds_Signature")           String signature,
+            @RequestParam("Ds_AuthorisationCode")   String authorisationCode,
+            @RequestParam("Ds_Order")               String order,
+            @RequestParam("Ds_MerchantCode")        String merchantCode,
+            @RequestParam("Ds_Currency")            String currency,
+            @RequestParam("Ds_Amount")              String amount,
+            @RequestParam("Ds_Card_Country")        String cardCountry
+
+    )
+    {
+        Merchant merchant = SermepaUtils.getMerchantForResponse(response, url, code, key, order, amount);
+        log.info("Response: " + response);
+        orderService.confirm( merchant, Integer.valueOf( response ), signature );
     }
 }

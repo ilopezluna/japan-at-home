@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.method.configuration.GlobalMethodSecurityConfiguration;
@@ -102,6 +103,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/app/rest/activate").permitAll()
                 .antMatchers("/app/rest/authenticate").permitAll()
                 .antMatchers("/app/rest/logs/**").hasAuthority(AuthoritiesConstants.ADMIN)
+                .antMatchers(HttpMethod.GET, "/app/rest/restaurants").permitAll()
+                .antMatchers(HttpMethod.GET, "/app/rest/restaurants/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/app/rest/tags").permitAll()
+                .antMatchers(HttpMethod.GET, "/app/rest/products").permitAll()
+                .antMatchers(HttpMethod.GET, "/app/rest/orders/payment/url").permitAll()
+                .antMatchers(HttpMethod.POST, "/app/rest/order").permitAll() /** For redsys **/
+                .antMatchers(HttpMethod.POST, "/app/rest/orders").permitAll()
+                .antMatchers(HttpMethod.POST, "/app/rest/suggestions").permitAll()
                 .antMatchers("/app/**").authenticated()
                 .antMatchers("/metrics/**").hasAuthority(AuthoritiesConstants.ADMIN)
                 .antMatchers("/health/**").hasAuthority(AuthoritiesConstants.ADMIN)
