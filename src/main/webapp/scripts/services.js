@@ -207,7 +207,10 @@ japanAtHomeApp.factory('AuthenticationSharedService', function ($rootScope, $htt
 
 japanAtHomeApp.factory('OrderService', function () {
         var order = {
-            items: new Object()
+            items: new Object(),
+            zip: {
+                code : ''
+            }
         };
         return {
             current: function() { return  order },

@@ -12,5 +12,6 @@
     <include file="classpath:config/liquibase/changelog/20141031132601_added_entity_Product.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20141031133301_added_entity_Item.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20141031134642_added_entity_Order.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20141101134642_alter_entity_Order.xml" relativeToChangelogFile="false"/>
     <!-- JHipster will add liquibase changelogs here -->
 </databaseChangeLog>

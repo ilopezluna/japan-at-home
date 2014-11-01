@@ -14,7 +14,7 @@
                     <label>
                         <h3 translate="home.subtitle">Tu código postal</h3>
                     </label>
-                    <input type="text" class="form-control" name="zip" ng-model="search.zip.code">
+                    <input type="text" class="form-control" name="zip" ng-model="order.zip.code">
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
     <div class="container">
         <div class="row">
 
-            <div ng-repeat="restaurant in restaurants | filter:search.zip.code" class="col-md-3 col-sm-4">
+            <div ng-repeat="restaurant in restaurants | filter:order.zip.code" class="col-md-3 col-sm-4">
                 <a href ng-click="menu(restaurant)">
                     <div class="thumbnail restaurant_thmb">
                         <img ng-src="{{restaurant.logo}}" class="img-responsive" alt="JAPAN AT HOME | Name restaurant" title="JAPAN AT HOME | Name restaurant">

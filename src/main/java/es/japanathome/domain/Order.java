@@ -50,6 +50,9 @@ public class Order implements Serializable {
     @ManyToOne
     private Restaurant restaurant;
 
+    @ManyToOne
+    private Zip zip;
+
     @OneToMany( cascade={ CascadeType.ALL }, fetch=FetchType.EAGER )
     private Map<Long, Item> items;
 
@@ -109,6 +112,14 @@ public class Order implements Serializable {
         this.restaurant = restaurant;
     }
 
+    public Zip getZip() {
+        return zip;
+    }
+
+    public void setZip(Zip zip) {
+        this.zip = zip;
+    }
+
     public Map<Long, Item> getItems() {
         return items;
     }
@@ -141,12 +152,14 @@ public class Order implements Serializable {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", createdOn='" + createdOn + "'" +
-                ", address='" + address + "'" +
-                ", code='" + code + "'" +
-                ", paymentType='" + paymentType + "'" +
-                ", status='" + status + "'" +
-                ", items='" + items + "'" +
+                ", createdOn=" + createdOn +
+                ", address='" + address + '\'' +
+                ", code='" + code + '\'' +
+                ", paymentType=" + paymentType +
+                ", status=" + status +
+                ", restaurant=" + restaurant +
+                ", zip=" + zip +
+                ", items=" + items +
                 '}';
     }
 }

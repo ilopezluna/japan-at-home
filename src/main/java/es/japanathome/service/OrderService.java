@@ -53,16 +53,19 @@ public class OrderService {
     }
 
 
-    public Order create(Order order) {
+    public Order create(Order order)
+    {
         log.debug("Creating order");
-        order.setCreatedOn( LocalDate.now(DateTimeZone.UTC) );
-        order.setStatus(Order.Status.CREATED);
 
-        orderRepository.save( order );
-        return order;
+        order.setCreatedOn( LocalDate.now(DateTimeZone.UTC) );
+        order.setStatus( Order.Status.CREATED );
+
+        log.debug("Saving order: " + order.toString());
+        return orderRepository.save( order );
     }
 
-    public BigDecimal getPrice(Order order) {
+    public BigDecimal getPrice(Order order)
+    {
         log.debug("Get order price");
         BigDecimal orderPrice = BigDecimal.ZERO;
         for (Map.Entry<Long, Item> itemEntry : order.getItems().entrySet())
