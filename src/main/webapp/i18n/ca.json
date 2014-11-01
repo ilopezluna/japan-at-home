@@ -9,7 +9,7 @@
             },
             "account": {
                 "main": "Compte",
-                "settings": "Ajustos",
+                "settings": "Les meves dades",
                 "password": "Contrasenya",
                 "sessions": "Sessions",
                 "tracker": "User tracker",
@@ -122,7 +122,7 @@
         }
     },
     "settings": {
-        "title": "Ajustos d'usuari per [<b>{{username}}</b>]",
+        "title": "[<b>{{username}}</b>]",
         "form": {
             "firstname": "Nom",
             "firstname.placeholder": "El seu nom",
@@ -148,13 +148,13 @@
         }
     },
     "password": {
-        "title": "Contrasenya per [<b>{{username}}</b>]",
+        "title": "Canviar la contrassenya",
         "form": {
             "button": "Guardar"
         },
         "messages": {
             "error":  "<strong>S'ha produït un error!</strong> No s'ha pogut canviar la contrasenya.",
-            "success": "<strong>S'ha canviat la contrasenya!</strong>"
+            "success": "<strong>Has canviat la teva contrassenya</strong>"
         }
     },
     "sessions": {

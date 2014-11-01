@@ -9,7 +9,7 @@
             },
             "account": {
                 "main": "Cuenta",
-                "settings": "Ajustes",
+                "settings": "Mis datos",
                 "password": "Contraseña",
                 "sessions": "Sesiones",
                 "tracker": "Rastreador de los usarios",
@@ -122,7 +122,7 @@
         }
     },
     "settings": {
-        "title": "Ajustes del usuario para [<b>{{username}}</b>]",
+        "title": "[<b>{{username}}</b>]",
         "form": {
             "firstname": "Nombre",
             "firstname.placeholder": "Su nombre",
@@ -148,13 +148,13 @@
         }
     },
     "password": {
-        "title": "Contraseña para [<b>{{username}}</b>]",
+        "title": "Cambiar la contraseña",
         "form": {
             "button": "Guardar"
         },
         "messages": {
             "error":  "<strong>¡Ha ocurrido un error!</strong> La contraseña no pudo ser cambiada.",
-            "success": "<strong>¡La contraseña ha sido cambiada!</strong>"
+            "success": "<strong>Has cambiado tu contraseña</strong>"
         }
     },
     "sessions": {
