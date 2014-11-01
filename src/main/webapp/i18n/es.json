@@ -17,10 +17,10 @@
                 "health": "Heath",
                 "logs": "Logs",
                 "audits": "Auditorías",
-                "login": "Iniciar sesión",
-                "logout": "Cerrar la sesión",
+                "login": "Accede",
+                "logout": "Salir",
                 "apidocs": "API",
-                "register": "Crear una cuenta"
+                "register": "Regístrate"
             },
             "admin": "Administración",
             "language": "Idioma"
@@ -108,7 +108,7 @@
         }
     },
     "login": {
-        "title": "Iniciar la sesión",
+        "title": "Accede a tu cuenta",
         "form": {
             "password": "Contraseña",
             "password.placeholder": "Su Contraseña",

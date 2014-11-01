@@ -192,15 +192,12 @@ s {
 }
 
 .next_step {
+    width: 45%;
     float: right;
-    background-color: #FF9A35;
-}
-.next_step:hover {
-    background: #d86c00;
-    color: #fff
 }
 
 .prev_step {
+    width: 45%;
     float: left;
     background-color: #F45454;
 }
@@ -210,10 +207,6 @@ s {
 
 .transition02 {
     transition: all .2s ease-in-out
-}
-
-.panel {
-    background-color: #fff4e9;
 }
 
 #main_content a {
@@ -231,7 +224,6 @@ s {
 /* Main Content top */
 
 #main_content_top {
-    margin-top: 50px;
     margin-bottom: 20px;
 }
 
@@ -365,14 +357,14 @@ s {
 #main_content .product_pvp .glyphicon {
     padding: 0;
     margin: 0 0 0 10px;
-    color: #FF9A35;
+    color: #CADD29;
     font-size: 18px;
     line-height: 10px;
     cursor: pointer
 }
 
 #main_content .product_pvp .glyphicon:hover {
-    color: #D86C00;
+    color: #FF9A35;
 }
 
 #main_content .info_iva {
@@ -510,29 +502,6 @@ s {
     font-family: 'got';
 }
 .resum_payment_cart .total_pvp{ font-size: 30px; text-align: center; font-weight: bold;	padding: 30px 0;}
-
-
-/* Login + Signin */
-
-.payment_login,
-.payment_signin{ margin-top: 25px; padding: 35px;}
-
-.payment_login h1,
-.payment_signin h1{ text-align: center;}
-
-.payment_login p,
-.payment_signin p{ font-size: 12px}
-
-.payment_login input,
-.payment_signin input{ margin: 0px 0 10px; padding: 20px}
-
-.payment_login .btn,
-.payment_signin .btn{ width: 100%; font-family: 'got'; font-size: 20px; color: #fff;  border: none; margin: 0px 0; padding: 10px 0}
-
-.payment_login .btn:hover,
-.payment_signin .btn:hover{ background: #CADD29}
-
-.dark{ background: #404040}
 
 /* Transport */
 
@@ -873,12 +842,17 @@ a:hover .glyphicon-pencil {
 /** navbar **/
 .navbar {
     position: relative;
-    min-height: 50px;
+    min-height: 100px;
     border: 0px;
+    margin-bottom: 0px;
+}
+
+.navbar-right {
+    padding-top: 20px;
 }
 
 .navbar-default {
-    background-color: #ffffff;
+    background-color: white;
 }
 .navbar-default .navbar-brand {
     color: #FF9A35;

@@ -17,10 +17,10 @@
                 "health": "Salud",
                 "logs": "Registres",
                 "audits": "Auditories",
-                "login": "Autenticar",
-                "logout": "Finalitzar la sessió",
+                "login": "Entrar",
+                "logout": "Sortir",
                 "apidocs": "API",
-                "register": "Registre"
+                "register": "Registra't"
             },
             "admin": "Administració",
             "language": "Idioma"
