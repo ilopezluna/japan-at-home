@@ -6,9 +6,7 @@
     left: 0;
     border: 0;
     z-index: 1000;
-    background-image: url("../images/development_ribbon.png");
-    background-position: center center;
-    background-repeat: no-repeat;
+    background: url("../images/development_ribbon.png") no-repeat center center;
 }
 
 .hero-unit {
@@ -508,8 +506,7 @@ s {
 #main_content .full_content .moto_dark{ width: 120px; height: 120px; position: absolute; right: 40px; top: 120px; background: transparent url('../images/japan-at-home-moto-dark.png') center center no-repeat; background-size: 100% 100%; opacity: .1}
 
 .transport .dark_moto, .transport .dark_enter{ padding: 0; margin: 0; opacity: .1; height: 200px;  background-size: 100%;}
-.transport .dark_moto{ background: transparent url('../images/japan-at-home-transport-moto-dark.png') top right no-repeat;}
-.transport .dark_enter{ background: transparent url('../images/japan-at-home-transport-enter-dark.png') top right no-repeat; }
+.transport .dark_moto { background: transparent url('../images/japan-at-home-transport-moto-dark.png') top right no-repeat;}
 
 .transport .transport_resum{ padding-left: 25px;}
 
@@ -545,12 +542,17 @@ s {
 
 /* Main Newsletters */
 
-#main_newsletters{ width: 100%; padding: 50px 0; background: #FF9A35; text-align: center; position: relative}
+#main_newsletters {
+    width: 100%;
+    padding: 20px;
+    background: #FF9A35;
+    text-align: center;
+    position: relative;
+}
 
 #main_newsletters h2 {
-
-    font-weight: normal;
-    text-transform: uppercase; color: #fff;
+    text-transform: uppercase;
+    color: #fff;
 }
 #main_newsletters p{ font-size: 16px; color: #fff; font-weight: 200;  margin-bottom: 20px}
 

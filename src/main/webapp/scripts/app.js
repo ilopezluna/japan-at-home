@@ -136,6 +136,20 @@ japanAtHomeApp
                         authorizedRoles: [USER_ROLES.all]
                     }
                 })
+                .when('/ok', {
+                    templateUrl: 'views/ok.html',
+                    controller: 'MainController',
+                    access: {
+                        authorizedRoles: [USER_ROLES.all]
+                    }
+                })
+                .when('/ko', {
+                    templateUrl: 'views/ko.html',
+                    controller: 'MainController',
+                    access: {
+                        authorizedRoles: [USER_ROLES.all]
+                    }
+                })
                 .otherwise({
                     templateUrl: 'views/home.html',
                     controller: 'HomeController',

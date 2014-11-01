@@ -419,5 +419,13 @@
         "online": "Paga online",
         "cash": "En efectiu",
         "note": "* Requereix registre"
+    },
+    "ok": {
+        "title": "La teva comanda está en marxa!",
+        "description": "Text descriptiu"
+    },
+    "ko": {
+        "title": "No s'ha pogut completar la comanda",
+        "description": "El teu banc ens ha notificat un error en el pagament i s'ha cancel.lat la comanda."
     }
 }

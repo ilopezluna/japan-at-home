@@ -417,5 +417,13 @@
         "online": "Pago online",
         "cash": "En efectivo",
         "note": "* Requiere registro"
+    },
+    "ok": {
+        "title": "¡Tu pedido está en marcha!",
+        "description": "Texto descriptivo"
+    },
+    "ko": {
+        "title": "Tu pedido no se ha podido completar",
+        "description": "Tu banco nos ha notificado un error en tu pago y el pedido ha sido cancelado."
     }
 }
