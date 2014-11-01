@@ -179,6 +179,7 @@ s {
     padding-bottom: 8px;
     background: #FF9A35;
     color: #fff;
+    border: none;
 }
 .btn:hover {
     background-color: #CADD29;
@@ -221,16 +222,12 @@ s {
 
 /* Main Content top */
 
-#main_content_top {
-    margin-bottom: 20px;
-}
-
 #main_content_top h1 strong {
     color: #FF9A35;
 }
 
 #main_content_search {
-    padding-bottom: 20px;
+    padding-bottom: 40px;
 }
 
 /* Main Content */
@@ -516,6 +513,11 @@ s {
     margin-bottom: 20px;
     padding: 10px 0;
     float: right;
+}
+
+/* Login */
+#main_help button {
+    width: 100%;
 }
 
 
@@ -844,7 +846,7 @@ a:hover .glyphicon-pencil {
 /** navbar **/
 .navbar {
     position: relative;
-    min-height: 100px;
+    min-height: 80px;
     border: 0px;
     margin-bottom: 0px;
 }

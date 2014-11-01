@@ -26,7 +26,7 @@
             "language": "Idioma"
         },
         "form": {
-            "username": "Iniciar sessió",
+            "username": "Nom d'usuari",
             "username.placeholder": "Nom d'usuari",
             "newpassword": "Nova Contrassenya",
             "newpassword.placeholder": "Nova Contrassenya",
@@ -38,22 +38,22 @@
         "messages": {
             "info": {
                 "authenticated": "Si vol <a href=\"#/login\">autenticar-se</a>, pot usar els comptes per defect:<br/>- Administrador (nom d'usuari=\"admin\" i contrasenya=\"admin\") <br/>- Usuari (nom d'usuari=\"user\" i contrasenya=\"user\").",
-                "register": "No disposa d'un compte encara? <a href=\"#/register\">Registri un nou compte</a>"
+                "register": "No disposa d'un comte encara? <a href=\"#/register\">Registri un nou comte</a>"
             },
             "error": {
                 "dontmatch" : "La contrasenya i la confirmació no coincideixen!"
             },
             "validate": {
                 "newpassword": {
-                    "required": "La seva contrasenya és necessaria.",
-                    "minlength": "La seva contrasenya ha de tenir, com a mínim, 5 caràcters",
-                    "maxlength": "La seva contrasenya no pot tenir més de 50 caràcters",
+                    "required": "La contrasenya és necessaria.",
+                    "minlength": "La contrasenya ha de tenir, com a mínim, 5 caràcters",
+                    "maxlength": "La contrasenya no pot tenir més de 50 caràcters",
                     "strength": "Fortalesa de la contrasenya:"
                 },
                 "confirmpassword": {
-                    "required": "És necessari confirmar la seva contrasenya.",
-                    "minlength": "La confirmació de la seva contrasenya ha de tenir, com a mínim, 5 caràcters",
-                    "maxlength": "La confirmació de la seva contrasenya no pot tenir més de 50 caràcters"
+                    "required": "És necessari confirmar la contrasenya.",
+                    "minlength": "La confirmació de la contrasenya ha de tenir, com a mínim, 5 caràcters",
+                    "maxlength": "La confirmació de la contrasenya no pot tenir més de 50 caràcters"
                 },
                 "email": {
                     "required": "És necessari el seu compte de correu electrònic.",
@@ -108,12 +108,12 @@
         }
     },
     "login": {
-        "title": "Autenticació",
+        "title": "Entrar",
         "form": {
             "password": "Contrasenya",
-            "password.placeholder": "La seva contrasenya",
+            "password.placeholder": "Contrasenya",
             "rememberme": "Accés automàtic",
-            "button": "Autenticar-se"
+            "button": "Entrar"
         },
         "messages": {
             "error": {
@@ -153,8 +153,8 @@
             "button": "Guardar"
         },
         "messages": {
-            "error":  "<strong>S'ha produït un error!</strong> No s'ha pogut canviar la seva contrasenya.",
-            "success": "<strong>S'ha canviat la seva contrasenya!</strong>"
+            "error":  "<strong>S'ha produït un error!</strong> No s'ha pogut canviar la contrasenya.",
+            "success": "<strong>S'ha canviat la contrasenya!</strong>"
         }
     },
     "sessions": {
