@@ -124,7 +124,7 @@ japanAtHomeApp
                 })
                 .when('/restaurant/:restaurantId/:restaurantName/delivery', {
                     templateUrl: 'views/delivery.html',
-                    controller: 'MainController',
+                    controller: 'DeliveryController',
                     access: {
                         authorizedRoles: [USER_ROLES.all]
                     }

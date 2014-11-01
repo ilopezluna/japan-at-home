@@ -114,18 +114,12 @@ ul#strength {
 
 	Palaeta de colors
 
-	#FF9A35	Orange 100%
-	#fdae66 Orange 80%
-	#F45454	Red 100%
-	#E4EADC gray 100%
-	#404040	black 100%
-
-	Palaeta de colors
-
-	#FF9A35	Orange
-	#FFF4E9 Backrgound
-	#D86C00 Brown
-	#67625E Gray
+	#E4EADC gray first
+	#F9FAF7 gray second
+	#CADD29 green
+	#FF9A35 orange
+	#F45454 red
+	#424649 black
 
 	35ff9a
 */
@@ -142,26 +136,29 @@ ul#strength {
 }
 
 body {
-    color: #67625E;
+    color: #424649;
+    background-color: #FFFFFF;
     letter-spacing: 1px;
 }
 
-h1 {
-    font-size: 40px;
+h1, h2, h3, h4 {
     font-family: got;
+}
+
+h1 {
+    font-size: 55px;
 }
 
 h2 {
-    font-size: 33px;
-    font-family: got;
+    font-size: 35px;
 }
 
 h3 {
-    font-size: 28px;
-    font-family: 'got';
+    font-size: 30px;
 }
 
 h4 {
+    color: #FF9A35;
     font-size: 20px;
     font-weight: 400;
     text-transform: uppercase;
@@ -186,7 +183,7 @@ s {
     color: #fff;
 }
 .btn:hover {
-    background-color: #d86c00;
+    background-color: #CADD29;
     color: #fff;
 }
 .btn,
@@ -233,20 +230,29 @@ s {
 
 /* Main Content top */
 
+#main_content_top {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
 #main_content_top h1 strong {
     color: #FF9A35;
 }
 
-#main_content_top .search {
-    margin-top: 20px;
-    margin-bottom: 20px;
+#main_content_search {
+    padding-bottom: 20px;
 }
 
 /* Main Content */
 
 #main_content {
     width: 100%;
-    padding: 20px 0;
+    padding-top: 20px;
+    background-color: #F9FAF7;
+}
+
+#main_content a:hover .btn {
+    background-color: #CADD29
 }
 
 #main_content .full_content {
@@ -254,14 +260,12 @@ s {
     position: relative
 }
 
-/* HOME */
 .thumbnail {
     display: block;
     padding: 4px;
     margin-bottom: 20px;
     line-height: 1.42857143;
-    background-color: #fff4e9;
-    border: 0px solid #ddd;
+    border: 1px solid #ddd;
     border-radius: 4px;
     -webkit-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
@@ -273,9 +277,7 @@ s {
 }
 
 #main_content .restaurant_thmb h4 {
-    font-weight: normal;
     text-transform: uppercase;
-    color: #404040;
     margin-left: 15px;
     margin-top: 10px;
 }
@@ -297,8 +299,6 @@ s {
     width: 100%;
 }
 
-
-/* MENU */
 
 #main_content .restaurant_menu {
     padding: 20px 15px;
@@ -608,7 +608,12 @@ s {
 
 /* Main Help */
 
-#main_help{ width: 100%; padding: 50px 0; position: relative}
+#main_help {
+    width: 100%;
+    padding: 50px 0;
+    position: relative;
+    background: #f9faf7;
+}
 
 #main_help h2{ color: #67625E; margin: 0 0 0 0; padding: 0;}
 #main_help .title_sushi{ width: 28px; height: 36px; background: transparent url('../images/japan-at-home-sushi-little.png') center center no-repeat; display: block; float: left; margin-right: 15px; padding-bottom: 5px}
@@ -623,7 +628,15 @@ s {
 
 /* Main Footer */
 
-#main_footer{ width: 100%; height: 320px; background: #404040 url('../images/japan-at-home-bottom.png') right bottom no-repeat; color: #fff; font-size: 10px; font-family: 'Open Sans', sans-serif; position: relative}
+#main_footer {
+    width: 100%;
+    height: 220px;
+    background: #404040 url('../images/japan-at-home-bottom.png') right bottom no-repeat;
+    color: #fff;
+    font-size: 10px;
+    font-family: 'Open Sans', sans-serif;
+    position: relative
+}
 
 #main_footer .social{ margin: 30px 0 0 0; padding: 0;}
 #main_footer .social li{ display: inline-block; margin-right: 10px}

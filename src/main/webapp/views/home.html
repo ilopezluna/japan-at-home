@@ -6,22 +6,21 @@
 
             <h1 translate="home.title">Pide comida japonesa a domicilio</h1>
 
-            <div class="col-md-offset-2 col-md-8 search">
-                <div class="col-md-3">
-                    <!--<img src="images/japan-at-home-sushi-modal.png" class="img-responsive pull-right" alt="JAPAN AT HOME" title="JAPAN AT HOME" style="height: 70px;">-->
-                </div>
-                <div class="form-group text-center col-md-6">
-                    <label>
-                        <h3 translate="home.subtitle">Tu código postal</h3>
-                    </label>
-                    <input type="text" class="form-control" name="zip" ng-model="order.zip.code">
-                </div>
+        </div>
+    </div>
+</section>
+
+<section id="main_content_search">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-offset-4 col-md-4">
+                <h3 translate="home.subtitle">Tu código postal</h3>
+                <input type="text" class="form-control text-center" name="zip" ng-model="order.zip.code" placeholder="{{ 'home.subtitle' | translate }}">
             </div>
         </div>
     </div>
 </section>
 <!-- Main Content -->
-
 <section id="main_content">
     <div class="container">
         <div class="row">

@@ -153,6 +153,11 @@ japanAtHomeApp.controller('MerchantController', function ($scope, Order, $sce, $
     };
 });
 
+japanAtHomeApp.controller('DeliveryController', function ($scope)
+{
+});
+
+
 japanAtHomeApp.controller('LoginController', function ($scope, $location, AuthenticationSharedService) {
         $scope.rememberMe = true;
         $scope.login = function () {
