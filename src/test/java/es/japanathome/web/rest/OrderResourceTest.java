@@ -2,10 +2,7 @@ package es.japanathome.web.rest;
 
 import es.japanathome.Application;
 import es.japanathome.domain.*;
-import es.japanathome.repository.ItemRepository;
-import es.japanathome.repository.ProductRepository;
-import es.japanathome.repository.RestaurantRepository;
-import es.japanathome.repository.TagRepository;
+import es.japanathome.repository.*;
 import es.japanathome.service.OrderService;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -60,6 +58,8 @@ public class OrderResourceTest {
     @Inject
     private RestaurantRepository restaurantRepository;
 
+    @Inject
+    private ZipRepository zipRepository;
 
     @Inject
     private TagRepository tagRepository;
@@ -86,7 +86,14 @@ public class OrderResourceTest {
     @Before
     public void initTest() {
 
+        Zip zip = buildZip();
+        zipRepository.save(zip);
+
+        HashSet<Zip> zips = new HashSet<Zip>();
+        zips.add(zip);
+
         Restaurant restaurant = buildRestaurant();
+        restaurant.setZips(zips);
         restaurantRepository.save(restaurant);
 
         Tag tag = buildTag();
@@ -108,6 +115,7 @@ public class OrderResourceTest {
         order.setPaymentType(DEFAULT_PAYMENT_TYPE);
         order.setStatus(DEFAULT_STATUS);
         order.setItems(items);
+        order.setZip(zip);
     }
 
     @Test

@@ -2,6 +2,7 @@ package es.japanathome.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import es.japanathome.domain.Order;
+import es.japanathome.domain.Zip;
 import es.japanathome.dto.Merchant;
 import es.japanathome.security.SecurityUtils;
 import es.japanathome.service.OrderService;
@@ -62,6 +63,10 @@ public class OrderResource {
     public Merchant create(@RequestBody Order order) {
         log.debug("REST request to save Order : {}", order);
         orderService.validate(order);
+
+        //TODO This is a shortcut for not fill the zip id on frontend
+        Zip zip = order.getRestaurant().getZip(order.getZip().getCode());
+        order.setZip(zip);
 
         if ( order.getPaymentType().equals( CASH ) &&  !SecurityUtils.isAuthenticated() )
         {

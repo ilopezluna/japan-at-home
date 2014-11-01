@@ -1,9 +1,6 @@
 package es.japanathome;
 
-import es.japanathome.domain.Item;
-import es.japanathome.domain.Product;
-import es.japanathome.domain.Restaurant;
-import es.japanathome.domain.Tag;
+import es.japanathome.domain.*;
 
 import java.math.BigDecimal;
 
@@ -32,6 +29,14 @@ public class Constants {
     public final static String PASSWORD = "h2u282kMks01923kmqpo";
     public final static String DATA_TO_SIGN = "1235292929292019201919780h2u282kMks01923kmqpo";
     public final static String SIGNATURE = "02004012fbec5f547eb9728b575d4587b64df953";
+    private static final String DEFAULT_ZIP_CODE = "0000";
+
+    public static Zip buildZip()
+    {
+        Zip zip = new Zip();
+        zip.setCode(DEFAULT_ZIP_CODE);
+        return zip;
+    }
 
     public static Restaurant buildRestaurant()
     {

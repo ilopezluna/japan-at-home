@@ -184,6 +184,18 @@ public class Restaurant implements Serializable {
         this.zips = zips;
     }
 
+    public Zip getZip(String code)
+    {
+        for (Zip zip : zips)
+        {
+            if ( zip.getCode().equals(code) )
+            {
+                return zip;
+            }
+        }
+        return null;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

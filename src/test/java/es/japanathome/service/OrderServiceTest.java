@@ -22,8 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static es.japanathome.Constants.*;
-import static es.japanathome.Constants.DEFAULT_ADDRESS;
-import static es.japanathome.Constants.ITEM_DEFAULT_QUANTITY;
+import static org.apache.commons.lang.StringUtils.EMPTY;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -117,7 +116,10 @@ public class OrderServiceTest
         orderService.validate(order);
 
         order.setPaymentType(Order.PaymentType.CASH);
+        exception.expect(ValidationException.class);
         orderService.validate(order);
+
+        assertThat(EMPTY).isEmpty(); //assert no more exceptions
     }
 
 }

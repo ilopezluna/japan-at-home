@@ -29,6 +29,8 @@ public class OrderService {
     private final static String RESTAURANT_IS_NULL = "restaurant is null";
     private final static String ADDRESS_IS_NULL = "address is null";
     private final static String PAYMENT_TYPE_IS_NULL = "paymentType is null";
+    private static final String ZIP_IS_NULL = "zip is null";
+    private static final String ZIP_IS_NOT_VALID = "zip is not valid";
 
     private final Logger log = LoggerFactory.getLogger(OrderService.class);
 
@@ -99,6 +101,15 @@ public class OrderService {
         if ( order.getPaymentType() == null )
         {
             throw new ValidationException(PAYMENT_TYPE_IS_NULL);
+        }
+        if ( order.getZip() == null )
+        {
+            throw new ValidationException(ZIP_IS_NULL);
+        }
+
+        if ( !order.getRestaurant().getZips().contains(order.getZip()) )
+        {
+            throw new ValidationException(ZIP_IS_NOT_VALID);
         }
     }
 
