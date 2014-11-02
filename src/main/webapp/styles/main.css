@@ -167,10 +167,10 @@ h4 {
 a:hover {
     text-decoration: none
 }
+
 s {
     text-decoration: none;
 }
-
 
 .btn {
     font-family: 'got';
@@ -181,10 +181,12 @@ s {
     color: #fff;
     border: none;
 }
+
 .btn:hover {
     background-color: #CADD29;
     color: #fff;
 }
+
 .btn,
 .thumbnail {
     border-radius: 2px;
@@ -200,6 +202,7 @@ s {
     float: left;
     background-color: #F45454;
 }
+
 .prev_step:hover {
     background: #FF9A35;
 }
@@ -444,14 +447,13 @@ s {
 #main_content .full_content .breadcrumb_payment {
     margin-bottom: 40px
 }
+
 #main_content .full_content .breadcrumb_payment .btn {
     background: #FF9A35;
     border: none;
     padding-top: 10px;
     padding-bottom: 10px;
     color: #fff;
-    font-size: 18px;
-    font-family: 'got';
 }
 
 .top_table {
@@ -461,8 +463,8 @@ s {
     padding-bottom: 15px;
     font-weight: 300;
 }
-.resum_payment_cart .item_right {
-    text-align: right;
+.resum_payment_cart .item_right .header {
+    padding-top: 15px;
 }
 
 .resum_payment_cart .table_color01, .resum_payment_cart .table_color02 {
@@ -470,13 +472,8 @@ s {
     line-height: 50px
 }
 .resum_payment_cart .table_color01 {
-    background: #ffffff;
+    background: #F9FAF7;
 }
-
-.resum_payment_cart .table_color02 {
-    background: #ecfff5;
-}
-
 
 .resum_payment_cart .amount {
     padding: 0px 6px;

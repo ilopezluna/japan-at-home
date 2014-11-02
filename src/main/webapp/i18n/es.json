@@ -422,7 +422,7 @@
             "total": "TOTAL"
         },
         "online": "Pago online",
-        "cash": "En efectivo",
+        "cash": "En efectivo <span style='font-family: Arial, sans-serif;'>*</span>",
         "note": "* Requiere registro"
     },
     "ok": {

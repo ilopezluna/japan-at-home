@@ -424,7 +424,7 @@
             "total": "TOTAL"
         },
         "online": "Paga online",
-        "cash": "En efectiu",
+        "cash": "En efectiu <span style='font-family: Arial, sans-serif;'>*</span>",
         "note": "* Requereix registre"
     },
     "ok": {
