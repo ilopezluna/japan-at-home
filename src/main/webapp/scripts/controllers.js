@@ -41,9 +41,10 @@ japanAtHomeApp.controller('HomeController', function ($scope, Restaurant, OrderS
 });
 
 
-japanAtHomeApp.controller('RestaurantMenuController', function ($scope, Restaurant, Product, Tag, $routeParams)
+japanAtHomeApp.controller('RestaurantMenuController', function ($scope, Restaurant, Product, Tag, $routeParams, OrderService)
 {
     $scope.restaurant = Restaurant.get({id: $routeParams.restaurantId});
+    OrderService.restaurant($scope.restaurant);
     $scope.categories = Tag.query({restaurantId: $routeParams.restaurantId});
     $scope.products = Product.query({restaurantId: $routeParams.restaurantId});
 
@@ -153,8 +154,9 @@ japanAtHomeApp.controller('MerchantController', function ($scope, Order, $sce, $
     };
 });
 
-japanAtHomeApp.controller('DeliveryController', function ($scope)
-{
+japanAtHomeApp.controller('DeliveryController', function ($scope, OrderService, Restaurant, $routeParams) {
+    $scope.restaurant = Restaurant.get({id: $routeParams.restaurantId}); //TODO this code is repeated in other controller
+    OrderService.restaurant($scope.restaurant);
 });
 
 

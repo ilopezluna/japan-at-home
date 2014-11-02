@@ -210,6 +210,9 @@ japanAtHomeApp.factory('OrderService', function () {
             items: new Object(),
             zip: {
                 code : ''
+            },
+            restaurant: {
+                id : null
             }
         };
         return {
@@ -217,7 +220,7 @@ japanAtHomeApp.factory('OrderService', function () {
 
             restaurant:function(restaurant)
             {
-                if (order.restaurant == null || order.restaurant.id != restaurant.id ) //If restaurant is not set or is a different one, it clears order.items
+                if (order.restaurant.id != restaurant.id ) //If restaurant is not set or is a different one, it clears order.items
                 {
                     order.items = new Object();
                 }
