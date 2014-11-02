@@ -125,36 +125,40 @@ public class OrderService {
         orderRepository.delete(id);
     }
 
-    //TODO this method do too much, it needs a refactor
     public void confirm( Merchant merchant, int responseCode, String signature )
     {
-        try
+        boolean validated = validateSermepaResponse(merchant, responseCode, signature);
+        if ( validated )
         {
-            String localSignature = merchant.getResponseSignature();
-            String remoteSignature = signature.toLowerCase();
-            log.debug("Remote signature: " + remoteSignature);
-            log.debug("Local signature: " + localSignature);
-            log.debug("ResponseCode: " + responseCode);
-            log.debug("Merchant: " + merchant);
+            Order order = orderRepository.findByCode( merchant.getOrder() );
+            order.setStatus( Order.Status.PAID );
+            orderRepository.save( order );
 
-            if ( remoteSignature.equals( localSignature ) && isValid(responseCode) )
-            {
-                Order order = orderRepository.findByCode( merchant.getOrder() );
-                order.setStatus( Order.Status.PAID );
-                orderRepository.save( order );
-
-                String content = order.toString();
-
-                String[] emails = orderMails.split(",");
-                for (String email : emails)
-                {
-                    mailService.sendOrderEmail( email, "Pedido!", content);
-                }
-            }
+            sendOrderMail(order);
         }
-        catch ( Exception e )
+    }
+
+    private boolean validateSermepaResponse(Merchant merchant, int responseCode, String signature)
+    {
+        String localSignature = merchant.getResponseSignature();
+        String remoteSignature = signature.toLowerCase();
+        log.debug("Remote signature: " + remoteSignature);
+        log.debug("Local signature: " + localSignature);
+        log.debug("ResponseCode: " + responseCode);
+        log.debug("Merchant: " + merchant);
+
+        return remoteSignature.equals( localSignature ) && isValid(responseCode);
+    }
+
+
+    private void sendOrderMail(Order order)
+    {
+        String content = order.toString();
+
+        String[] emails = orderMails.split(",");
+        for (String email : emails)
         {
-            log.info( e.getMessage() );
+            mailService.sendOrderEmail( email, "Pedido!", content);
         }
     }
 
