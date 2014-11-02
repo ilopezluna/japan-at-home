@@ -136,11 +136,11 @@ ul#strength {
 body {
     color: #424649;
     background-color: #FFFFFF;
-    letter-spacing: 1px;
 }
 
 h1, h2, h3, h4 {
     font-family: got;
+    letter-spacing: 1px;
 }
 
 h1 {
@@ -290,7 +290,6 @@ s {
 #main_content .restaurant_menu {
     padding: 20px 15px;
     position: relative;
-    letter-spacing: 0px;
 }
 
 #main_content .restaurant_menu .menu-howto{ padding-bottom: 20px; font-size: 12px}
@@ -372,7 +371,6 @@ s {
 #main_content .cart {
     padding: 20px 15px;
     text-align: center;
-    letter-spacing: 0px;
     font-size: 11px;
 }
 
