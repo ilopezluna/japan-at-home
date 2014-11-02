@@ -374,8 +374,15 @@
         }
     },
     "delivery": {
-        "title": "DIRECCIÓN",
-        "example": "Ejemplo: Gran Via, 12 1ero, Barcelona",
+        "title": "DIRECCIÓN DE ENTREGA",
+        "zip": {
+            "label" : "Código postal",
+            "example": "Ejemplo: 08330"
+        },
+        "address": {
+            "label" : "Tu dirección",
+            "example": "Ejemplo: Gran Via, 12º 1º"
+        },
         "next": "Siguiente",
         "prev": "Anterior",
         "home": "Inicio",

@@ -376,8 +376,15 @@
     }
     ,
     "delivery": {
-        "title": "ADREÇA",
-        "example": "Exemple: Gran Via, 12 1er, Barcelona",
+        "title": "ADREÇA D'ENTREGA",
+        "zip": {
+            "label" : "Codi postal",
+            "example": "Exemple: 08330"
+        },
+        "address": {
+            "label" : "La teva adreça",
+            "example": "Exemple: Gran Via, 12º 1º"
+        },
         "next": "Següent",
         "prev": "Anterior",
         "home": "Inici",

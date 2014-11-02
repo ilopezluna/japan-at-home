@@ -28,10 +28,16 @@
                         <div class="col-md-2 dark_moto"></div>
                         <div class="col-md-offset-1 col-md-6 col-md-offset-3 transport_resum">
 
-                            <h2 translate="delivery.title">DIRECCIÓN</h2>
-                            <i translate="delivery.example">Ejemplo: Gran Via, 12 1ero, Barcelona</i>
+                            <h2 translate="delivery.title" style="padding-bottom: 20px;">DIRECCIÓN</h2>
+
+                            <i translate="delivery.zip.label">Ejemplo: Gran Via, 12 1ero, Barcelona</i>
                             <div class="form-group">
-                                <input ng-model="order.address" type="text" id="Autocomplete" class="form-control" ng-autocomplete="result" details="" options="" placeholder="{{ 'delivery.example' | translate }}"/>
+                                <input ng-model="order.zip.code" type="text" class="form-control" placeholder="{{ 'delivery.zip.example' | translate }}"/>
+                            </div>
+
+                            <i translate="delivery.address.label">Ejemplo: Gran Via, 12 1ero, Barcelona</i>
+                            <div class="form-group">
+                                <input ng-model="order.address" type="text" id="Autocomplete" class="form-control" ng-autocomplete="result" details="" options="" placeholder="{{ 'delivery.address.example' | translate }}"/>
                             </div>
                             <div class="form-group">
                                 <button translate="delivery.prev" ng-click="menu(order.restaurant)" type="button" class="btn transition02 prev_step">ANTERIOR</button>
