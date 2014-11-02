@@ -321,7 +321,7 @@
     "home": {
         "title": "Pide comida <strong>japonesa</strong> a domicilio",
         "subtitle": "Tu código postal",
-        "price": "Precio medio: ",
+        "price": "Mín pedido: ",
         "menu": "Ver carta",
         "suggestion": {
             "title": "¿Hechas de menos tu restaurante favorito?",

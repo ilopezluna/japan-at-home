@@ -290,6 +290,7 @@ s {
 #main_content .restaurant_menu {
     padding: 20px 15px;
     position: relative;
+    letter-spacing: 0px;
 }
 
 #main_content .restaurant_menu .menu-howto{ padding-bottom: 20px; font-size: 12px}
@@ -371,6 +372,8 @@ s {
 #main_content .cart {
     padding: 20px 15px;
     text-align: center;
+    letter-spacing: 0px;
+    font-size: 11px;
 }
 
 #main_content .cart .btn {
