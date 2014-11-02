@@ -205,15 +205,13 @@ japanAtHomeApp.factory('AuthenticationSharedService', function ($rootScope, $htt
         };
     });
 
-japanAtHomeApp.factory('OrderService', function () {
+japanAtHomeApp.factory('OrderService', function ($log) {
         var order = {
             items: new Object(),
             zip: {
                 code : ''
             },
-            restaurant: {
-                id : null
-            }
+            restaurant: {}
         };
         return {
             current: function() { return  order },

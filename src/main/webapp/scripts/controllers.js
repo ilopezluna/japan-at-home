@@ -41,10 +41,12 @@ japanAtHomeApp.controller('HomeController', function ($scope, Restaurant, OrderS
 });
 
 
-japanAtHomeApp.controller('RestaurantMenuController', function ($scope, Restaurant, Product, Tag, $routeParams, OrderService)
+japanAtHomeApp.controller('RestaurantMenuController', function ($scope, Restaurant, Product, Tag, $routeParams, OrderService, $log)
 {
-    $scope.restaurant = Restaurant.get({id: $routeParams.restaurantId});
-    OrderService.restaurant($scope.restaurant);
+    $scope.restaurant = Restaurant.get( {id: $routeParams.restaurantId} , function(data) {
+        OrderService.restaurant($scope.restaurant);
+    });
+
     $scope.categories = Tag.query({restaurantId: $routeParams.restaurantId});
     $scope.products = Product.query({restaurantId: $routeParams.restaurantId});
 
@@ -155,8 +157,10 @@ japanAtHomeApp.controller('MerchantController', function ($scope, Order, $sce, $
 });
 
 japanAtHomeApp.controller('DeliveryController', function ($scope, OrderService, Restaurant, $routeParams) {
-    $scope.restaurant = Restaurant.get({id: $routeParams.restaurantId}); //TODO this code is repeated in other controller
-    OrderService.restaurant($scope.restaurant);
+    $scope.restaurant = Restaurant.get( {id: $routeParams.restaurantId} , function(data) {
+        OrderService.restaurant($scope.restaurant);
+        $log.info("$scope.restaurant from controller: " + $scope.restaurant.id);
+    });
 });
 
 
