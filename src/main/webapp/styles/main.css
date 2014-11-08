@@ -16,7 +16,7 @@
     font-weight: 200;
     line-height: 30px;
     background-color: #eee;
-    border-radius: 6px;
+    border-radius: 4px;
     padding: 60px;
 }
 
@@ -114,8 +114,8 @@ ul#strength {
 
 	#E4EADC gray first
 	#F9FAF7 gray second
-	#CADD29 green
-	#FF9A35 orange
+	#5ccfdb green
+	#DB685C orange
 	#F45454 red
 	#424649 black
 
@@ -134,29 +134,31 @@ ul#strength {
 }
 
 body {
-    color: #424649;
+    font-size: 16px
+    color: #666;
     background-color: #FFFFFF;
 }
 
 h1, h2, h3, h4 {
-    font-family: got;
+    font-family: "Open Sans";
     letter-spacing: 1px;
 }
 
 h1 {
-    font-size: 55px;
+    font-family: "Open Sans";
+    font-size: 45px;
 }
 
 h2 {
-    font-size: 35px;
+    font-size: 40px;
 }
 
 h3 {
     font-size: 30px;
+    color: #DB685C;
 }
 
 h4 {
-    color: #FF9A35;
     font-size: 20px;
     font-weight: 400;
     text-transform: uppercase;
@@ -164,6 +166,9 @@ h4 {
     margin-top: 10px;
 }
 
+a {
+    color: #DB685C;
+}
 a:hover {
     text-decoration: none
 }
@@ -172,24 +177,43 @@ s {
     text-decoration: none;
 }
 
+/** navbar **/
+.navbar {
+    border: 0px;
+}
+
+.navbar-default {
+    background-color: white;
+}
+.navbar-default .navbar-nav>li>a {
+    color: #DB685C;
+}
+.navbar-default .navbar-nav>li>a:hover {
+    color: #5ccfdb;
+}
+
+label {
+    font-weight: normal;
+}
+
 .btn {
-    font-family: 'got';
+    text-transform: uppercase;
     font-size: 18px;
     padding-top: 8px;
     padding-bottom: 8px;
-    background: #FF9A35;
+    background: #DB685C;
     color: #fff;
     border: none;
 }
 
 .btn:hover {
-    background-color: #CADD29;
+    background-color: #5ccfdb;
     color: #fff;
 }
 
 .btn,
 .thumbnail {
-    border-radius: 2px;
+    border-radius: 4px;
 }
 
 .next_step {
@@ -200,15 +224,27 @@ s {
 .prev_step {
     width: 45%;
     float: left;
-    background-color: #F45454;
+    background-color: #f1c7c3;
 }
 
 .prev_step:hover {
-    background: #FF9A35;
+    background: #DB685C;
 }
 
 .transition02 {
     transition: all .2s ease-in-out
+}
+
+.panel-group {
+    margin-top: 40px;
+}
+
+.panel {
+    border: none;
+}
+
+.panel-group .panel+.panel {
+     margin-top: 0px;
 }
 
 #main_content a {
@@ -226,7 +262,8 @@ s {
 /* Main Content top */
 
 #main_content_top h1 strong {
-    color: #FF9A35;
+    text-transform: uppercase;
+    color: #DB685C;
 }
 
 #main_content_search {
@@ -242,7 +279,7 @@ s {
 }
 
 #main_content a:hover .btn {
-    background-color: #CADD29
+    background-color: #5ccfdb
 }
 
 #main_content .full_content {
@@ -272,17 +309,13 @@ s {
     margin-top: 10px;
 }
 
-#main_content .restaurant_thmb p {
-    font-size: 11px;
-}
-
 #main_content .restaurant_thmb p.precio_medio {
     font-size: 18px;
 }
 
 #main_content .restaurant_thmb p.precio_medio span {
     font-size: 24px;
-    color: #FF9A35;
+    color: #DB685C;
 }
 
 #main_content .restaurant_thmb .btn {
@@ -302,7 +335,7 @@ s {
 }
 
 #main_content .restaurant_menu h2 span {
-    color: #FF9A35;
+    color: #DB685C;
 }
 
 #main_content .restaurant_menu h3 {
@@ -323,7 +356,7 @@ s {
 }
 
 #main_content .restaurant_menu .caret {
-    color: #FF9A35;
+    color: #DB685C;
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -o-transform: rotate(-90deg);
@@ -355,14 +388,14 @@ s {
 #main_content .product_pvp .glyphicon {
     padding: 0;
     margin: 0 0 0 10px;
-    color: #CADD29;
+    color: #DB685C;
     font-size: 18px;
     line-height: 10px;
     cursor: pointer
 }
 
 #main_content .product_pvp .glyphicon:hover {
-    color: #FF9A35;
+    color: #5ccfdb;
 }
 
 #main_content .info_iva {
@@ -429,8 +462,7 @@ s {
 }
 
 #main_content .cart .cart_total {
-    font-family: 'got';
-    line-height: 22px;
+    text-transform: uppercase;
     font-size: 30px;
 }
 #main_content .cart .cart_total_pvp {
@@ -449,7 +481,7 @@ s {
 }
 
 #main_content .full_content .breadcrumb_payment .btn {
-    background: #FF9A35;
+    background: #DB685C;
     border: none;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -461,7 +493,6 @@ s {
     color: #fff;
     padding-top: 15px;
     padding-bottom: 15px;
-    font-weight: 300;
 }
 .resum_payment_cart .item_right .header {
     padding-top: 15px;
@@ -498,10 +529,9 @@ s {
 
 /* Transport */
 
-#main_content .full_content .moto_dark{ width: 120px; height: 120px; position: absolute; right: 40px; top: 120px; background: transparent url('../images/japan-at-home-moto-dark.png') center center no-repeat; background-size: 100% 100%; opacity: .1}
-
-.transport .dark_moto, .transport .dark_enter{ padding: 0; margin: 0; opacity: .1; height: 200px;  background-size: 100%;}
-.transport .dark_moto { background: transparent url('../images/japan-at-home-transport-moto-dark.png') top right no-repeat;}
+.transport .dark_moto {
+    background: transparent url('../images/japan-at-home-transport-moto-dark.png') top right no-repeat;
+}
 
 .transport .transport_resum{ padding-left: 25px;}
 
@@ -523,7 +553,7 @@ s {
 #main_newsletters {
     width: 100%;
     padding: 20px;
-    background: #FF9A35;
+    background: #DB685C;
     text-align: center;
     position: relative;
 }
@@ -532,13 +562,15 @@ s {
     text-transform: uppercase;
     color: #fff;
 }
-#main_newsletters p{ font-size: 16px; color: #fff; font-weight: 200;  margin-bottom: 20px}
+#main_newsletters p {
+    color: #fff;   margin-bottom: 20px
+}
 
 #main_newsletters .input-group{ width: 500px; margin: 0 auto 20px;}
-#main_newsletters .form-control{ border: none; padding: 25px 10px; font-size: 16px; color: #FF9A35}
+#main_newsletters .form-control{ border: none; padding: 25px 10px; font-size: 16px; color: #DB685C}
 #main_newsletters .input-group-addon{ width: 50px; border: none; background: #fff url('../images/icon-newsletter.png') center center no-repeat;}
 
-#main_newsletters .btn{ font-family: 'got'; font-size: 18px;  padding: 8px 25px; margin-bottom: 25px; background: #fff; color: #FF9A35;}
+#main_newsletters .btn{ font-family: 'got'; font-size: 18px;  padding: 8px 25px; margin-bottom: 25px; background: #fff; color: #DB685C;}
 
 
 /* Main Suggest */
@@ -549,10 +581,10 @@ s {
 #main_suggest p{ font-size: 16px; font-weight: 200;  margin-bottom: 20px }
 
 #main_suggest .input-group{ width: 500px; margin: 0 auto 20px;}
-#main_suggest .form-control{ border: none; padding: 25px 10px; font-size: 16px; color: #FF9A35}
+#main_suggest .form-control{ border: none; padding: 25px 10px; font-size: 16px; color: #DB685C}
 #main_suggest .input-group-addon{ width: 50px; border: none; background: #fff url('../images/icon-newsletter.png') center center no-repeat;}
 
-#main_suggest .btn{ font-family: 'got'; font-size: 18px;  padding: 8px 25px; margin-bottom: 25px; background: #FF9A35; color: #fff;}
+#main_suggest .btn{ font-family: 'got'; font-size: 18px;  padding: 8px 25px; margin-bottom: 25px; background: #DB685C; color: #fff;}
 
 
 /* Main Help */
@@ -597,4 +629,13 @@ s {
 }
 #main_footer .social img {
     width: 42px;
+}
+
+#main_footer .legales {
+    margin-top: 30px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 1px
+}
+#main_footer .legales a {
+    color: #fff;
 }

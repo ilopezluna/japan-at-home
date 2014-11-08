@@ -332,15 +332,15 @@
             "title": "¿Necesitas ayuda?",
             "step1" : {
                 "title": "¿Dónde estás?",
-                "description": "Dinos tu código postal"
+                "description": "Dinos tu código postal y te diremos a que restaurantes puedes pedir."
             },
             "step2" : {
                 "title": "Elige un restaurante",
-                "description": "Tenemos la mayor variedad de restaurantes japoneses"
+                "description": "Tenemos la mayor variedad de restaurantes japoneses."
             },
             "step3" : {
                 "title": "Targeta o en efectivo",
-                "description": "Rápido, cómodo y seguro"
+                "description": "Rápido, cómodo y seguro. Disfruta de tu comida japonesa."
             }
         }
     },
