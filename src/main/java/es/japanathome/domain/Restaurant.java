@@ -60,7 +60,7 @@ public class Restaurant implements Serializable {
     @Column(name = "logo")
     private String logo;
 
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.EAGER)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Zip> zips = new HashSet<>();
 
