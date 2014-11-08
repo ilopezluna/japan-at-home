@@ -205,7 +205,7 @@ japanAtHomeApp.factory('AuthenticationSharedService', function ($rootScope, $htt
         };
     });
 
-japanAtHomeApp.factory('OrderService', function ($log) {
+japanAtHomeApp.factory('OrderService', function () {
         var order = {
             items: new Object(),
             zip: new Object(),

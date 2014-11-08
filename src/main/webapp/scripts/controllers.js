@@ -35,13 +35,23 @@ japanAtHomeApp.controller('HomeController', function ($scope, Restaurant, OrderS
     $scope.restaurants = Restaurant.query();
     $scope.menu = function (restaurant)
     {
-        OrderService.restaurant(restaurant);
-        $location.path("/restaurant/" + restaurant.id + "/" + restaurant.shortName + "/menu");
+        if ($scope.order.zip.code == null) {
+            alert("Necesitamos saber tú codigo postal"); //TODO quitar alert
+        }
+        else {
+            for(var i = 0; i < restaurant.zips.length; i += 1) {
+                if(restaurant.zips[i]['code'] === $scope.order.zip.code) {
+                    $scope.order.zip = restaurant.zips[i];
+                }
+            }
+            OrderService.restaurant(restaurant);
+            $location.path("/restaurant/" + restaurant.id + "/" + restaurant.shortName + "/menu");
+        }
     };
 });
 
 
-japanAtHomeApp.controller('RestaurantMenuController', function ($scope, Restaurant, Product, Tag, $routeParams, OrderService, $log)
+japanAtHomeApp.controller('RestaurantMenuController', function ($scope, Restaurant, Product, Tag, $routeParams, OrderService)
 {
     $scope.restaurant = Restaurant.get( {id: $routeParams.restaurantId} , function(data) {
         OrderService.restaurant($scope.restaurant);
@@ -159,7 +169,6 @@ japanAtHomeApp.controller('MerchantController', function ($scope, Order, $sce, $
 japanAtHomeApp.controller('DeliveryController', function ($scope, OrderService, Restaurant, $routeParams) {
     $scope.restaurant = Restaurant.get( {id: $routeParams.restaurantId} , function(data) {
         OrderService.restaurant($scope.restaurant);
-        $log.info("$scope.restaurant from controller: " + $scope.restaurant.id);
     });
 });
 
