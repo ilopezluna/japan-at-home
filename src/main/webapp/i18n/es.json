@@ -348,7 +348,7 @@
         "title": "Restaurante <span> {{name}} </span>",
         "iva":"* TODOS LOS PRECIOS INCLUYEN EL I.V.A",
         "cart": {
-            "title": "<span class='title_sushi'></span> Tu menú",
+            "title": "Tu menú",
             "total": "TOTAL",
             "button": "Pide ahora"
         },

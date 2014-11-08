@@ -349,7 +349,7 @@
         "title": "Restaurant <span> {{name}} </span>",
         "iva":"* TOTS ELS PREUS INCLOUEN l'I.V.A",
         "cart": {
-            "title": "<span class='title_sushi'></span> El teu menú",
+            "title": "El teu menú",
             "total": "TOTAL",
             "button": "Demana ara"
         },

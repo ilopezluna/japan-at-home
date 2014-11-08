@@ -6,24 +6,27 @@
 
             <!-- Info restaurant -->
 
-            <div class="col-md-3 col-sm-4">
+            <div class="col-md-4 col-sm-4">
 
-                <div class="thumbnail cart my-sticky-element">
+                <div class="thumbnail cart text-center">
 
-                    <h3 translate="menu.cart.title"><span class="title_sushi"></span>TU MENU</h3>
+                    <h3 translate="menu.cart.title">TU MENU</h3>
 
-                    <div ng-repeat="item in order.items">
-                        <div class="col-md-12 col-sm-12 col-xs-12 product">{{item.product.name}}</div>
-                        <div class="col-md-1 col-sm-2 col-xs-2 product amount">x{{item.quantity}}</div>
-                        <div class="col-md-9 col-sm-8 col-xs-8 product amount price">{{item.product.price}}€</div>
-                        <div class="col-md-1 col-sm-2 col-xs-2 remove"><span ng-click="removeItem(item)" class="transition02 glyphicon glyphicon-minus-sign"></span></div>
+                    <hr/>
+
+                    <div class="row" ng-repeat="item in order.items">
+                        <div class="col-md-1 basic-color">x{{item.quantity}}</div>
+                        <div class="col-md-7 truncate text-left">{{item.product.name}}</div>
+                        <div class="col-md-2 text-right">{{item.product.price}}€</div>
+                        <div class="col-md-1 text-left"><span ng-click="removeItem(item)" class="glyphicon glyphicon-trash basic-color"></span></div>
                     </div>
 
-                    <div class="clearfix"></div><hr>
+                    <hr/>
 
-                    <div translate="menu.cart.total" class="col-md-6 col-sm-6 col-xs-6 cart_total">TOTAL</div>
-                    <div class="col-md-6 col-sm-6 col-xs-6 cart_total_pvp">{{ total() }}€</div>
-
+                    <div class="row cart-total ">
+                        <div class="col-md-6 text-right" translate="menu.cart.total">TOTAL</div>
+                        <div class="col-md-6 text-left basic-color">{{ total() }}€</div>
+                    </div>
 
                     <a href="#/restaurant/{{restaurant.id}}/{{restaurant.shortName}}/delivery"><button translate="menu.cart.button" type="button" class="btn transition02">FINALIZAR PEDIDO</button></a>
                 </div>
@@ -32,7 +35,7 @@
 
             <!-- Info restaurant -->
 
-            <div class="col-md-9 col-sm-8">
+            <div class="col-md-8 col-sm-8">
                 <div class="thumbnail restaurant_menu">
 
                     <h2 translate="menu.title" translate-values="{name: '{{restaurant.name}}'}">RESTAURANTE <span>SUSHI BO</span></h2>
