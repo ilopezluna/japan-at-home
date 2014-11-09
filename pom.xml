@@ -21,7 +21,7 @@
     </prerequisites>
 
     <properties>
-        <HikariCP.version>1.4.0</HikariCP.version>
+        <HikariCP.version>2.2.4</HikariCP.version>
         <assertj-core.version>1.6.1</assertj-core.version>
         <awaitility.version>1.4.0</awaitility.version>
         <commons-io.version>2.4</commons-io.version>
@@ -43,6 +43,7 @@
         <postgresql.version>9.3-1102-jdbc41</postgresql.version>
         <run.addResources>false</run.addResources>
         <sonar-maven-plugin.version>2.2</sonar-maven-plugin.version>
+        <spring-cloud.version>1.1.0.RELEASE</spring-cloud.version>
         <swagger-springmvc.version>0.8.8</swagger-springmvc.version>
         <usertype-core.version>3.2.0.GA</usertype-core.version>
     </properties>
@@ -305,6 +306,22 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- Spring Cloud -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-cloudfoundry-connector</artifactId>
+            <version>${spring-cloud.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-localconfig-connector</artifactId>
+            <version>${spring-cloud.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-spring-service-connector</artifactId>
+            <version>${spring-cloud.version}</version>
         </dependency>
     </dependencies>
     <build>

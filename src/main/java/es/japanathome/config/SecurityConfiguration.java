@@ -23,7 +23,7 @@ import javax.inject.Inject;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-    
+
     @Inject
     private Environment env;
 
@@ -69,35 +69,36 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/i18n/**")
             .antMatchers("/swagger-ui/**");
     }
-    
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
             .exceptionHandling()
-                .authenticationEntryPoint(authenticationEntryPoint)
-                .and()
+            .authenticationEntryPoint(authenticationEntryPoint)
+        .and()
             .rememberMe()
-                .rememberMeServices(rememberMeServices)
-                .key(env.getProperty("jhipster.security.rememberme.key"))
-                .and()
+            .rememberMeServices(rememberMeServices)
+            .key(env.getProperty("jhipster.security.rememberme.key"))
+        .and()
             .formLogin()
-                .loginProcessingUrl("/app/authentication")
-                .successHandler(ajaxAuthenticationSuccessHandler)
-                .failureHandler(ajaxAuthenticationFailureHandler)
-                .usernameParameter("j_username")
-                .passwordParameter("j_password")
-                .permitAll()
-                .and()
+            .loginProcessingUrl("/app/authentication")
+            .successHandler(ajaxAuthenticationSuccessHandler)
+            .failureHandler(ajaxAuthenticationFailureHandler)
+            .usernameParameter("j_username")
+            .passwordParameter("j_password")
+            .permitAll()
+        .and()
             .logout()
-                .logoutUrl("/app/logout")
-                .logoutSuccessHandler(ajaxLogoutSuccessHandler)
-                .deleteCookies("JSESSIONID")
-                .permitAll()
-                .and()
+            .logoutUrl("/app/logout")
+            .logoutSuccessHandler(ajaxLogoutSuccessHandler)
+            .deleteCookies("JSESSIONID")
+            .permitAll()
+        .and()
             .csrf()
-                .disable()
+            .disable()
             .headers()
-                .frameOptions().disable()
+            .frameOptions()
+            .disable()
             .authorizeRequests()
                 .antMatchers("/app/rest/register").permitAll()
                 .antMatchers("/app/rest/activate").permitAll()
@@ -126,9 +127,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/protected/**").authenticated();
 
     }
-    
-    
-	
+
     @EnableGlobalMethodSecurity(prePostEnabled = true, jsr250Enabled = true)
     private static class GlobalSecurityConfiguration extends GlobalMethodSecurityConfiguration {
     }

@@ -19,8 +19,8 @@
     "swagger-ui": "2.0.18",
     "ngAutocomplete": "~1.0.0",
     "angular-animate": "1.2.26"
-},
-"devDependencies": {
+  },
+  "devDependencies": {
     "angular-mocks": "1.2.26",
     "angular-scenario": "1.2.26"
   }

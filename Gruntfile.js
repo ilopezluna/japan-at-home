@@ -1,4 +1,4 @@
-// Generated on 2014-10-31 using generator-jhipster 1.6.0
+// Generated on 2014-11-09 using generator-jhipster 1.8.0
 'use strict';
 
 // # Globbing
@@ -65,18 +65,25 @@ module.exports = function (grunt) {
                     changeOrigin: false
                 },
                 {
-                context: '/dump',
-                host: 'localhost',
-                port: 8080,
-                https: false,
-                changeOrigin: false
+                    context: '/dump',
+                    host: 'localhost',
+                    port: 8080,
+                    https: false,
+                    changeOrigin: false
                 },
                 {
-                context: '/api-docs',
-                host: 'localhost',
-                port: 8080,
-                https: false,
-                changeOrigin: false
+                    context: '/health',
+                    host: 'localhost',
+                    port: 8080,
+                    https: false,
+                    changeOrigin: false
+                },
+                {
+                    context: '/api-docs',
+                    host: 'localhost',
+                    port: 8080,
+                    https: false,
+                    changeOrigin: false
                 }
             ],
             options: {
@@ -368,7 +375,7 @@ module.exports = function (grunt) {
                     branch: 'master'
                 }
             }
-        },
+        }
     });
 
     grunt.registerTask('server', function (target) {
@@ -413,7 +420,7 @@ module.exports = function (grunt) {
     grunt.registerTask('buildHeroku', [
         'test',
         'build',
-        'copy:generateHerokuDirectory',
+        'copy:generateHerokuDirectory'
     ]);
 
     grunt.registerTask('deployHeroku', [
@@ -426,7 +433,7 @@ module.exports = function (grunt) {
     grunt.registerTask('buildOpenshift', [
         'test',
         'build',
-        'copy:generateOpenshiftDirectory',
+        'copy:generateOpenshiftDirectory'
     ]);
 
     grunt.registerTask('deployOpenshift', [
