@@ -416,6 +416,10 @@ h1 strong {
     text-overflow: ellipsis;
 }
 
+.item_selected {
+    background-color: #faedec;
+}
+
 .title_sushi {
     width: 20px;
     height: 28px;

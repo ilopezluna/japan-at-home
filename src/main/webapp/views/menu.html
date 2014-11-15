@@ -57,9 +57,12 @@
                                 </h3>
                                 <div id="{{category.id}}" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        <div ng-repeat="product in products | filter:{ tag: category.id }">
+                                        <div class="col-md-12" ng-repeat="product in products | filter:{ tag: category.id }"
+                                             ng-class="{ 'item_selected': product.selected }">
                                             <div class="col-md-9 col-xs-9 product_name">{{product.name}}</div>
-                                            <div class="col-md-3 col-xs-3 product_pvp">{{product.price}}€<span ng-click="addItem(product)" class="transition02 glyphicon glyphicon-plus-sign" ></span></div>
+                                            <div class="col-md-3 col-xs-3 product_pvp">{{product.price}}€
+                                                <span ng-click="addItem(product)" class="transition02 glyphicon glyphicon-plus-sign"></span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

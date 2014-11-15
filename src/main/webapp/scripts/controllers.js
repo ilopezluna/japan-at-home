@@ -83,6 +83,7 @@ japanAtHomeApp.controller('CartController', function ($scope, $location, Order, 
 
     $scope.addItem = function( product )
     {
+        product.selected = true;
         if ( product.id in $scope.order.items)
         {
             $scope.order.items[product.id].quantity++;
@@ -102,6 +103,7 @@ japanAtHomeApp.controller('CartController', function ($scope, $location, Order, 
         if ( $scope.order.items[item.product.id].quantity == 1 )
         {
             delete $scope.order.items[item.product.id];
+            product.selected = false;
         }
         else
         {
