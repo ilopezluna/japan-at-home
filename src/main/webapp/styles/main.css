@@ -153,8 +153,12 @@ h1, h2, h3, h4 {
     color: #666;
 }
 
-h1 {
+.big {
     font-size: 45px;
+}
+
+h1 {
+    font-size: 30px;
 }
 
 h2 {
@@ -333,7 +337,6 @@ h1 strong {
 
 #main_content .restaurant_menu h1 {
     margin: 0 10px 0 10px;
-    font-size: 30px;
 }
 
 #main_content .restaurant_menu h2 span {
