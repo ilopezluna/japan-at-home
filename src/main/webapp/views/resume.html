@@ -53,7 +53,7 @@
                         </div>
                         <div ng-controller="MerchantController" class="col-md-3">
 
-                            <form name="merchantForm" action="{{trustSrc(url)}}"  method="POST">
+                            <form name="merchantForm" action="{{trustSrc(url)}}"  method="POST" target="_blank">
                                 <input hidden="true" name="Ds_Merchant_MerchantCode"        ng-model="merchant.code"            />
                                 <input hidden="true" name="Ds_Merchant_Terminal"            ng-model="merchant.terminal"        />
                                 <input hidden="true" name="Ds_Merchant_Order"               ng-model="merchant.order"           />

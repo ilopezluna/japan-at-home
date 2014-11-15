@@ -347,7 +347,7 @@
     }
     ,
     "menu": {
-        "title": "Restaurant <span> {{name}} </span>",
+        "title": "Restaurant {{name}}",
         "iva":"* TOTS ELS PREUS INCLOUEN l'I.V.A",
         "cart": {
             "title": "El teu menú",

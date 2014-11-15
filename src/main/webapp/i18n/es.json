@@ -346,7 +346,7 @@
         }
     },
     "menu": {
-        "title": "Restaurante <span> {{name}} </span>",
+        "title": "Restaurante {{name}}",
         "iva":"* TODOS LOS PRECIOS INCLUYEN EL I.V.A",
         "cart": {
             "title": "Tu menú",
@@ -414,7 +414,7 @@
     "resume": {
         "title": "RESUMEN",
         "description": "Paga online o en efectivo, ¡como prefieras!",
-        "delivery": "Dirección de entrega: ",
+        "delivery": "Dirección de entrega: {{address}}",
         "home": "Inicio",
         "menu": "Menú",
         "resume": "Resumen",
