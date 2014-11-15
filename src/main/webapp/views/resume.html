@@ -21,7 +21,7 @@
                         </div>
                     </div>
 
-                    <h3 translate="resume.title">Resumen</h3>
+                    <h1 translate="resume.title">Resumen</h1>
 
                     <p translate="resume.description">Paga online o en efectivo, ¡como prefieras!</p>
 
@@ -35,19 +35,30 @@
 
                             <div class="resum_payment_cart">
 
-                                <div translate="resume.table.title" class="col-md-10 col-sm-10 top_table">RESUMEN DE TU PEDIDO</div>
-                                <div class="col-md-2 col-sm-2 top_table item_right header"><a href="#/menu"><span class="glyphicon glyphicon-pencil"></span></a></div>
-
-                                <div ng-repeat="item in order.items">
-                                    <div ng-class-odd="'table_color01'" ng-class-even="'table_color02'" class="col-md-10 col-sm-10 article"><b>x{{item.quantity}}</b> {{item.product.name}}</div>
-                                    <div ng-class-odd="'table_color01'" ng-class-even="'table_color02'" class="col-md-2 col-sm-2 item_right"><b>{{ getItemPrice(item) }}€</b></div>
+                                <div class="top_table col-md-12">
+                                    <div translate="resume.table.title" class="col-md-10 col-sm-10">RESUMEN DE TU PEDIDO</div>
+                                    <div class="col-md-2 col-sm-2 item_right">
+                                        <a href="#/menu">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+                                    </div>
                                 </div>
 
-                                <div translate="resume.table.total" class="col-md-10 col-sm-9 col-xs-6 table_color01 total_title">TOTAL</div>
-                                <div class="col-md-2 col-sm-3 col-xs-6 table_color01 total_pvp">{{ total() }}€</div>
-                                <div class="col-md-12 table_color01">
-                                    <p translate="resume.delivery" translate-values="{address: '{{order.address}}'}">Dirección de entrega</p>
+
+                                <div class="col-md-12 borders">
+                                    <div ng-repeat="item in order.items">
+                                        <div ng-class-odd="'table_color02'" ng-class-even="'table_color01'" class="col-md-10 col-sm-10 article"><b>x{{item.quantity}}</b> {{item.product.name}}</div>
+                                        <div ng-class-odd="'table_color02'" ng-class-even="'table_color01'" class="col-md-2 col-sm-2 item_right"><b>{{ getItemPrice(item) }}€</b></div>
+                                    </div>
+
+                                    <div translate="resume.table.total" class="col-md-10 col-sm-9 col-xs-6 table_color01 total_title">TOTAL</div>
+                                    <div class="col-md-2 col-sm-3 col-xs-6 table_color01 total_pvp">{{ total() }}€</div>
+                                    <div class="col-md-12 table_color01">
+                                        <p translate="resume.delivery" translate-values="{address: '<b>{{order.address}}</b>'}">Dirección de entrega</p>
+                                    </div>
+
                                 </div>
+
                             </div>
 
                         </div>

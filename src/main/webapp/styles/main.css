@@ -466,13 +466,14 @@ h1 strong {
 }
 
 .top_table {
-    background: #67625E;
+    background: #D65446;
     color: #fff;
     padding-top: 15px;
     padding-bottom: 15px;
 }
-.resum_payment_cart .item_right .header {
-    padding-top: 15px;
+
+.top_table a {
+    color: #fff !important;
 }
 
 .resum_payment_cart .table_color01, .resum_payment_cart .table_color02 {
@@ -482,7 +483,16 @@ h1 strong {
 .resum_payment_cart .table_color01 {
     background: #F9FAF7;
 }
-
+.borders {
+    border-style: solid;
+    border-color: #D65446;
+    border-top-width: 0px;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
 .resum_payment_cart .amount {
     padding: 0px 6px;
     margin: 0;
@@ -515,8 +525,8 @@ h1 strong {
     width: 100%;
     font-size: 20px;
     margin-bottom: 20px;
-    padding: 10px 0;
     float: right;
+    margin-top: 0px;
 }
 
 /* Login */
