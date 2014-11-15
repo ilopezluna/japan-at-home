@@ -51,7 +51,7 @@ japanAtHomeApp.controller('HomeController', function ($scope, Restaurant, OrderS
 });
 
 
-japanAtHomeApp.controller('RestaurantMenuController', function ($scope, Restaurant, Product, Tag, $routeParams, OrderService)
+japanAtHomeApp.controller('RestaurantMenuController', function ($scope, $filter, Restaurant, Product, Tag, $routeParams, OrderService)
 {
     $scope.restaurant = Restaurant.get( {id: $routeParams.restaurantId} , function(data) {
         OrderService.restaurant($scope.restaurant);
@@ -64,22 +64,6 @@ japanAtHomeApp.controller('RestaurantMenuController', function ($scope, Restaura
     $scope.select= function(index) {
         $scope.selected = index;
     };
-});
-
-japanAtHomeApp.controller('SuggestController', function ($scope, Suggestion)
-{
-    $scope.suggest = function (suggestion)
-    {
-        if (suggestion != null && suggestion.description != null)
-        {
-            Suggestion.save(suggestion);
-        }
-    }
-});
-
-japanAtHomeApp.controller('CartController', function ($scope, $location, Order, OrderService) {
-
-    $scope.order = OrderService.current();
 
     $scope.addItem = function( product )
     {
@@ -103,13 +87,31 @@ japanAtHomeApp.controller('CartController', function ($scope, $location, Order, 
         if ( $scope.order.items[item.product.id].quantity == 1 )
         {
             delete $scope.order.items[item.product.id];
-            product.selected = false;
+
+            //Get product to remove background
+            $filter('filter')($scope.products, {id: item.product.id})[0].selected=false;
         }
         else
         {
             $scope.order.items[item.product.id].quantity--;
         }
     };
+});
+
+japanAtHomeApp.controller('SuggestController', function ($scope, Suggestion)
+{
+    $scope.suggest = function (suggestion)
+    {
+        if (suggestion != null && suggestion.description != null)
+        {
+            Suggestion.save(suggestion);
+        }
+    }
+});
+
+japanAtHomeApp.controller('CartController', function ($scope, $location, Order, OrderService) {
+
+    $scope.order = OrderService.current();
 
     $scope.total = function()
     {
