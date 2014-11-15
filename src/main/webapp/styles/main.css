@@ -115,8 +115,8 @@ ul#strength {
 
 	#E4EADC gray first
 	#F9FAF7 gray second
-	#5ccfdb green
-	#DB685C orange
+	#55211c green
+	#D65446 orange
 	#F45454 red
 	#424649 black
 
@@ -135,7 +135,7 @@ ul#strength {
 }
 
 .basic-color {
-    color: #DB685C;
+    color: #D65446;
 }
 
 .text-basic-color {
@@ -173,7 +173,7 @@ h4 {
 }
 
 a {
-    color: #DB685C;
+    color: #D65446;
 }
 a:hover {
     text-decoration: none
@@ -194,10 +194,10 @@ s {
     background-color: white;
 }
 .navbar-default .navbar-nav>li>a {
-    color: #DB685C;
+    color: #D65446;
 }
 .navbar-default .navbar-nav>li>a:hover {
-    color: #C85E53;
+    color: #55211c;
 }
 
 .btn {
@@ -205,7 +205,7 @@ s {
     font-size: 18px;
     padding-top: 8px;
     padding-bottom: 8px;
-    background: #DB685C;
+    background: #D65446;
     color: #fff;
     border: none;
     margin-top: 10px;
@@ -213,7 +213,7 @@ s {
 }
 
 .btn:hover {
-    background-color: #C85E53;
+    background-color: #55211c;
     color: #FFFFFF;
 }
 
@@ -229,7 +229,7 @@ s {
 }
 
 .prev_step:hover {
-    background: #DB685C;
+    background: #D65446;
 }
 
 .transition02 {
@@ -272,7 +272,7 @@ s {
 
 h1 strong {
     text-transform: uppercase;
-    color: #DB685C;
+    color: #D65446;
 }
 
 #main_content_search {
@@ -288,7 +288,7 @@ h1 strong {
 }
 
 #main_content a:hover .btn {
-    background-color: #C85E53;
+    background-color: #55211c;
 }
 
 #main_content .full_content {
@@ -337,7 +337,7 @@ h1 strong {
 }
 
 #main_content .restaurant_menu h2 span {
-    color: #DB685C;
+    color: #D65446;
 }
 
 #main_content .restaurant_menu h3 {
@@ -358,7 +358,7 @@ h1 strong {
 }
 
 #main_content .restaurant_menu .caret {
-    color: #DB685C;
+    color: #D65446;
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -o-transform: rotate(-90deg);
@@ -390,14 +390,14 @@ h1 strong {
 #main_content .product_pvp .glyphicon {
     padding: 0;
     margin: 0 0 0 10px;
-    color: #DB685C;
+    color: #D65446;
     font-size: 18px;
     line-height: 10px;
     cursor: pointer
 }
 
 #main_content .product_pvp .glyphicon:hover {
-    color: #5ccfdb;
+    color: #55211c;
 }
 
 #main_content .info_iva {
@@ -451,7 +451,7 @@ h1 strong {
 }
 
 #main_content .full_content .breadcrumb_payment .btn {
-    background: #DB685C;
+    background: #D65446;
     border: none;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -522,7 +522,7 @@ h1 strong {
 #main_newsletters {
     width: 100%;
     padding: 20px;
-    background: #DB685C;
+    background: #D65446;
     text-align: center;
     position: relative;
 }
@@ -535,11 +535,11 @@ h1 strong {
 }
 
 #main_newsletters .input-group{ width: 500px; margin: 0 auto 20px;}
-#main_newsletters .form-control{ border: none; padding: 25px 10px; font-size: 16px; color: #DB685C}
+#main_newsletters .form-control{ border: none; padding: 25px 10px; font-size: 16px; color: #D65446}
 
 #main_newsletters .btn {
     background: #fff;
-    color: #DB685C;
+    color: #D65446;
 }
 
 /* Main Help */
