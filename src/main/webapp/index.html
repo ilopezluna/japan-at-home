@@ -41,8 +41,7 @@
                         <!--</li>-->
                         <li ng-switch-when="false">
                             <a href="#/login">
-                                <span class="glyphicon glyphicon-log-in"></span>
-                                &#xA0;<span translate="global.menu.account.login">Authenticate</span></a>
+                                <span translate="global.menu.account.login">Authenticate</span></a>
                             </a>
                         </li>
                         <li ng-switch-when="true" ng-show="isAuthorized(userRoles.admin)" class="dropdown pointer">
@@ -66,13 +65,13 @@
                         </ul>
                     </li>
                     <li ng-switch-when="false">
-                        <a href="#/register"><span class="glyphicon glyphicon-plus-sign"></span>
-                            &#xA0;<span translate="global.menu.account.register">Register</span></a>
+                        <a href="#/register">
+                            <span translate="global.menu.account.register">Register</span>
+                        </a>
                     </li>
                     <li ng-switch-when="true" class="dropdown pointer">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
                             <span>
-                                <span class="glyphicon glyphicon-user"></span>
                                 <span class="hidden-tablet" translate="global.menu.account.main">
                                     Account
                                 </span>
@@ -80,14 +79,21 @@
                             </span>
                         </a>
                         <ul class="dropdown-menu" ng-controller="MenuController">
-                            <li><a href="#/settings"><span class="glyphicon glyphicon-wrench"></span>
-                                &#xA0;<span translate="global.menu.account.settings">Settings</span></a></li>
-                            <li><a href="#/password"><span class="glyphicon glyphicon-lock"></span>
-                                &#xA0;<span translate="global.menu.account.password">Password</span></a></li>
-                            <!--<li ng-switch-when="true"><a href="#/sessions"><span class="glyphicon glyphicon-cloud"></span>-->
-                            <!--&#xA0;<span translate="global.menu.account.sessions">Sessions</span></a></li>-->
-                            <li><a href="#/logout"><span class="glyphicon glyphicon-log-out"></span>
-                                &#xA0;<span translate="global.menu.account.logout">Log out</span></a></li>
+                            <li>
+                                <a href="#/settings">
+                                    <span translate="global.menu.account.settings">Settings</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#/password">
+                                    <span translate="global.menu.account.password">Password</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#/logout">
+                                    <span translate="global.menu.account.logout">Log out</span>
+                                </a>
+                            </li>
 
                         </ul>
                     </li>
@@ -115,7 +121,6 @@
                     <li class="dropdown pointer" ng-controller="LanguageController">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
                             <span>
-                                <span class="glyphicon glyphicon-flag"></span>
                                 <span class="hidden-tablet" translate="global.menu.language">Language</span>
                                 <b class="caret"></b>
                             </span>

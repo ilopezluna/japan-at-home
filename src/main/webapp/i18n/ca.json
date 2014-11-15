@@ -321,6 +321,7 @@
     "home": {
         "title": "Demana menjar <strong>japonés</strong> a domicili",
         "subtitle": "El teu codi posal",
+        "placeholder": "Exemple: 08330",
         "price": "Mín. comanda: ",
         "menu": "Veure carta",
         "suggestion": {

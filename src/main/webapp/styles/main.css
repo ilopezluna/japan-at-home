@@ -25,7 +25,6 @@
 .hero-unit h1 {
     font-size: 60px;
     line-height: 1;
-    letter-spacing: -1px;
 }
 
 .error {
@@ -147,25 +146,25 @@ body {
     font-size: 16px;
     color: #666;
     background-color: #FFFFFF;
+    font-family: "Open Sans";
 }
 
 h1, h2, h3, h4 {
     color: #666;
-    font-family: "Open Sans";
-    letter-spacing: 1px;
 }
 
 h1 {
-    font-family: "Open Sans";
     font-size: 45px;
 }
 
 h2 {
     font-size: 40px;
+    color: #bbb;
+    font-weight: 100;
 }
 
 h3 {
-    font-size: 30px;
+    font-size: 16px;
 }
 
 h4 {
@@ -191,6 +190,7 @@ s {
 .navbar {
     border: 0px;
     margin-bottom: 0px;
+    font-family: "Helvetica Neue";
 }
 
 .navbar-default {
@@ -200,11 +200,7 @@ s {
     color: #DB685C;
 }
 .navbar-default .navbar-nav>li>a:hover {
-    color: #5ccfdb;
-}
-
-label {
-    font-weight: normal;
+    color: #C85E53;
 }
 
 .btn {
@@ -219,8 +215,8 @@ label {
 }
 
 .btn:hover {
-    background-color: #5ccfdb;
-    color: #fff;
+    background-color: #C85E53;
+    color: #FFFFFF;
 }
 
 .btn,
@@ -259,6 +255,11 @@ label {
      margin-top: 0px;
 }
 
+.zip-form-control {
+    width: 50%;
+    margin-left: 25%;
+}
+
 #main_content a {
     color: #67625E;
 }
@@ -272,6 +273,9 @@ label {
 
 
 /* Main Content top */
+#main_content_top {
+    margin-top: 30px;
+}
 
 #main_content_top h1 strong {
     text-transform: uppercase;
@@ -279,7 +283,7 @@ label {
 }
 
 #main_content_search {
-    padding-bottom: 40px;
+    padding-bottom: 30px;
 }
 
 /* Main Content */
@@ -291,7 +295,7 @@ label {
 }
 
 #main_content a:hover .btn {
-    background-color: #5ccfdb
+    background-color: #C85E53;
 }
 
 #main_content .full_content {
@@ -600,7 +604,6 @@ label {
 #main_footer .legales {
     margin-top: 30px;
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    letter-spacing: 1px
 }
 #main_footer .legales a {
     color: #fff;

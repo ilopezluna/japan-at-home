@@ -321,6 +321,7 @@
     "home": {
         "title": "Pide comida <strong>japonesa</strong> a domicilio",
         "subtitle": "Tu código postal",
+        "placeholder": "Ejemplo: 08330",
         "price": "Mín pedido: ",
         "menu": "Ver carta",
         "suggestion": {
