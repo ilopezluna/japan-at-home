@@ -68,6 +68,8 @@ public class Tag implements Serializable, Comparable<Tag> {
 
     @Override
     public int compareTo(Tag o) {
-        return this.getName().split(". ")[0].compareTo(o.getName().split(". ")[0]);
+        String base = this.getName().split(". ")[0];
+        String against = o.getName().split(". ")[0];
+        return new Integer(base).compareTo(new Integer(against));
     }
 }
