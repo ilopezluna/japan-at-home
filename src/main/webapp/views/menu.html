@@ -8,9 +8,9 @@
 
             <div class="col-md-4 col-sm-4">
 
-                <div class="thumbnail cart text-center">
+                <div class="thumbnail restaurant_menu">
 
-                    <h3 translate="menu.cart.title">TU MENU</h3>
+                    <h1 translate="menu.cart.title">TU MENU</h1>
 
                     <hr/>
 
@@ -23,12 +23,14 @@
 
                     <hr/>
 
-                    <div class="row cart-total ">
+                    <div class="row cart-total">
                         <div class="col-md-6 text-right" translate="menu.cart.total">TOTAL</div>
                         <div class="col-md-6 text-left basic-color">{{ total() }}€</div>
                     </div>
 
-                    <a href="#/restaurant/{{restaurant.id}}/{{restaurant.shortName}}/delivery"><button translate="menu.cart.button" type="button" class="btn transition02">FINALIZAR PEDIDO</button></a>
+                    <a href="#/restaurant/{{restaurant.id}}/{{restaurant.shortName}}/delivery">
+                        <button translate="menu.cart.button" type="button" class="btn transition02">FINALIZAR PEDIDO</button>
+                    </a>
                 </div>
 
             </div>
@@ -38,7 +40,9 @@
             <div class="col-md-8 col-sm-8">
                 <div class="thumbnail restaurant_menu">
 
-                    <h2 translate="menu.title" translate-values="{name: '{{restaurant.name}}'}">RESTAURANTE <span>SUSHI BO</span></h2>
+                    <h1 translate="menu.title" translate-values="{name: '<strong>{{restaurant.name}}</strong>'}">
+                        RESTAURANTE <span>SUSHI BO</span>
+                    </h1>
                     <div class="noodles_dark"></div>
 
                     <div class="row space-top-menu">
