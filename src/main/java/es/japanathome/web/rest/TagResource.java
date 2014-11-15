@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
 import javax.inject.Inject;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,7 +50,17 @@ public class TagResource {
     public List<Tag> getAll(final WebRequest webRequest) {
         log.debug("REST request to get all Tags");
         String restaurantId = webRequest.getParameter("restaurantId");
-        return restaurantId == null ? tagRepository.findAll() : tagRepository.findByRestaurantId(Long.valueOf(restaurantId));
+        if (restaurantId == null)
+        {
+            return tagRepository.findAll();
+        }
+        else
+        {
+            Long id = Long.valueOf(restaurantId);
+            List<Tag> tagsOfRestaurant = tagRepository.findByRestaurantId(id);
+            Collections.sort(tagsOfRestaurant);
+            return tagsOfRestaurant;
+        }
     }
 
     /**
@@ -62,7 +73,7 @@ public class TagResource {
     public ResponseEntity<Tag> get(@PathVariable Long id) {
         log.debug("REST request to get Tag : {}", id);
         return Optional.ofNullable(tagRepository.findOne(id))
-            .map(tag -> new ResponseEntity<>(
+            .map(tag -> new ResponseEntity<Tag>(
                 tag,
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));

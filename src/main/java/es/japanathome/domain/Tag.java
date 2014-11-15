@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "T_TAG")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Tag implements Serializable {
+public class Tag implements Serializable, Comparable<Tag> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -64,5 +64,10 @@ public class Tag implements Serializable {
                 "id=" + id +
                 ", name='" + name + "'" +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Tag o) {
+        return this.getName().split(". ")[0].compareTo(o.getName().split(". ")[0]);
     }
 }

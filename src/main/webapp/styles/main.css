@@ -303,6 +303,11 @@ s {
     position: relative
 }
 
+#main_content .col-md-3 {
+    margin-left: 30px;
+    width: 22%;
+}
+
 .thumbnail {
     display: block;
     padding: 4px;
