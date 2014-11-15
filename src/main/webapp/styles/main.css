@@ -306,8 +306,6 @@ s {
 .thumbnail {
     display: block;
     padding: 4px;
-    margin-bottom: 20px;
-    line-height: 1.42857143;
     border: 1px solid #ddd;
     border-radius: 4px;
     -webkit-transition: all .2s ease-in-out;
@@ -317,6 +315,9 @@ s {
 #main_content .restaurant_thmb {
     padding: 20px 15px;
     text-align: center;
+}
+#main_content .restaurant_thmb img {
+    width: 100%;
 }
 
 #main_content .restaurant_thmb h4 {

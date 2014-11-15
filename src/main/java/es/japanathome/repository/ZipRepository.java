@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * Spring Data JPA repository for the Zip entity.
  */
-public interface ZipRepository extends JpaRepository<Zip, Long> {
-
+public interface ZipRepository extends JpaRepository<Zip, Long>
+{
+    Zip findByCode(String code);
 }

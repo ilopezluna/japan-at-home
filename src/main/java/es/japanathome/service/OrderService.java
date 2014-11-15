@@ -3,9 +3,11 @@ package es.japanathome.service;
 import es.japanathome.domain.Item;
 import es.japanathome.domain.Order;
 import es.japanathome.domain.Product;
+import es.japanathome.domain.Zip;
 import es.japanathome.dto.Merchant;
 import es.japanathome.repository.OrderRepository;
 import es.japanathome.repository.ProductRepository;
+import es.japanathome.repository.ZipRepository;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 import org.slf4j.Logger;
@@ -45,6 +47,9 @@ public class OrderService {
 
     @Inject
     private ProductRepository productRepository;
+
+    @Inject
+    private ZipRepository zipRepository;
 
     @Inject
     private MailService mailService;
@@ -130,6 +135,15 @@ public class OrderService {
         if ( order.getZip() == null )
         {
             throw new ValidationException(ZIP_IS_NULL);
+        }
+
+        Zip zip = zipRepository.findByCode(order.getZip().getCode());
+        //TODO hidden feature, fix it!
+        order.setZip(zip);
+
+        if (order.getZip() == null)
+        {
+            throw new ValidationException(ZIP_IS_NOT_VALID);
         }
 
         if ( !order.getRestaurant().getZips().contains(order.getZip()) )
