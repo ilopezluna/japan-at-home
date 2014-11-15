@@ -26,6 +26,6 @@ japanAtHomeApp.controller('SuggestionController', function ($scope, resolvedSugg
         };
 
         $scope.clear = function () {
-            $scope.suggestion = {email: null, description: null, status: null, createdOn: null, id: null};
+            $scope.suggestion = {email: null, description: null, status: null, createdAt: null, id: null};
         };
     });

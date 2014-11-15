@@ -4,10 +4,10 @@
 
 var japanAtHomeApp = angular.module('japanAtHomeApp', ['http-auth-interceptor', 'tmh.dynamicLocale',
     'ngResource', 'ngRoute', 'ngCookies', 'japanAtHomeAppUtils', 'pascalprecht.translate', 'truncate',
-    'ngAutocomplete', 'ngAnimate', 'ngSanitize']);
+    'ngAnimate', 'ngSanitize']);
 
 japanAtHomeApp
-    .config(function ($routeProvider, $httpProvider, $translateProvider, tmhDynamicLocaleProvider, USER_ROLES) {
+    .config(['$routeProvider', '$httpProvider', '$translateProvider', 'tmhDynamicLocaleProvider', 'USER_ROLES', function ($routeProvider, $httpProvider, $translateProvider, tmhDynamicLocaleProvider, USER_ROLES) {
             $routeProvider
                 .when('/register', {
                     templateUrl: 'views/register.html',
@@ -171,7 +171,7 @@ japanAtHomeApp
             tmhDynamicLocaleProvider.localeLocationPattern('bower_components/angular-i18n/angular-locale_{{locale}}.js')
             tmhDynamicLocaleProvider.useCookieStorage('NG_TRANSLATE_LANG_KEY');
             
-        })
+        }])
         .run(function($rootScope, $location, $http, AuthenticationSharedService, Session, USER_ROLES) {
                 $rootScope.authenticated = false;
                 $rootScope.$on('$routeChangeStart', function (event, next) {

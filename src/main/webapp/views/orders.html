@@ -26,9 +26,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label>CreatedOn</label>
+                            <label>CreatedAt</label>
                             <input type="date" class="form-control"
-                                   ng-model="order.createdOn">
+                                   ng-model="order.createdAt">
                         </div>
                         <div class="form-group">
                             <label>Address</label>
@@ -56,6 +56,11 @@
                             <select class="form-control" ng-model="order.restaurant.id" ng-options="restaurant.id as restaurant.name for restaurant in restaurants">
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label>zip</label>
+                            <select class="form-control" ng-model="order.zip.id" ng-options="zip.id as zip.code for zip in zips">
+                            </select>
+                        </div>
 
                     </div>
                     <div class="modal-footer">
@@ -76,24 +81,26 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>CreatedOn</th>
+                    <th>CreatedAt</th>
                     <th>Address</th>
                     <th>Code</th>
                     <th>PaymentType</th>
                     <th>Status</th>
                     <th>restaurant</th>
+                    <th>zip</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="order in orders">
                     <td>{{order.id}}</td>
-                    <td>{{order.createdOn}}</td>
+                    <td>{{order.createdAt}}</td>
                     <td>{{order.address}}</td>
                     <td>{{order.code}}</td>
                     <td>{{order.paymentType}}</td>
                     <td>{{order.status}}</td>
                     <td>{{order.restaurant.name}}</td>
+                    <td>{{order.zip.code}}</td>
                     <td>
                         <button type="submit"
                                 ng-click="update(order.id)"

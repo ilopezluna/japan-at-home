@@ -1,9 +1,11 @@
 'use strict';
 
-japanAtHomeApp.controller('OrderController', function ($scope, resolvedOrder, Order, resolvedRestaurant) {
+japanAtHomeApp.controller('OrderController', function ($scope, resolvedOrder, Order, resolvedRestaurant, resolvedZip, resolvedItem) {
 
         $scope.orders = resolvedOrder;
         $scope.restaurants = resolvedRestaurant;
+        $scope.zips = resolvedZip;
+        $scope.items = resolvedItem;
 
         $scope.create = function () {
             Order.save($scope.order,
@@ -27,6 +29,6 @@ japanAtHomeApp.controller('OrderController', function ($scope, resolvedOrder, Or
         };
 
         $scope.clear = function () {
-            $scope.order = {createdOn: null, address: null, code: null, paymentType: null, status: null, id: null};
+            $scope.order = {createdAt: null, address: null, code: null, paymentType: null, status: null, id: null};
         };
     });

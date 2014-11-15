@@ -1,5 +1,8 @@
 package es.japanathome.web.rest;
 
+import es.japanathome.Application;
+import es.japanathome.domain.Product;
+import es.japanathome.repository.ProductRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,10 +20,6 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.util.List;
-
-import es.japanathome.Application;
-import es.japanathome.domain.Product;
-import es.japanathome.repository.ProductRepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -49,12 +48,12 @@ public class ProductResourceTest {
     private static final Integer UPDATED_STATUS = 1;
     
 
-   @Inject
-   private ProductRepository productRepository;
+    @Inject
+    private ProductRepository productRepository;
 
-   private MockMvc restProductMockMvc;
+    private MockMvc restProductMockMvc;
 
-   private Product product;
+    private Product product;
 
     @PostConstruct
     public void setup() {
@@ -92,7 +91,7 @@ public class ProductResourceTest {
         assertThat(testProduct.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testProduct.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testProduct.getPrice()).isEqualTo(DEFAULT_PRICE);
-        assertThat(testProduct.getStatus()).isEqualTo(DEFAULT_STATUS);;
+        assertThat(testProduct.getStatus()).isEqualTo(DEFAULT_STATUS);
     }
 
     @Test

@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class Zip implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "code")

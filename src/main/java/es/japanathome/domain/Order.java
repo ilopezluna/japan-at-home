@@ -26,14 +26,14 @@ public class Order implements Serializable {
     public enum PaymentType { CASH, ONLINE }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @Column(name = "created_on", nullable = false)
-    private LocalDate createdOn;
+    @Column(name = "created_at", nullable = false)
+    private LocalDate createdAt;
 
     @Column(name = "address")
     private String address;
@@ -64,12 +64,12 @@ public class Order implements Serializable {
         this.id = id;
     }
 
-    public LocalDate getCreatedOn() {
-        return createdOn;
+    public LocalDate getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreatedOn(LocalDate createdOn) {
-        this.createdOn = createdOn;
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String getAddress() {
@@ -139,8 +139,9 @@ public class Order implements Serializable {
 
         Order order = (Order) o;
 
-        return !(id != null ? !id.equals(order.id) : order.id != null);
+        if (id != null ? !id.equals(order.id) : order.id != null) return false;
 
+        return true;
     }
 
     @Override
@@ -152,14 +153,11 @@ public class Order implements Serializable {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", createdOn=" + createdOn +
-                ", address='" + address + '\'' +
-                ", code='" + code + '\'' +
-                ", paymentType=" + paymentType +
-                ", status=" + status +
-                ", restaurant=" + restaurant +
-                ", zip=" + zip +
-                ", items=" + items +
+                ", createdAt='" + createdAt + "'" +
+                ", address='" + address + "'" +
+                ", code='" + code + "'" +
+                ", paymentType='" + paymentType + "'" +
+                ", status='" + status + "'" +
                 '}';
     }
 }

@@ -1,5 +1,8 @@
 package es.japanathome.web.rest;
 
+import es.japanathome.Application;
+import es.japanathome.domain.Restaurant;
+import es.japanathome.repository.RestaurantRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,10 +20,6 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import java.math.BigDecimal;
 import java.util.List;
-
-import es.japanathome.Application;
-import es.japanathome.domain.Restaurant;
-import es.japanathome.repository.RestaurantRepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -51,9 +50,6 @@ public class RestaurantResourceTest {
     private static final BigDecimal DEFAULT_PRICE = BigDecimal.ZERO;
     private static final BigDecimal UPDATED_PRICE = BigDecimal.ONE;
     
-    private static final BigDecimal DEFAULT_MIN_PRICE = BigDecimal.ZERO;
-    private static final BigDecimal UPDATED_MIN_PRICE = BigDecimal.ONE;
-    
     private static final Integer DEFAULT_STATUS = 0;
     private static final Integer UPDATED_STATUS = 1;
     
@@ -66,8 +62,8 @@ public class RestaurantResourceTest {
     private static final String DEFAULT_OPEN_AT = "SAMPLE_TEXT";
     private static final String UPDATED_OPEN_AT = "UPDATED_TEXT";
     
-    private static final String DEFAULT_DAY_CLOSED = "SAMPLE_TEXT";
-    private static final String UPDATED_DAY_CLOSED = "UPDATED_TEXT";
+    private static final String DEFAULT_CLOSED_AT_DAY = "SAMPLE_TEXT";
+    private static final String UPDATED_CLOSED_AT_DAY = "UPDATED_TEXT";
     
     private static final String DEFAULT_AVERAGE_DELIVERY_TIME = "SAMPLE_TEXT";
     private static final String UPDATED_AVERAGE_DELIVERY_TIME = "UPDATED_TEXT";
@@ -76,12 +72,12 @@ public class RestaurantResourceTest {
     private static final String UPDATED_LOGO = "UPDATED_TEXT";
     
 
-   @Inject
-   private RestaurantRepository restaurantRepository;
+    @Inject
+    private RestaurantRepository restaurantRepository;
 
-   private MockMvc restRestaurantMockMvc;
+    private MockMvc restRestaurantMockMvc;
 
-   private Restaurant restaurant;
+    private Restaurant restaurant;
 
     @PostConstruct
     public void setup() {
@@ -99,12 +95,11 @@ public class RestaurantResourceTest {
         restaurant.setDescription(DEFAULT_DESCRIPTION);
         restaurant.setAddress(DEFAULT_ADDRESS);
         restaurant.setPrice(DEFAULT_PRICE);
-        restaurant.setMinPrice(DEFAULT_MIN_PRICE);
         restaurant.setStatus(DEFAULT_STATUS);
         restaurant.setTelephone(DEFAULT_TELEPHONE);
         restaurant.setCloseAt(DEFAULT_CLOSE_AT);
         restaurant.setOpenAt(DEFAULT_OPEN_AT);
-        restaurant.setDayClosed(DEFAULT_DAY_CLOSED);
+        restaurant.setClosedAtDay(DEFAULT_CLOSED_AT_DAY);
         restaurant.setAverageDeliveryTime(DEFAULT_AVERAGE_DELIVERY_TIME);
         restaurant.setLogo(DEFAULT_LOGO);
     }
@@ -130,14 +125,13 @@ public class RestaurantResourceTest {
         assertThat(testRestaurant.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testRestaurant.getAddress()).isEqualTo(DEFAULT_ADDRESS);
         assertThat(testRestaurant.getPrice()).isEqualTo(DEFAULT_PRICE);
-        assertThat(testRestaurant.getMinPrice()).isEqualTo(DEFAULT_MIN_PRICE);
         assertThat(testRestaurant.getStatus()).isEqualTo(DEFAULT_STATUS);
         assertThat(testRestaurant.getTelephone()).isEqualTo(DEFAULT_TELEPHONE);
         assertThat(testRestaurant.getCloseAt()).isEqualTo(DEFAULT_CLOSE_AT);
         assertThat(testRestaurant.getOpenAt()).isEqualTo(DEFAULT_OPEN_AT);
-        assertThat(testRestaurant.getDayClosed()).isEqualTo(DEFAULT_DAY_CLOSED);
+        assertThat(testRestaurant.getClosedAtDay()).isEqualTo(DEFAULT_CLOSED_AT_DAY);
         assertThat(testRestaurant.getAverageDeliveryTime()).isEqualTo(DEFAULT_AVERAGE_DELIVERY_TIME);
-        assertThat(testRestaurant.getLogo()).isEqualTo(DEFAULT_LOGO);;
+        assertThat(testRestaurant.getLogo()).isEqualTo(DEFAULT_LOGO);
     }
 
     @Test
@@ -157,12 +151,11 @@ public class RestaurantResourceTest {
                 .andExpect(jsonPath("$.[0].description").value(DEFAULT_DESCRIPTION.toString()))
                 .andExpect(jsonPath("$.[0].address").value(DEFAULT_ADDRESS.toString()))
                 .andExpect(jsonPath("$.[0].price").value(DEFAULT_PRICE.intValue()))
-                .andExpect(jsonPath("$.[0].minPrice").value(DEFAULT_MIN_PRICE.intValue()))
                 .andExpect(jsonPath("$.[0].status").value(DEFAULT_STATUS))
                 .andExpect(jsonPath("$.[0].telephone").value(DEFAULT_TELEPHONE.toString()))
                 .andExpect(jsonPath("$.[0].closeAt").value(DEFAULT_CLOSE_AT.toString()))
                 .andExpect(jsonPath("$.[0].openAt").value(DEFAULT_OPEN_AT.toString()))
-                .andExpect(jsonPath("$.[0].dayClosed").value(DEFAULT_DAY_CLOSED.toString()))
+                .andExpect(jsonPath("$.[0].closedAtDay").value(DEFAULT_CLOSED_AT_DAY.toString()))
                 .andExpect(jsonPath("$.[0].averageDeliveryTime").value(DEFAULT_AVERAGE_DELIVERY_TIME.toString()))
                 .andExpect(jsonPath("$.[0].logo").value(DEFAULT_LOGO.toString()));
     }
@@ -183,12 +176,11 @@ public class RestaurantResourceTest {
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()))
             .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.intValue()))
-            .andExpect(jsonPath("$.minPrice").value(DEFAULT_MIN_PRICE.intValue()))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
             .andExpect(jsonPath("$.telephone").value(DEFAULT_TELEPHONE.toString()))
             .andExpect(jsonPath("$.closeAt").value(DEFAULT_CLOSE_AT.toString()))
             .andExpect(jsonPath("$.openAt").value(DEFAULT_OPEN_AT.toString()))
-            .andExpect(jsonPath("$.dayClosed").value(DEFAULT_DAY_CLOSED.toString()))
+            .andExpect(jsonPath("$.closedAtDay").value(DEFAULT_CLOSED_AT_DAY.toString()))
             .andExpect(jsonPath("$.averageDeliveryTime").value(DEFAULT_AVERAGE_DELIVERY_TIME.toString()))
             .andExpect(jsonPath("$.logo").value(DEFAULT_LOGO.toString()));
     }
@@ -213,12 +205,11 @@ public class RestaurantResourceTest {
         restaurant.setDescription(UPDATED_DESCRIPTION);
         restaurant.setAddress(UPDATED_ADDRESS);
         restaurant.setPrice(UPDATED_PRICE);
-        restaurant.setMinPrice(UPDATED_MIN_PRICE);
         restaurant.setStatus(UPDATED_STATUS);
         restaurant.setTelephone(UPDATED_TELEPHONE);
         restaurant.setCloseAt(UPDATED_CLOSE_AT);
         restaurant.setOpenAt(UPDATED_OPEN_AT);
-        restaurant.setDayClosed(UPDATED_DAY_CLOSED);
+        restaurant.setClosedAtDay(UPDATED_CLOSED_AT_DAY);
         restaurant.setAverageDeliveryTime(UPDATED_AVERAGE_DELIVERY_TIME);
         restaurant.setLogo(UPDATED_LOGO);
         restRestaurantMockMvc.perform(post("/app/rest/restaurants")
@@ -235,12 +226,11 @@ public class RestaurantResourceTest {
         assertThat(testRestaurant.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testRestaurant.getAddress()).isEqualTo(UPDATED_ADDRESS);
         assertThat(testRestaurant.getPrice()).isEqualTo(UPDATED_PRICE);
-        assertThat(testRestaurant.getMinPrice()).isEqualTo(UPDATED_MIN_PRICE);
         assertThat(testRestaurant.getStatus()).isEqualTo(UPDATED_STATUS);
         assertThat(testRestaurant.getTelephone()).isEqualTo(UPDATED_TELEPHONE);
         assertThat(testRestaurant.getCloseAt()).isEqualTo(UPDATED_CLOSE_AT);
         assertThat(testRestaurant.getOpenAt()).isEqualTo(UPDATED_OPEN_AT);
-        assertThat(testRestaurant.getDayClosed()).isEqualTo(UPDATED_DAY_CLOSED);
+        assertThat(testRestaurant.getClosedAtDay()).isEqualTo(UPDATED_CLOSED_AT_DAY);
         assertThat(testRestaurant.getAverageDeliveryTime()).isEqualTo(UPDATED_AVERAGE_DELIVERY_TIME);
         assertThat(testRestaurant.getLogo()).isEqualTo(UPDATED_LOGO);;
     }

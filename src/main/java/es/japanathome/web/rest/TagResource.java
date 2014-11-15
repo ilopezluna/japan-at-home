@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
 import javax.inject.Inject;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,18 +48,8 @@ public class TagResource {
     @Timed
     public List<Tag> getAll(final WebRequest webRequest) {
         log.debug("REST request to get all Tags");
-
         String restaurantId = webRequest.getParameter("restaurantId");
-        if (restaurantId == null)
-        {
-            return tagRepository.findAll();
-        }
-        else
-        {
-            List<Tag> byRestaurantId = tagRepository.findByRestaurantId(Long.valueOf(restaurantId));
-            Collections.sort(byRestaurantId);
-            return byRestaurantId;
-        }
+        return restaurantId == null ? tagRepository.findAll() : tagRepository.findByRestaurantId(Long.valueOf(restaurantId));
     }
 
     /**

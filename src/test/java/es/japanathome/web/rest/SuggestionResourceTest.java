@@ -45,16 +45,16 @@ public class SuggestionResourceTest {
     private static final Integer DEFAULT_STATUS = 0;
     private static final Integer UPDATED_STATUS = 1;
     
-    private static final LocalDate DEFAULT_CREATED_ON = new LocalDate(0L);
-    private static final LocalDate UPDATED_CREATED_ON = new LocalDate();
+    private static final LocalDate DEFAULT_CREATED_AT = new LocalDate(0L);
+    private static final LocalDate UPDATED_CREATED_AT = new LocalDate();
     
 
-   @Inject
-   private SuggestionRepository suggestionRepository;
+    @Inject
+    private SuggestionRepository suggestionRepository;
 
-   private MockMvc restSuggestionMockMvc;
+    private MockMvc restSuggestionMockMvc;
 
-   private Suggestion suggestion;
+    private Suggestion suggestion;
 
     @PostConstruct
     public void setup() {
@@ -70,7 +70,7 @@ public class SuggestionResourceTest {
         suggestion.setEmail(DEFAULT_EMAIL);
         suggestion.setDescription(DEFAULT_DESCRIPTION);
         suggestion.setStatus(DEFAULT_STATUS);
-        suggestion.setCreatedOn(DEFAULT_CREATED_ON);
+        suggestion.setCreatedAt(DEFAULT_CREATED_AT);
     }
 
     @Test
@@ -92,7 +92,7 @@ public class SuggestionResourceTest {
         assertThat(testSuggestion.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testSuggestion.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
         assertThat(testSuggestion.getStatus()).isEqualTo(DEFAULT_STATUS);
-        assertThat(testSuggestion.getCreatedOn()).isEqualTo(DEFAULT_CREATED_ON);;
+        assertThat(testSuggestion.getCreatedAt()).isEqualTo(DEFAULT_CREATED_AT);
     }
 
     @Test
@@ -110,7 +110,7 @@ public class SuggestionResourceTest {
                 .andExpect(jsonPath("$.[0].email").value(DEFAULT_EMAIL.toString()))
                 .andExpect(jsonPath("$.[0].description").value(DEFAULT_DESCRIPTION.toString()))
                 .andExpect(jsonPath("$.[0].status").value(DEFAULT_STATUS))
-                .andExpect(jsonPath("$.[0].createdOn").value(DEFAULT_CREATED_ON.toString()));
+                .andExpect(jsonPath("$.[0].createdAt").value(DEFAULT_CREATED_AT.toString()));
     }
 
     @Test
@@ -127,7 +127,7 @@ public class SuggestionResourceTest {
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS))
-            .andExpect(jsonPath("$.createdOn").value(DEFAULT_CREATED_ON.toString()));
+            .andExpect(jsonPath("$.createdAt").value(DEFAULT_CREATED_AT.toString()));
     }
 
     @Test
@@ -148,7 +148,7 @@ public class SuggestionResourceTest {
         suggestion.setEmail(UPDATED_EMAIL);
         suggestion.setDescription(UPDATED_DESCRIPTION);
         suggestion.setStatus(UPDATED_STATUS);
-        suggestion.setCreatedOn(UPDATED_CREATED_ON);
+        suggestion.setCreatedAt(UPDATED_CREATED_AT);
         restSuggestionMockMvc.perform(post("/app/rest/suggestions")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(suggestion)))
@@ -161,7 +161,7 @@ public class SuggestionResourceTest {
         assertThat(testSuggestion.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testSuggestion.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
         assertThat(testSuggestion.getStatus()).isEqualTo(UPDATED_STATUS);
-        assertThat(testSuggestion.getCreatedOn()).isEqualTo(UPDATED_CREATED_ON);;
+        assertThat(testSuggestion.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);;
     }
 
     @Test

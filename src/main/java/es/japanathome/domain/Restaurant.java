@@ -18,7 +18,7 @@ import java.util.Set;
 public class Restaurant implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "name")
@@ -36,9 +36,6 @@ public class Restaurant implements Serializable {
     @Column(name = "price", precision=10, scale=2)
     private BigDecimal price;
 
-    @Column(name = "min_price", precision=10, scale=2)
-    private BigDecimal minPrice;
-
     @Column(name = "status")
     private Integer status;
 
@@ -51,8 +48,8 @@ public class Restaurant implements Serializable {
     @Column(name = "open_at")
     private String openAt;
 
-    @Column(name = "day_closed")
-    private String dayClosed;
+    @Column(name = "closed_at_day")
+    private String closedAtDay;
 
     @Column(name = "average_delivery_time")
     private String averageDeliveryTime;
@@ -61,6 +58,11 @@ public class Restaurant implements Serializable {
     private String logo;
 
     @ManyToMany(fetch=FetchType.EAGER)
+    @JoinTable(
+            name="T_RESTAURANT_T_ZIP",
+            joinColumns=@JoinColumn(name="restaurants_id"),
+            inverseJoinColumns=@JoinColumn(name="zips_id")
+    )
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Zip> zips = new HashSet<>();
 
@@ -112,14 +114,6 @@ public class Restaurant implements Serializable {
         this.price = price;
     }
 
-    public BigDecimal getMinPrice() {
-        return minPrice;
-    }
-
-    public void setMinPrice(BigDecimal minPrice) {
-        this.minPrice = minPrice;
-    }
-
     public Integer getStatus() {
         return status;
     }
@@ -152,12 +146,12 @@ public class Restaurant implements Serializable {
         this.openAt = openAt;
     }
 
-    public String getDayClosed() {
-        return dayClosed;
+    public String getClosedAtDay() {
+        return closedAtDay;
     }
 
-    public void setDayClosed(String dayClosed) {
-        this.dayClosed = dayClosed;
+    public void setClosedAtDay(String closedAtDay) {
+        this.closedAtDay = closedAtDay;
     }
 
     public String getAverageDeliveryTime() {
@@ -226,12 +220,11 @@ public class Restaurant implements Serializable {
                 ", description='" + description + "'" +
                 ", address='" + address + "'" +
                 ", price='" + price + "'" +
-                ", minPrice='" + minPrice + "'" +
                 ", status='" + status + "'" +
                 ", telephone='" + telephone + "'" +
                 ", closeAt='" + closeAt + "'" +
                 ", openAt='" + openAt + "'" +
-                ", dayClosed='" + dayClosed + "'" +
+                ", closedAtDay='" + closedAtDay + "'" +
                 ", averageDeliveryTime='" + averageDeliveryTime + "'" +
                 ", logo='" + logo + "'" +
                 '}';

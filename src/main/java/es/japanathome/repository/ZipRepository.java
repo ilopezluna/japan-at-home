@@ -8,6 +8,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface ZipRepository extends JpaRepository<Zip, Long> {
 
-    Zip findByCode(String code);
-
 }

@@ -12,6 +12,12 @@ japanAtHomeApp
                         }],
                         resolvedRestaurant: ['Restaurant', function (Restaurant) {
                             return Restaurant.query().$promise;
+                        }],
+                        resolvedZip: ['Zip', function (Zip) {
+                            return Zip.query().$promise;
+                        }],
+                        resolvedItem: ['Item', function (Item) {
+                            return Item.query().$promise;
                         }]
                     },
                     access: {

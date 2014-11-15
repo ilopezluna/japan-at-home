@@ -27,6 +27,6 @@ japanAtHomeApp.controller('RestaurantController', function ($scope, resolvedRest
         };
 
         $scope.clear = function () {
-            $scope.restaurant = {name: null, shortName: null, description: null, address: null, price: null, minPrice: null, status: null, telephone: null, closeAt: null, openAt: null, dayClosed: null, averageDeliveryTime: null, logo: null, id: null};
+            $scope.restaurant = {name: null, shortName: null, description: null, address: null, price: null, status: null, telephone: null, closeAt: null, openAt: null, closedAtDay: null, averageDeliveryTime: null, logo: null, id: null};
         };
     });

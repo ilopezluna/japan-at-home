@@ -51,11 +51,6 @@
                                    ng-model="restaurant.price">
                         </div>
                         <div class="form-group">
-                            <label>MinPrice</label>
-                            <input type="text" class="form-control"
-                                   ng-model="restaurant.minPrice">
-                        </div>
-                        <div class="form-group">
                             <label>Status</label>
                             <input type="number" class="form-control"
                                    ng-model="restaurant.status">
@@ -76,9 +71,9 @@
                                    ng-model="restaurant.openAt">
                         </div>
                         <div class="form-group">
-                            <label>DayClosed</label>
+                            <label>ClosedAtDay</label>
                             <input type="text" class="form-control"
-                                   ng-model="restaurant.dayClosed">
+                                   ng-model="restaurant.closedAtDay">
                         </div>
                         <div class="form-group">
                             <label>AverageDeliveryTime</label>
@@ -121,12 +116,11 @@
                     <th>Description</th>
                     <th>Address</th>
                     <th>Price</th>
-                    <th>MinPrice</th>
                     <th>Status</th>
                     <th>Telephone</th>
                     <th>CloseAt</th>
                     <th>OpenAt</th>
-                    <th>DayClosed</th>
+                    <th>ClosedAtDay</th>
                     <th>AverageDeliveryTime</th>
                     <th>Logo</th>
                     <th></th>
@@ -140,12 +134,11 @@
                     <td>{{restaurant.description}}</td>
                     <td>{{restaurant.address}}</td>
                     <td>{{restaurant.price}}</td>
-                    <td>{{restaurant.minPrice}}</td>
                     <td>{{restaurant.status}}</td>
                     <td>{{restaurant.telephone}}</td>
                     <td>{{restaurant.closeAt}}</td>
                     <td>{{restaurant.openAt}}</td>
-                    <td>{{restaurant.dayClosed}}</td>
+                    <td>{{restaurant.closedAtDay}}</td>
                     <td>{{restaurant.averageDeliveryTime}}</td>
                     <td>{{restaurant.logo}}</td>
                     <td>

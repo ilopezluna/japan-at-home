@@ -10,9 +10,9 @@
     <!--
         Added the entity Zip.
     -->
-    <changeSet id="20141031131041" author="jhipster">
+    <changeSet id="20141109224536" author="jhipster">
         <createTable tableName="T_ZIP">
-            <column name="id" type="bigint">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="code" type="varchar(255)"/>

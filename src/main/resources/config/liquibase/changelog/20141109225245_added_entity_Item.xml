@@ -10,9 +10,9 @@
     <!--
         Added the entity Item.
     -->
-    <changeSet id="20141031133301" author="jhipster">
+    <changeSet id="20141109225245" author="jhipster">
         <createTable tableName="T_ITEM">
-            <column name="id" type="bigint">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="quantity" type="integer"/>

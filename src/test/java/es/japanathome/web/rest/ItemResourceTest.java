@@ -39,12 +39,12 @@ public class ItemResourceTest {
     private static final Integer UPDATED_QUANTITY = 1;
     
 
-   @Inject
-   private ItemRepository itemRepository;
+    @Inject
+    private ItemRepository itemRepository;
 
-   private MockMvc restItemMockMvc;
+    private MockMvc restItemMockMvc;
 
-   private Item item;
+    private Item item;
 
     @PostConstruct
     public void setup() {
@@ -76,7 +76,7 @@ public class ItemResourceTest {
         List<Item> items = itemRepository.findAll();
         assertThat(items).hasSize(1);
         Item testItem = items.iterator().next();
-        assertThat(testItem.getQuantity()).isEqualTo(DEFAULT_QUANTITY);;
+        assertThat(testItem.getQuantity()).isEqualTo(DEFAULT_QUANTITY);
     }
 
     @Test

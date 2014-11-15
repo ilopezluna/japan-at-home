@@ -10,9 +10,9 @@
     <!--
         Added the entity Restaurant.
     -->
-    <changeSet id="20141031131231" author="jhipster">
+    <changeSet id="20141109224941" author="jhipster">
         <createTable tableName="T_RESTAURANT">
-            <column name="id" type="bigint">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="varchar(255)"/>
@@ -20,24 +20,33 @@
             <column name="description" type="varchar(255)"/>
             <column name="address" type="varchar(255)"/>
             <column name="price" type="decimal(10,2)"/>
-            <column name="min_price" type="decimal(10,2)"/>
             <column name="status" type="integer"/>
             <column name="telephone" type="varchar(255)"/>
             <column name="close_at" type="varchar(255)"/>
             <column name="open_at" type="varchar(255)"/>
-            <column name="day_closed" type="varchar(255)"/>
+            <column name="closed_at_day" type="varchar(255)"/>
             <column name="average_delivery_time" type="varchar(255)"/>
             <column name="logo" type="varchar(255)"/>
         </createTable>
-
+        
         <createTable tableName="T_RESTAURANT_T_ZIP">
-            <column name="t_restaurant_id" type="BIGINT">
-                <constraints nullable="false"/>
+            <column name="zips_id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="zips_id" type="BIGINT">
-                <constraints nullable="false"/>
+            <column name="restaurants_id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
             </column>
         </createTable>
+        <addForeignKeyConstraint baseColumnNames="zips_id"
+                                 baseTableName="T_RESTAURANT_T_ZIP"
+                                 constraintName="fk_restaurant_zip_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="T_ZIP"/>
+        <addForeignKeyConstraint baseColumnNames="restaurants_id"
+                                 baseTableName="T_RESTAURANT_T_ZIP"
+                                 constraintName="fk_zip_restaurant_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="T_RESTAURANT"/>
 
     </changeSet>
 </databaseChangeLog>

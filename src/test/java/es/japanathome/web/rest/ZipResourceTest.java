@@ -39,12 +39,12 @@ public class ZipResourceTest {
     private static final String UPDATED_CODE = "UPDATED_TEXT";
     
 
-   @Inject
-   private ZipRepository zipRepository;
+    @Inject
+    private ZipRepository zipRepository;
 
-   private MockMvc restZipMockMvc;
+    private MockMvc restZipMockMvc;
 
-   private Zip zip;
+    private Zip zip;
 
     @PostConstruct
     public void setup() {
@@ -76,7 +76,7 @@ public class ZipResourceTest {
         List<Zip> zips = zipRepository.findAll();
         assertThat(zips).hasSize(1);
         Zip testZip = zips.iterator().next();
-        assertThat(testZip.getCode()).isEqualTo(DEFAULT_CODE);;
+        assertThat(testZip.getCode()).isEqualTo(DEFAULT_CODE);
     }
 
     @Test

@@ -40,20 +40,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class OrderResourceTest {
 
     private static final String DEFAULT_ADDRESS = "SAMPLE_TEXT";
-    private static final String UPDATED_ADDRESS = "UPDATED_TEXT";
-    
     private static final String DEFAULT_CODE = "SAMPLE_TEXT";
-    private static final String UPDATED_CODE = "UPDATED_TEXT";
-    
     private static final Order.PaymentType DEFAULT_PAYMENT_TYPE = Order.PaymentType.ONLINE;
-    private static final Order.PaymentType UPDATED_PAYMENT_TYPE = Order.PaymentType.ONLINE;
-    
     private static final Order.Status DEFAULT_STATUS = Order.Status.CREATED;
-    private static final Order.Status UPDATED_STATUS = Order.Status.DELIVERED;
-    
 
-   @Inject
-   private OrderService orderService;
+    @Inject
+    private OrderService orderService;
 
     @Inject
     private RestaurantRepository restaurantRepository;
@@ -70,10 +62,9 @@ public class OrderResourceTest {
     @Inject
     private ItemRepository itemRepository;
 
-   private MockMvc restOrderMockMvc;
+    private MockMvc restOrderMockMvc;
 
-   private Order order;
-    private Product product;
+    private Order order;
 
     @PostConstruct
     public void setup() {
@@ -85,7 +76,6 @@ public class OrderResourceTest {
 
     @Before
     public void initTest() {
-
         Zip zip = buildZip();
         zipRepository.save(zip);
 
@@ -99,7 +89,7 @@ public class OrderResourceTest {
         Tag tag = buildTag();
         tag = tagRepository.save(tag);
 
-        product = buildProduct(restaurant, tag);
+        Product product = buildProduct(restaurant, tag);
         product = productRepository.save(product);
 
         Item item = buildItem(product);
@@ -121,13 +111,6 @@ public class OrderResourceTest {
     @Test
     @Transactional
     public void createOrder() throws Exception {
-        Item item = new Item();
-        item.setProduct( product );
-        item.setQuantity( ITEM_DEFAULT_QUANTITY );
-
-        Map<Long, Item> items = new HashMap<>();
-        items.put(product.getId(), item);
-        order.setItems(items);
         // Validate the database is empty
         assertThat(orderService.findAll()).hasSize(0);
 
@@ -143,8 +126,8 @@ public class OrderResourceTest {
         Order testOrder = orders.iterator().next();
         assertThat(testOrder.getAddress()).isEqualTo(DEFAULT_ADDRESS);
         assertThat(testOrder.getCode()).isEqualTo(DEFAULT_CODE);
-        assertThat(testOrder.getPaymentType().name()).isEqualTo(DEFAULT_PAYMENT_TYPE.name());
-        assertThat(testOrder.getStatus().name()).isEqualTo(DEFAULT_STATUS.name());
+        assertThat(testOrder.getPaymentType()).isEqualTo(DEFAULT_PAYMENT_TYPE);
+        assertThat(testOrder.getStatus()).isEqualTo(DEFAULT_STATUS);
     }
 
     @Test
@@ -159,8 +142,8 @@ public class OrderResourceTest {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[0].id").value(order.getId().intValue()))
-                .andExpect(jsonPath("$.[0].address").value(DEFAULT_ADDRESS))
-                .andExpect(jsonPath("$.[0].code").value(DEFAULT_CODE))
+                .andExpect(jsonPath("$.[0].address").value(DEFAULT_ADDRESS.toString()))
+                .andExpect(jsonPath("$.[0].code").value(DEFAULT_CODE.toString()))
                 .andExpect(jsonPath("$.[0].paymentType").value(DEFAULT_PAYMENT_TYPE.name()))
                 .andExpect(jsonPath("$.[0].status").value(DEFAULT_STATUS.name()));
     }
@@ -176,8 +159,8 @@ public class OrderResourceTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(order.getId().intValue()))
-            .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS))
-            .andExpect(jsonPath("$.code").value(DEFAULT_CODE))
+            .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()))
+            .andExpect(jsonPath("$.code").value(DEFAULT_CODE.toString()))
             .andExpect(jsonPath("$.paymentType").value(DEFAULT_PAYMENT_TYPE.name()))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.name()));
     }
@@ -190,30 +173,33 @@ public class OrderResourceTest {
                 .andExpect(status().isNotFound());
     }
 
-    @Test
-    @Transactional
-    public void updateOrder() throws Exception {
-        // Initialize the database
-        orderService.saveAndFlush(order);
-
-        // Update the order
-        order.setAddress(UPDATED_ADDRESS);
-        order.setCode(UPDATED_CODE);
-        order.setPaymentType(UPDATED_PAYMENT_TYPE);
-        order.setStatus(UPDATED_STATUS);
-        restOrderMockMvc.perform(post("/app/rest/orders")
-                .contentType(TestUtil.APPLICATION_JSON_UTF8)
-                .content(TestUtil.convertObjectToJsonBytes(order)))
-                .andExpect(status().isOk());
-
-        // Validate the Order in the database
-        List<Order> orders = orderService.findAll();
-        assertThat(orders).hasSize(1);
-        Order testOrder = orders.iterator().next();
-        assertThat(testOrder.getAddress()).isEqualTo(UPDATED_ADDRESS);
-        assertThat(testOrder.getCode()).isEqualTo(UPDATED_CODE);
-        assertThat(testOrder.getPaymentType().name()).isEqualTo(UPDATED_PAYMENT_TYPE.name());
-    }
+//    @Test
+//    @Transactional
+//    public void updateOrder() throws Exception {
+//        // Initialize the database
+//        orderService.saveAndFlush(order);
+//
+//        // Update the order
+//        order.setCreatedAt(UPDATED_CREATED_AT);
+//        order.setAddress(UPDATED_ADDRESS);
+//        order.setCode(UPDATED_CODE);
+//        order.setPaymentType(UPDATED_PAYMENT_TYPE);
+//        order.setStatus(UPDATED_STATUS);
+//        restOrderMockMvc.perform(post("/app/rest/orders")
+//                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+//                .content(TestUtil.convertObjectToJsonBytes(order)))
+//                .andExpect(status().isOk());
+//
+//        // Validate the Order in the database
+//        List<Order> orders = orderService.findAll();
+//        assertThat(orders).hasSize(1);
+//        Order testOrder = orders.iterator().next();
+//        assertThat(testOrder.getCreatedAt()).isEqualTo(UPDATED_CREATED_AT);
+//        assertThat(testOrder.getAddress()).isEqualTo(UPDATED_ADDRESS);
+//        assertThat(testOrder.getCode()).isEqualTo(UPDATED_CODE);
+//        assertThat(testOrder.getPaymentType().name()).isEqualTo(UPDATED_PAYMENT_TYPE.name());
+//        assertThat(testOrder.getStatus().name()).isEqualTo(UPDATED_STATUS.name());
+//    }
 
     @Test
     @Transactional

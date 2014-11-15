@@ -9,9 +9,6 @@ japanAtHomeApp
                     resolve:{
                         resolvedZip: ['Zip', function (Zip) {
                             return Zip.query().$promise;
-                        }],
-                        resolvedRestaurant: ['Restaurant', function (Restaurant) {
-                            return Restaurant.query().$promise;
                         }]
                     },
                     access: {

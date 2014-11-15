@@ -2,8 +2,10 @@ package es.japanathome.service;
 
 import es.japanathome.domain.Item;
 import es.japanathome.domain.Order;
+import es.japanathome.domain.Product;
 import es.japanathome.dto.Merchant;
 import es.japanathome.repository.OrderRepository;
+import es.japanathome.repository.ProductRepository;
 import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 import org.slf4j.Logger;
@@ -17,6 +19,7 @@ import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.validation.ValidationException;
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -41,6 +44,9 @@ public class OrderService {
     private ItemService itemService;
 
     @Inject
+    private ProductRepository productRepository;
+
+    @Inject
     private MailService mailService;
 
     @Inject
@@ -58,12 +64,31 @@ public class OrderService {
     public Order create(Order order)
     {
         log.debug("Creating order");
-
-        order.setCreatedOn( LocalDate.now(DateTimeZone.UTC) );
-        order.setStatus( Order.Status.CREATED );
-
+        fillOrder(order);
         log.debug("Saving order: " + order.toString());
         return orderRepository.save( order );
+    }
+
+    private void fillOrder(Order order) {
+
+        order.setCreatedAt( LocalDate.now(DateTimeZone.UTC) );
+        order.setStatus( Order.Status.CREATED );
+
+        Map<Long, Item> itemsResult = new HashMap<>();
+
+        Map<Long, Item> items = order.getItems();
+        for ( Map.Entry<Long, Item> entry : items.entrySet() )
+        {
+            Product product = productRepository.findOne(entry.getKey());
+
+            Item item = new Item();
+            item.setProduct(product);
+            item.setQuantity(entry.getValue().getQuantity());
+
+            itemsResult.put( product.getId(), item );
+        }
+
+        order.setItems(itemsResult);
     }
 
     public BigDecimal getPrice(Order order)

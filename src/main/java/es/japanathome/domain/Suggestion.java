@@ -21,7 +21,7 @@ import java.io.Serializable;
 public class Suggestion implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "email")
@@ -36,8 +36,8 @@ public class Suggestion implements Serializable {
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonSerialize(using = CustomLocalDateSerializer.class)
-    @Column(name = "created_on", nullable = false)
-    private LocalDate createdOn;
+    @Column(name = "created_at", nullable = false)
+    private LocalDate createdAt;
 
     public Long getId() {
         return id;
@@ -71,12 +71,12 @@ public class Suggestion implements Serializable {
         this.status = status;
     }
 
-    public LocalDate getCreatedOn() {
-        return createdOn;
+    public LocalDate getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreatedOn(LocalDate createdOn) {
-        this.createdOn = createdOn;
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
     }
 
     @Override
@@ -107,7 +107,7 @@ public class Suggestion implements Serializable {
                 ", email='" + email + "'" +
                 ", description='" + description + "'" +
                 ", status='" + status + "'" +
-                ", createdOn='" + createdOn + "'" +
+                ", createdAt='" + createdAt + "'" +
                 '}';
     }
 }

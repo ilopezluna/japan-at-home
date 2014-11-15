@@ -1,9 +1,8 @@
 'use strict';
 
-japanAtHomeApp.controller('ZipController', function ($scope, resolvedZip, Zip, resolvedRestaurant) {
+japanAtHomeApp.controller('ZipController', function ($scope, resolvedZip, Zip) {
 
         $scope.zips = resolvedZip;
-        $scope.restaurants = resolvedRestaurant;
 
         $scope.create = function () {
             Zip.save($scope.zip,
