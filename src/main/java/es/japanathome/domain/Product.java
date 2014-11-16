@@ -1,14 +1,12 @@
 package es.japanathome.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A Product.
@@ -16,6 +14,7 @@ import java.util.Set;
 @Entity
 @Table(name = "T_PRODUCT")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Product implements Serializable {
 
     @Id
