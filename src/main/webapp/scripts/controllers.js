@@ -161,7 +161,12 @@ japanAtHomeApp.controller('MerchantController', function ($scope, Order, $sce, $
             function (merchant)
             {
                 $scope.merchant = merchant;
-            });
+            },
+            function (data)
+            {
+                alert(data.data.message);
+            }
+        );
     };
 
     $scope.submmit = function ()

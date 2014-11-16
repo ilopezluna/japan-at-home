@@ -194,6 +194,10 @@ s {
     font-family: "Helvetica Neue";
 }
 
+.nav-pills {
+    padding-top: 10px;
+}
+
 .navbar-default {
     background-color: white;
 }
@@ -296,7 +300,7 @@ h1 strong {
 }
 
 #main_content .full_content {
-    padding: 30px 35px;
+    padding: 30px 60px 40px;
     position: relative
 }
 
