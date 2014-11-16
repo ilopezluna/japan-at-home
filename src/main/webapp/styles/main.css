@@ -194,10 +194,6 @@ s {
     font-family: "Helvetica Neue";
 }
 
-.nav-pills {
-    padding-top: 10px;
-}
-
 .navbar-default {
     background-color: white;
 }
@@ -392,6 +388,14 @@ h1 strong {
     margin: 0;
     padding: 0 40px 0 0;
     line-height: 30px;
+
+    display: table;
+    overflow: hidden;
+}
+
+#main_content .product_pvp span {
+    display: table-cell;
+    vertical-align: middle;
 }
 
 #main_content .product_pvp .glyphicon {
