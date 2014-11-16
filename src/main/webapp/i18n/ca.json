@@ -377,7 +377,7 @@
     }
     ,
     "delivery": {
-        "title": "ADREÇA D'ENTREGA",
+        "title": "Adreça d'entrega",
         "zip": {
             "label" : "Codi postal",
             "example": "Exemple: 08330"
@@ -414,7 +414,7 @@
         }
     },
     "resume": {
-        "title": "RESUM",
+        "title": "Resum",
         "description": "Paga online o en efectiu, ¡como tu prefereixis!",
         "delivery": "Adreça d'entrega: {{address}}",
         "home": "Inici",

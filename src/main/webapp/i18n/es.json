@@ -375,7 +375,7 @@
         }
     },
     "delivery": {
-        "title": "DIRECCIÓN DE ENTREGA",
+        "title": "Dirección de entrega",
         "zip": {
             "label" : "Código postal",
             "example": "Ejemplo: 08330"
@@ -412,7 +412,7 @@
         }
     },
     "resume": {
-        "title": "RESUMEN",
+        "title": "Resumen",
         "description": "Paga online o en efectivo, ¡como prefieras!",
         "delivery": "Dirección de entrega: {{address}}",
         "home": "Inicio",
