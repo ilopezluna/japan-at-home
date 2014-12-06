@@ -144,7 +144,6 @@ ul#strength {
 
 body {
     font-size: 16px;
-    color: #666;
     background-color: #FFFFFF;
     font-family: "Open Sans";
 }
@@ -179,6 +178,7 @@ h4 {
 a {
     color: #D66358;
 }
+
 a:hover {
     text-decoration: none
 }
@@ -214,6 +214,7 @@ s {
     border: none;
     margin-top: 10px;
     border-radius: 4px;
+    transition: all .2s ease-in-out;
 }
 
 .btn:hover {
@@ -234,10 +235,6 @@ s {
 
 .prev_step:hover {
     background: #D66358;
-}
-
-.transition02 {
-    transition: all .2s ease-in-out
 }
 
 .panel-group {

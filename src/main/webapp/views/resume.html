@@ -69,12 +69,12 @@
                             <input hidden="true" name="Ds_Merchant_MerchantURL"         ng-model="merchant.url"             />
                             <input hidden="true" name="Ds_Merchant_MerchantSignature"   ng-model="merchant.signature"       />
 
-                            <button translate="resume.online" ng-click="create(1)" type="button" class="btn transition02 finish_payment">Pago online</button>
+                            <button translate="resume.online" ng-click="create(1)" type="button" class="btn finish_payment">Pago online</button>
                             <div ng-if="merchant.signature != null">
                                 {{submmit()}}
                             </div>
 
-                            <button translate="resume.cash" ng-click="create(0)" type="button" class="btn transition02 finish_payment">Pago en efectivo</button>
+                            <button translate="resume.cash" ng-click="create(0)" type="button" class="btn finish_payment">Pago en efectivo</button>
                             <p translate="resume.note">* Requiere registro</p>
                         </form>
 
