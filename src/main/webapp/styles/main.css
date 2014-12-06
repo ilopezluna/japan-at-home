@@ -550,7 +550,7 @@ h1 strong {
     color: #fff;   margin-bottom: 20px
 }
 
-#main_newsletters .input-group{ width: 500px; margin: 0 auto 20px;}
+#main_newsletters .input-group{ margin: 0 auto 20px;}
 #main_newsletters .form-control{ border: none; padding: 25px 10px; font-size: 16px; color: #D66358}
 
 #main_newsletters .btn {
