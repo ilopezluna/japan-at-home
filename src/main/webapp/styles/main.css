@@ -160,6 +160,11 @@ h1 {
     font-size: 30px;
 }
 
+h1 strong {
+    text-transform: uppercase;
+    color: #D66358;
+}
+
 h2 {
     font-size: 20px;
 }
@@ -204,6 +209,7 @@ s {
     color: #C55B50;
 }
 
+/** buttons **/
 .btn {
     text-transform: uppercase;
     font-size: 18px;
@@ -237,6 +243,8 @@ s {
     background: #D66358;
 }
 
+/** panels **/
+
 .panel-group {
     margin-top: 40px;
 }
@@ -261,35 +269,26 @@ s {
 
 /* Main Navigation */
 
+/* needed in order to override hover inside thumbnails */
 #main_navigation a {
     font-size: 12px;
 }
-
 
 /* Main Content top */
 #main_content_top {
     margin-top: 30px;
 }
 
-h1 strong {
-    text-transform: uppercase;
-    color: #D66358;
-}
-
 #main_content_search {
-    padding-bottom: 30px;
+    padding-bottom: 40px;
 }
 
 /* Main Content */
 
 #main_content {
     width: 100%;
-    padding: 30px;
+    padding: 50px;
     background-color: #F9FAF7;
-}
-
-#main_content a:hover .btn {
-    background-color: #C55B50;
 }
 
 #main_content .full_content {
