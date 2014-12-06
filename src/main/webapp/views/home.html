@@ -24,7 +24,7 @@
 <section id="main_content">
     <div class="row">
 
-        <div ng-repeat="restaurant in restaurants | filter:order.zip.code" class="col-md-3 col-sm-4">
+        <div ng-repeat="restaurant in restaurants | filter:order.zip.code" class="col-md-3 col-sm-6 col-xs-12">
             <a href ng-click="menu(restaurant)">
                 <div class="thumbnail restaurant_thmb">
                     <img ng-src="{{restaurant.logo}}" class="img-responsive" alt="JAPAN AT HOME | Name restaurant" title="JAPAN AT HOME | Name restaurant">
